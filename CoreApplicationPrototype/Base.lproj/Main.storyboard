@@ -123,12 +123,49 @@
                     <view key="view" contentMode="scaleToFill" id="JxH-gi-4Wl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b7E-s3-Ojr">
+                                <rect key="frame" x="283" y="117" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="toggleNotifications:" destination="uDS-fF-6gE" eventType="valueChanged" id="jKe-YE-wBu"/>
+                                </connections>
+                            </switch>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Sm-Ei-vG0">
+                                <rect key="frame" x="125" y="361" width="125" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Log Out"/>
+                                <connections>
+                                    <segue destination="FJ9-EF-fgg" kind="show" identifier="Show Log In" id="yie-Dq-VQf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1vK-zn-CUA">
+                                <rect key="frame" x="97" y="421" width="181" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Edit Account Details"/>
+                                <connections>
+                                    <segue destination="K1h-S1-ycJ" kind="show" identifier="Show Account Creation" id="8t9-tS-Xy9"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notifications: On" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bI4-FP-Iji">
+                                <rect key="frame" x="35" y="127" width="146" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="NotificationLabel" destination="bI4-FP-Iji" id="Xcu-Iv-fna"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hda-TH-T3w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2046" y="-518"/>
+            <point key="canvasLocation" x="2045.5999999999999" y="-518.59070464767615"/>
         </scene>
         <!--History-->
         <scene sceneID="cgS-Kb-ZZn">
@@ -283,4 +320,7 @@
             <point key="canvasLocation" x="2046" y="247"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="8t9-tS-Xy9"/>
+    </inferredMetricsTieBreakers>
 </document>
