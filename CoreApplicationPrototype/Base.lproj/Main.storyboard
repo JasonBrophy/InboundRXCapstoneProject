@@ -150,21 +150,43 @@
             <point key="canvasLocation" x="2046" y="-518"/>
         </scene>
         <!--History-->
-        <scene sceneID="cgS-Kb-ZZn">
+        <scene sceneID="TJh-3S-jbE">
             <objects>
-                <viewController id="vUw-Z0-Gu8" customClass="HistoryViewController" customModule="CoreApplicationPrototype" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ywY-ZT-3lh"/>
-                        <viewControllerLayoutGuide type="bottom" id="VhP-HO-pVY"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="bl2-KB-Qhs">
+                <tableViewController storyboardIdentifier="History" id="AIq-ZC-cah" userLabel="History" customClass="HistoryViewController" customModule="CoreApplicationPrototype" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="R4a-oM-xeM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="History" id="dpd-X4-pXF"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YTE-DC-xrx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="200" id="3Zn-dx-0G0" customClass="HistoryTableViewCell" customModule="CoreApplicationPrototype" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="200"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Zn-dx-0G0" id="xRB-xs-dKJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6xz-Cz-OPi">
+                                            <rect key="frame" x="8" y="8" width="68" height="31"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="yearLabel" destination="6xz-Cz-OPi" id="Gy0-iY-8bL"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="AIq-ZC-cah" id="zmM-Nu-4A8"/>
+                            <outlet property="delegate" destination="AIq-ZC-cah" id="HCC-Ra-2dx"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="History" id="29y-bI-PZi"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U0c-Ua-ti2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1068" y="599.55022488755628"/>
         </scene>
@@ -257,7 +279,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="vUw-Z0-Gu8" kind="relationship" relationship="rootViewController" id="AoU-Xr-QBb"/>
+                        <segue destination="AIq-ZC-cah" kind="relationship" relationship="rootViewController" id="zWG-N6-jH9"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="miN-QF-Uf3" userLabel="First Responder" sceneMemberID="firstResponder"/>
