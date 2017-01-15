@@ -16,6 +16,7 @@ struct cellData  {
     let image : UIImage!
 }
 
+
 class HomeTableViewController: UITableViewController {
     
     private var arrayOfCellData = [cellData]()

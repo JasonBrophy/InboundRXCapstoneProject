@@ -226,7 +226,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Deal Cell" selectionStyle="default" indentationWidth="10" id="hJ4-Xf-K0j" customClass="DealsTableViewCell" customModule="CoreApplicationPrototype" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Deal Cell" selectionStyle="default" indentationWidth="10" reuseIdentifier="Deals" id="hJ4-Xf-K0j" customClass="DealsTableViewCell" customModule="CoreApplicationPrototype" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="374" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="Deals Cell" tableViewCell="hJ4-Xf-K0j" id="0tK-A1-AOV">
