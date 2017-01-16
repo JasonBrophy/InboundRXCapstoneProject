@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		23E7282B1E29D6F800B25F3D /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E7282A1E29D6F800B25F3D /* HistoryTableViewCell.swift */; };
+		2FEDDACE1E2C45980095013F /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 2FEDDACD1E2C45980095013F /* .gitignore */; };
 		7E6F04001E2591DC00D0F41A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F03FF1E2591DC00D0F41A /* AboutViewController.swift */; };
 		7E6F04021E25920C00D0F41A /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F04011E25920C00D0F41A /* HistoryViewController.swift */; };
 		7E6F04041E25922500D0F41A /* RewardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F04031E25922500D0F41A /* RewardsViewController.swift */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		23E7282A1E29D6F800B25F3D /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		2FEDDACD1E2C45980095013F /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
 		7E6F03FF1E2591DC00D0F41A /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		7E6F04011E25920C00D0F41A /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		7E6F04031E25922500D0F41A /* RewardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardsViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 		DF2556E51DE422EC006B3CC5 = {
 			isa = PBXGroup;
 			children = (
+				2FEDDACD1E2C45980095013F /* .gitignore */,
 				DF2556F01DE422EC006B3CC5 /* CoreApplicationPrototype */,
 				DF2557051DE422EC006B3CC5 /* CoreApplicationPrototypeTests */,
 				DF2557101DE422EC006B3CC5 /* CoreApplicationPrototypeUITests */,
@@ -269,6 +272,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FEDDACE1E2C45980095013F /* .gitignore in Resources */,
 				DF2556FC1DE422EC006B3CC5 /* LaunchScreen.storyboard in Resources */,
 				DF2556F91DE422EC006B3CC5 /* Assets.xcassets in Resources */,
 				DF2556F71DE422EC006B3CC5 /* Main.storyboard in Resources */,
