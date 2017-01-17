@@ -101,13 +101,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		23F67DFA1E25B42000B0070E /* History */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = History;
-			sourceTree = "<group>";
-		};
 		DF2556E51DE422EC006B3CC5 = {
 			isa = PBXGroup;
 			children = (
@@ -141,7 +134,6 @@
 				DF2556F51DE422EC006B3CC5 /* Main.storyboard */,
 				7E6F04011E25920C00D0F41A /* HistoryViewController.swift */,
 				23E7282A1E29D6F800B25F3D /* HistoryTableViewCell.swift */,
-				23F67DFA1E25B42000B0070E /* History */,
 				23F67DF81E25AEA000B0070E /* Supporting Files */,
 			);
 			path = CoreApplicationPrototype;

@@ -9,28 +9,14 @@
 import UIKit
 
 class HistoryViewController: UITableViewController {
-
-    let cellID = "cell"                 // Constant identifier for dequeue
-    var selectedIndexPath: IndexPath?   // "?"(optional) because it begins as nil
-    var yearArray = ["1976", "1972"]
-    var i = 0
+    
+    let cellID = "cell"                     // Constant identifier for dequeue
+    var selectedIndexPath: IndexPath?       // "?"(optional) because it begins as nil
+    var yearArray = ["1972", "1976"]        // Parallel Array to imageArray
+    var imageArray = [#imageLiteral(resourceName: "Image0"),#imageLiteral(resourceName: "Image1")]    // Holds images for corresponding year
     
     
-    /*
-     Protocol: UITableViewDataSource
-     
-     Adopted by an object that mediates the application's data model
-     for a UITableView object. The data source provides the table-view
-     object with the information it needs to constrict and modify
-     a table view
-     - (developer.apple.com/reference/uikit/uittableviewdatasource)
-     */
     
-    // CONFIGURING A TABLE VIEW
-    // Asks the data source to return the number of sections in the table view
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
     
     // CONFIGURING A TABLE VIEW (REQUIRED)
     // Tells the data source to return the number of rows in a given section of a table view
@@ -41,26 +27,17 @@ class HistoryViewController: UITableViewController {
     // CONFIGURING A TABLE VIEW (REQUIRED)
     // Asks the data source for a cell to insert in a particular location of the table view
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if i == yearArray.count{
-            i = 0
-        }
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! HistoryTableViewCell
-        cell.yearLabel.text = yearArray[i]
-        i = i + 1
+        
+        let dequeued = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
+        
+        let cell = dequeued as! HistoryTableViewCell
+        
+        cell.yearLabel.text    = yearArray[indexPath.row]
+        cell.historyView.image = imageArray[indexPath.row]
+        
         return cell
     }
     
-    
-    
-    
-    /*
-     Protocol: UITableViewDelegate
-     The delegate of a UITableView object must adopt the UITableViewDelegate
-     protocol. Optional methods of the protocol allow the delegate to manage
-     selections, configure section headings and footers, help to delete and
-     reorder cells, and perform other actions
-     - (developer.apple.com/reference/uikit/uittableviewdelegate)
-     */
     
     // MANAGING SELECTIONS
     // Tells the delegate that the specified row is now selected
@@ -91,25 +68,13 @@ class HistoryViewController: UITableViewController {
     }
     
     // CONFIGURING ROWS FOR THE TABLE VIEW
-    // Tells the delegate the table view is about to draw a cell for a particular row
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        (cell as! HistoryTableViewCell).watchFrameChanges()
-    }
-    
-    // TRACKING THE REMOVAL OF VIEWS
-    // Tells the delegate that the specified cell was removed from the table
-    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        (cell as! HistoryTableViewCell).ignoreFrameChanges()
-    }
-    
-    // CONFIGURING ROWS FOR THE TABLE VIEW
     // Asks the delegate for the height to use for a row in a specified location.
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath == selectedIndexPath {             // Gives control to cell
+        if indexPath == selectedIndexPath {              // Gives control to cell
             return HistoryTableViewCell.expandedHeight   // When cell is selected, it is expanded
         } else {
             return HistoryTableViewCell.defaultHeight    // When cell is not selected, it is collapsed
         }
     }
-
+    
 }
