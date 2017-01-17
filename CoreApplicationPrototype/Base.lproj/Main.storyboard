@@ -45,7 +45,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HQs-bW-2Qb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1080.8" y="-799.2503748125938"/>
+            <point key="canvasLocation" x="1056" y="-876"/>
         </scene>
         <!--Home-->
         <scene sceneID="tne-QT-ifu">
@@ -59,11 +59,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bza-Qf-NPF">
-                                <rect key="frame" x="243" y="94" width="99" height="38"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BGq-QR-tHT">
+                                <rect key="frame" x="1" y="288" width="374" height="330"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="904-j5-IZC" kind="embed" id="3k9-8Q-TeJ"/>
+                                </connections>
+                            </containerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Reward Points: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ZD-i9-fyl">
+                                <rect key="frame" x="128" y="77" width="118" height="20.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Settings"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5q-u0-5cp">
+                                <rect key="frame" x="128" y="106" width="118" height="20.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Deals!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YQ8-VZ-QUy">
+                                <rect key="frame" x="87" y="233" width="200" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bza-Qf-NPF">
+                                <rect key="frame" x="323" y="72" width="36" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Settings" image="XcodeGear"/>
                                 <connections>
                                     <segue destination="uDS-fF-6gE" kind="show" identifier="Show Settings" id="HEV-4O-AyN"/>
                                 </connections>
@@ -72,10 +99,14 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="sSR-DL-le2"/>
+                    <connections>
+                        <outlet property="rewardLabel" destination="4ZD-i9-fyl" id="1OB-JN-R8w"/>
+                        <outlet property="rewardPointsLabel" destination="I5q-u0-5cp" id="1bX-mi-Ldm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1068" y="-109.29535232383809"/>
+            <point key="canvasLocation" x="1068" y="-124.58770614692655"/>
         </scene>
         <!--Log In-->
         <scene sceneID="GwF-h0-xXt">
@@ -265,12 +296,49 @@
                     <view key="view" contentMode="scaleToFill" id="JxH-gi-4Wl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b7E-s3-Ojr">
+                                <rect key="frame" x="283" y="117" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="toggleNotifications:" destination="uDS-fF-6gE" eventType="valueChanged" id="jKe-YE-wBu"/>
+                                </connections>
+                            </switch>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Sm-Ei-vG0">
+                                <rect key="frame" x="125" y="361" width="125" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Log Out"/>
+                                <connections>
+                                    <segue destination="FJ9-EF-fgg" kind="show" identifier="Show Log In" id="yie-Dq-VQf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1vK-zn-CUA">
+                                <rect key="frame" x="97" y="421" width="181" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Edit Account Details"/>
+                                <connections>
+                                    <segue destination="K1h-S1-ycJ" kind="show" identifier="Show Account Creation" id="8t9-tS-Xy9"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notifications: On" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bI4-FP-Iji">
+                                <rect key="frame" x="35" y="127" width="146" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="NotificationLabel" destination="bI4-FP-Iji" id="Xcu-Iv-fna"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hda-TH-T3w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2046" y="-518"/>
+            <point key="canvasLocation" x="2062" y="-645"/>
         </scene>
         <!--History-->
         <scene sceneID="TJh-3S-jbE">
@@ -317,6 +385,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U0c-Ua-ti2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1068" y="599.55022488755628"/>
+        </scene>
+        <!--Home Table View Controller-->
+        <scene sceneID="yHY-id-9cc">
+            <objects>
+                <tableViewController id="904-j5-IZC" customClass="HomeTableViewController" customModule="CoreApplicationPrototype" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="deal cell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="BX9-n5-Fw9">
+                        <rect key="frame" x="0.0" y="0.0" width="374" height="330"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Deal Cell" selectionStyle="default" indentationWidth="10" reuseIdentifier="Deals" id="hJ4-Xf-K0j" customClass="DealsTableViewCell" customModule="CoreApplicationPrototype" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="374" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="Deals Cell" tableViewCell="hJ4-Xf-K0j" id="0tK-A1-AOV">
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="904-j5-IZC" id="29y-RN-kHV"/>
+                            <outlet property="delegate" destination="904-j5-IZC" id="uv2-LM-KuP"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KVn-qS-5Vn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1965" y="950"/>
         </scene>
         <!--Rewards-->
         <scene sceneID="gBp-fg-n73">
@@ -431,7 +527,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RrY-Tf-Kwm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="128.80000000000001" y="1324.5877061469266"/>
+            <point key="canvasLocation" x="129" y="1396"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8j6-fo-y0f">
@@ -452,4 +548,10 @@
             <point key="canvasLocation" x="2046" y="247"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="XcodeGear" width="512" height="512"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="8t9-tS-Xy9"/>
+    </inferredMetricsTieBreakers>
 </document>

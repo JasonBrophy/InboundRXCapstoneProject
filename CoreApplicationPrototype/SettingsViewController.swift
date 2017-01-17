@@ -10,6 +10,24 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
+   
+    private var notificationsOn = true
+    
+    @IBOutlet weak var NotificationLabel: UILabel!
+    
+    
+    @IBAction func toggleNotifications(_ sender: UISwitch) {
+        if (sender.isOn)    {
+            NotificationLabel.text = "Nofifications: On"
+            notificationsOn = true
+        }
+        else {
+            NotificationLabel.text = "Nofifications: Off"
+            notificationsOn = false
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
