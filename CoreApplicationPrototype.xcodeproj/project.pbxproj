@@ -19,7 +19,7 @@
 		7ECF68B91E31CA8F00AF3511 /* DealsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ECF68B61E31CA8F00AF3511 /* DealsTableViewCell.xib */; };
 		7ECF68BA1E31CA8F00AF3511 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF68B71E31CA8F00AF3511 /* HomeTableViewController.swift */; };
 		7ECF68C11E32A4B800AF3511 /* DealsPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF68BF1E32A4B800AF3511 /* DealsPageVC.swift */; };
-		7ECF68C41E32A52B00AF3511 /* DealsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF68C31E32A52B00AF3511 /* DealsViewController.swift */; };
+		7ECF68CC1E32B04500AF3511 /* DealsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF68CB1E32B04500AF3511 /* DealsViewController.swift */; };
 		DF2556F21DE422EC006B3CC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2556F11DE422EC006B3CC5 /* AppDelegate.swift */; };
 		DF2556F41DE422EC006B3CC5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2556F31DE422EC006B3CC5 /* HomeViewController.swift */; };
 		DF2556F71DE422EC006B3CC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF2556F51DE422EC006B3CC5 /* Main.storyboard */; };
@@ -59,7 +59,7 @@
 		7ECF68B61E31CA8F00AF3511 /* DealsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DealsTableViewCell.xib; sourceTree = "<group>"; };
 		7ECF68B71E31CA8F00AF3511 /* HomeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		7ECF68BF1E32A4B800AF3511 /* DealsPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealsPageVC.swift; sourceTree = "<group>"; };
-		7ECF68C31E32A52B00AF3511 /* DealsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DealsViewController.swift; path = ../../test/CoreApplicationPrototype/DealsViewController.swift; sourceTree = "<group>"; };
+		7ECF68CB1E32B04500AF3511 /* DealsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealsViewController.swift; sourceTree = "<group>"; };
 		DF2556EE1DE422EC006B3CC5 /* CoreApplicationPrototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreApplicationPrototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF2556F11DE422EC006B3CC5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DF2556F31DE422EC006B3CC5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -135,6 +135,7 @@
 		DF2556F01DE422EC006B3CC5 /* CoreApplicationPrototype */ = {
 			isa = PBXGroup;
 			children = (
+				7ECF68CB1E32B04500AF3511 /* DealsViewController.swift */,
 				7ECF68B51E31CA8F00AF3511 /* DealsTableViewCell.swift */,
 				7ECF68B61E31CA8F00AF3511 /* DealsTableViewCell.xib */,
 				7ECF68B71E31CA8F00AF3511 /* HomeTableViewController.swift */,
@@ -144,7 +145,6 @@
 				7E6F04091E2594B900D0F41A /* AccountCreationViewController.swift */,
 				7E6F03FF1E2591DC00D0F41A /* AboutViewController.swift */,
 				7ECF68BF1E32A4B800AF3511 /* DealsPageVC.swift */,
-				7ECF68C31E32A52B00AF3511 /* DealsViewController.swift */,
 				7E6F04031E25922500D0F41A /* RewardsViewController.swift */,
 				DF2556F51DE422EC006B3CC5 /* Main.storyboard */,
 				7E6F04011E25920C00D0F41A /* HistoryViewController.swift */,
@@ -317,7 +317,7 @@
 				7E6F04081E25949A00D0F41A /* SettingsViewController.swift in Sources */,
 				7E6F04061E25947800D0F41A /* LogInViewController.swift in Sources */,
 				DF2556F41DE422EC006B3CC5 /* HomeViewController.swift in Sources */,
-				7ECF68C41E32A52B00AF3511 /* DealsViewController.swift in Sources */,
+				7ECF68CC1E32B04500AF3511 /* DealsViewController.swift in Sources */,
 				DF2556F21DE422EC006B3CC5 /* AppDelegate.swift in Sources */,
 				7E6F04021E25920C00D0F41A /* HistoryViewController.swift in Sources */,
 				7E6F040A1E2594B900D0F41A /* AccountCreationViewController.swift in Sources */,

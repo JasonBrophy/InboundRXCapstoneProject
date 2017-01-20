@@ -2,7 +2,7 @@
 //  DealsViewController.swift
 //  CoreApplicationPrototype
 //
-//  Created by Brett Chafin on 1/19/17.
+//  Created by Brett Chafin on 1/20/17.
 //  Copyright © 2017 InboundRXCapstone. All rights reserved.
 //
 
@@ -10,13 +10,26 @@ import UIKit
 
 class DealsViewController: UIViewController {
 
-
-    @IBOutlet weak var mainTitle: UILabel!
+    
+    @IBOutlet weak var mainImage: UIImageView!
+    
+    @IBOutlet weak var mainLabel: UILabel!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mainTitle.text = self.restorationIdentifier
+        
+        //this is where we will load up info the each daily deal
+        mainImage.image = #imageLiteral(resourceName: "XcodeMeds")              //temp code
+        mainLabel.text = restorationIdentifier     //temp code
+        
+
+        // Do any additional setup after loading the view.
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
 
