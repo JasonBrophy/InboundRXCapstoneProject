@@ -16,19 +16,20 @@ struct event  {
 
 class HistoryViewController: UITableViewController {
     
-    let cellID = "cell"                      // Constant identifier for dequeue
-    var selectedIndexPath = -1               // -1 means no rows exist in section
+    let cellID = "cell"                      // Cell identifier for dequeue
+    var selectedIndexPath  = -1              // -1 means no rows exist in section
     private var eventArray = [event]()       // Array of events for cells
     
     
     // Load data into table view cells
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         tableView.tableFooterView = UIView() // Create blank rows after filled in cells
         eventArray = [event(year:"1969", image: #imageLiteral(resourceName: "Image0")),
                       event(year:"1972", image: #imageLiteral(resourceName: "Image1")),
                       event(year:"1984", image: #imageLiteral(resourceName: "Image0")),
-                      event(year:"1993", image: #imageLiteral(resourceName: "Image1")),
+                      event(year:"1993", image: #imageLiteral(resourceName: "Image1"))
                      ]
     }
     
@@ -52,7 +53,6 @@ class HistoryViewController: UITableViewController {
         return cell
     }
     
-    
     // MANAGING SELECTIONS
     // Tells the delegate that the specified row is now selected
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -70,6 +70,7 @@ class HistoryViewController: UITableViewController {
     // CONFIGURING ROWS FOR THE TABLE VIEW
     // Asks the delegate for the height to use for a row in a specified location.
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
         if indexPath.row == selectedIndexPath {
             return HistoryTableViewCell.expandedHeight // When cell is selected, it is expanded
         } else {

@@ -2,7 +2,7 @@
 //  AboutViewController.swift
 //  CoreApplicationPrototype
 //
-//  Created by Brett Chafin on 1/10/17.
+//  Created by Cher Moua on 1/10/17.
 //  Copyright © 2017 InboundRXCapstone. All rights reserved.
 //
 
