@@ -2,26 +2,40 @@
 //  HistoryViewController.swift
 //  CoreApplicationPrototype
 //
-//  Created by Brett Chafin on 1/10/17.
+//  Created by Jason Custodio 1/10/17.
 //  Copyright © 2017 InboundRXCapstone. All rights reserved.
 //
 
 import UIKit
 
+// Global Struct Event Custom Cell
+struct event  {
+    let year  : String!  // Year the event occurred
+    let image : UIImage! // Image depicting event
+}
+
 class HistoryViewController: UITableViewController {
     
-    let cellID = "cell"                     // Constant identifier for dequeue
-    var selectedIndexPath: IndexPath?       // "?"(optional) because it begins as nil
-    var yearArray = ["1972", "1976"]        // Parallel Array to imageArray
-    var imageArray = [#imageLiteral(resourceName: "Image0"),#imageLiteral(resourceName: "Image1")]    // Holds images for corresponding year
+    let cellID = "cell"                      // Constant identifier for dequeue
+    var selectedIndexPath = -1               // -1 means no rows exist in section
+    private var eventArray = [event]()       // Array of events for cells
     
     
-    
+    // Load data into table view cells
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.tableFooterView = UIView() // Create blank rows after filled in cells
+        eventArray = [event(year:"1969", image: #imageLiteral(resourceName: "Image0")),
+                      event(year:"1972", image: #imageLiteral(resourceName: "Image1")),
+                      event(year:"1984", image: #imageLiteral(resourceName: "Image0")),
+                      event(year:"1993", image: #imageLiteral(resourceName: "Image1")),
+                     ]
+    }
     
     // CONFIGURING A TABLE VIEW (REQUIRED)
     // Tells the data source to return the number of rows in a given section of a table view
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return yearArray.count
+        return eventArray.count
     }
     
     // CONFIGURING A TABLE VIEW (REQUIRED)
@@ -30,10 +44,10 @@ class HistoryViewController: UITableViewController {
         
         let dequeued = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
         
-        let cell = dequeued as! HistoryTableViewCell
+        let cell = dequeued as! HistoryTableViewCell             // Set cell as a custom cell
         
-        cell.yearLabel.text    = yearArray[indexPath.row]
-        cell.historyView.image = imageArray[indexPath.row]
+        cell.yearLabel.text    = eventArray[indexPath.row].year  // Set label in custom cell
+        cell.historyView.image = eventArray[indexPath.row].image // Set image in custom cell
         
         return cell
     }
@@ -42,39 +56,24 @@ class HistoryViewController: UITableViewController {
     // MANAGING SELECTIONS
     // Tells the delegate that the specified row is now selected
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let previousIndexPath = selectedIndexPath
         
-        if indexPath == selectedIndexPath {             // Was selected, select again to collapse cell
-            selectedIndexPath = nil
-        } else {
-            selectedIndexPath = indexPath               // Select cell to be expanded
+        if (selectedIndexPath == indexPath.row){  // If row is already selected
+            selectedIndexPath = -1                // Don't expand/shrink
+        }
+        else {
+            selectedIndexPath = indexPath.row     // Expand row
         }
         
-        
-        var indexPaths : Array<IndexPath> = []          // Explicit optional unwrapping
-        if let previous = previousIndexPath {           // Add an index path as long as a previous index path exists
-            indexPaths += [previous]                    // First run through will not have a previous
-        }
-        
-        
-        if let current = selectedIndexPath {            // Same reason as above
-            indexPaths += [current]
-        }
-        
-        // If a cell is selected, reload the rows
-        if indexPaths.count > 0 {                       // If there is at least one index path, reload the rows
-            tableView.reloadRows(at: indexPaths, with: UITableViewRowAnimation.automatic)
-        }
+        tableView.reloadRows(at: [indexPath], with: .automatic)
     }
     
     // CONFIGURING ROWS FOR THE TABLE VIEW
     // Asks the delegate for the height to use for a row in a specified location.
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath == selectedIndexPath {              // Gives control to cell
-            return HistoryTableViewCell.expandedHeight   // When cell is selected, it is expanded
+        if indexPath.row == selectedIndexPath {
+            return HistoryTableViewCell.expandedHeight // When cell is selected, it is expanded
         } else {
-            return HistoryTableViewCell.defaultHeight    // When cell is not selected, it is collapsed
+            return HistoryTableViewCell.defaultHeight  // When cell is not selected, it is collapsed
         }
     }
-    
 }
