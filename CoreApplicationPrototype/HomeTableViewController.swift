@@ -42,15 +42,15 @@ class HomeTableViewController: UITableViewController {
         
         //cast a local cell as a Deals cell and fill it up
         let cell = Bundle.main.loadNibNamed("DealsTableViewCell", owner: self, options: nil)?.first as! DealsTableViewCell
-            
-        cell.Imageview.image = arrayOfCellData[indexPath.row].image
+        
         cell.mainLabel.text = arrayOfCellData[indexPath.row].text
+        cell.mainImage.image = arrayOfCellData[indexPath.row].image
         
         return cell
     }
     
     //set height of cells
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 140
+        return 82
     }
 }

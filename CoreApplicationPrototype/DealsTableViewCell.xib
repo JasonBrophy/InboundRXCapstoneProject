@@ -11,37 +11,41 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DealsTableViewCell" customModule="CoreApplicationPrototype" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="96" id="WCq-Eh-Gmz">
-            <rect key="frame" x="0.0" y="0.0" width="430" height="96"/>
-            <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCq-Eh-Gmz" id="c7j-CI-lGn">
-                <rect key="frame" x="0.0" y="0.0" width="430" height="96"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DealsTableViewCell" rowHeight="82" id="KGk-i7-Jjw" customClass="DealsTableViewCell" customModule="CoreApplicationPrototype" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="470" height="82"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="470" height="82"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mqs-fJ-Cc7">
-                        <rect key="frame" x="0.0" y="0.0" width="96" height="96"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xMg-Dk-7T8">
+                        <rect key="frame" x="0.0" y="0.0" width="82" height="82"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="mqs-fJ-Cc7" secondAttribute="height" multiplier="1:1" id="i82-hf-YSY"/>
+                            <constraint firstAttribute="width" secondItem="xMg-Dk-7T8" secondAttribute="height" multiplier="1:1" id="fPJ-ja-EgH"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Owt-DK-JKK">
-                        <rect key="frame" x="104" y="37" width="318" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tRM-GU-tVE">
+                        <rect key="frame" x="96" y="31" width="273" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Owt-DK-JKK" firstAttribute="leading" secondItem="mqs-fJ-Cc7" secondAttribute="trailing" constant="24" id="3ej-kN-lme"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="mqs-fJ-Cc7" secondAttribute="bottom" constant="-8.5" id="QKM-cZ-XA6"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="Owt-DK-JKK" secondAttribute="trailing" constant="15" id="e4v-1V-Scv"/>
-                    <constraint firstItem="mqs-fJ-Cc7" firstAttribute="top" secondItem="c7j-CI-lGn" secondAttribute="topMargin" constant="-8" id="qdb-jw-gwM"/>
-                    <constraint firstItem="mqs-fJ-Cc7" firstAttribute="leading" secondItem="c7j-CI-lGn" secondAttribute="leadingMargin" constant="-8" id="teu-iC-9Ho"/>
+                    <constraint firstItem="xMg-Dk-7T8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="Ikb-PG-hOK"/>
+                    <constraint firstItem="tRM-GU-tVE" firstAttribute="leading" secondItem="xMg-Dk-7T8" secondAttribute="trailing" constant="14" id="j5E-5c-10w"/>
+                    <constraint firstItem="tRM-GU-tVE" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="mP9-YF-Usf"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="xMg-Dk-7T8" secondAttribute="bottom" constant="-8" id="mhp-9y-96m"/>
+                    <constraint firstItem="xMg-Dk-7T8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="yq0-aB-u3J"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="14" y="-149"/>
+            <connections>
+                <outlet property="mainImage" destination="xMg-Dk-7T8" id="2Bv-mG-pg2"/>
+                <outlet property="mainLabel" destination="tRM-GU-tVE" id="Xad-oO-EWW"/>
+            </connections>
+            <point key="canvasLocation" x="109" y="73"/>
         </tableViewCell>
     </objects>
 </document>
