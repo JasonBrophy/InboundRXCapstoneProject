@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,51 +22,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="kMb-m8-E6d">
-                                <rect key="frame" x="16" y="72" width="343" height="538"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="VlL-GH-63A">
+                                <rect key="frame" x="16" y="488" width="254" height="110"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="About Description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ebY-mi-2ID">
-                                        <rect key="frame" x="0.0" y="0.0" width="338" height="264"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
-                                    </textView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="VlL-GH-63A">
-                                        <rect key="frame" x="0.0" y="274" width="254" height="264"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JQy-QT-bOH">
-                                                <rect key="frame" x="0.0" y="0.0" width="254" height="81.5"/>
-                                                <state key="normal" title="https://www.paulsenspharmacy.com\"/>
-                                                <connections>
-                                                    <action selector="url" destination="hH5-7J-FHi" eventType="touchUpInside" id="ixH-Yu-Zz9"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RUB-jP-6QO">
-                                                <rect key="frame" x="0.0" y="91.5" width="237" height="81"/>
-                                                <state key="normal" title="4246 NE Sandy Blvd, Portland, OR"/>
-                                                <connections>
-                                                    <action selector="address" destination="hH5-7J-FHi" eventType="touchUpInside" id="Txo-zC-prs"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2D4-iG-HAr">
-                                                <rect key="frame" x="0.0" y="182.5" width="107" height="81.5"/>
-                                                <state key="normal" title="(503) 287-1163"/>
-                                                <connections>
-                                                    <action selector="phone" destination="hH5-7J-FHi" eventType="touchUpInside" id="awg-e7-R4i"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JQy-QT-bOH">
+                                        <rect key="frame" x="0.0" y="0.0" width="254" height="30"/>
+                                        <state key="normal" title="https://www.paulsenspharmacy.com\"/>
+                                        <connections>
+                                            <action selector="url" destination="hH5-7J-FHi" eventType="touchUpInside" id="ixH-Yu-Zz9"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RUB-jP-6QO">
+                                        <rect key="frame" x="0.0" y="40" width="237" height="30"/>
+                                        <state key="normal" title="4246 NE Sandy Blvd, Portland, OR"/>
+                                        <connections>
+                                            <action selector="address" destination="hH5-7J-FHi" eventType="touchUpInside" id="Txo-zC-prs"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2D4-iG-HAr">
+                                        <rect key="frame" x="0.0" y="80" width="107" height="30"/>
+                                        <state key="normal" title="(503) 287-1163"/>
+                                        <connections>
+                                            <action selector="phone" destination="hH5-7J-FHi" eventType="touchUpInside" id="awg-e7-R4i"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ebY-mi-2ID">
+                                <rect key="frame" x="16" y="72" width="338" height="408"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Paulsen's Pharmacy                                 Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.                                                                  Monday - Friday 9:00am - 6:30pm      Saturday 10:00am - 2:00pm
+</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="6qE-TP-7LE" firstAttribute="top" secondItem="kMb-m8-E6d" secondAttribute="bottom" constant="8" symbolic="YES" id="J1R-ln-OhD"/>
-                            <constraint firstItem="kMb-m8-E6d" firstAttribute="top" secondItem="bTb-2l-bYg" secondAttribute="bottom" constant="8" id="Vwl-Hi-fKr"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="kMb-m8-E6d" secondAttribute="trailing" id="fgD-na-pYy"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="kMb-m8-E6d" secondAttribute="leading" id="oa6-ll-EbI"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="VlL-GH-63A" secondAttribute="leading" id="L1O-Q8-18d"/>
+                            <constraint firstItem="6qE-TP-7LE" firstAttribute="top" secondItem="VlL-GH-63A" secondAttribute="bottom" constant="20" id="U2d-71-SQ0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="VlL-GH-63A" secondAttribute="trailing" constant="89" id="uAD-Dy-8ew"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="About" id="DHn-kS-Cf7"/>

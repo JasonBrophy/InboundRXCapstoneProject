@@ -33,11 +33,28 @@ class AboutViewController: UIViewController {
     
     // Safari Transfer confirmation
     @IBAction func url() {
+        let link = "https://www.paulsenspharmacy.com"
         let inputTitle   = "WEBSITE TRANSFER"
         let inputMessage = "Do you want to open this website in Safari?"
         
-        createAlert(title: inputTitle, message: inputMessage)
-    }
+        // Alert style confirmation
+        let alert = UIAlertController(title: inputTitle, message: inputMessage, preferredStyle: UIAlertControllerStyle.alert)
+        
+        // Handler used to transition to other code
+        let yesButton = UIAlertAction(title: "YES", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction) -> Void in
+            UIApplication.shared.open(NSURL(string: link)! as URL) // IN PROGRESS
+            })
+        
+        
+        let noButton  = UIAlertAction(title: "NO",  style: UIAlertActionStyle.cancel, handler: {(ACTION) in
+            alert.dismiss(animated: true, completion: nil)})
+        
+        alert.addAction(yesButton)  // Add YES button to Alert controller
+        alert.addAction(noButton)   // Add NO  button to Alert controller
+        
+        // Completion: do something after alert is displayed
+        present(alert, animated: true, completion: nil)  // Display Alert
+        }
     
     // Map Transfer confirmation
     @IBAction func address() {
