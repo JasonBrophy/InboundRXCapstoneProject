@@ -430,7 +430,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Zn-dx-0G0" id="xRB-xs-dKJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="199"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6xz-Cz-OPi">
@@ -678,7 +678,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.23921568627450979" green="0.3411764705882353" blue="0.45098039215686275" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
@@ -696,7 +695,7 @@
         <scene sceneID="Ryj-Sq-va7">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YIB-9a-018" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="About" id="GE7-3T-QCT"/>
+                    <tabBarItem key="tabBarItem" title="About" image="Info-25" id="GE7-3T-QCT"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gBn-mi-ZcH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -715,7 +714,7 @@
         <scene sceneID="qWA-0v-Uhx">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ez9-Po-ODt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" id="Nhm-CD-gnN"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="Home-25" id="Nhm-CD-gnN"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wBK-my-SJJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -734,7 +733,7 @@
         <scene sceneID="m3g-T2-c0o">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rJP-dS-S39" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="History" id="cJs-sy-jXx"/>
+                    <tabBarItem key="tabBarItem" title="History" image="Literature-25" id="cJs-sy-jXx"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fSk-Ba-dFe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -753,7 +752,7 @@
         <scene sceneID="ZVh-YQ-akb">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jfP-5K-Egs" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Rewards" id="sYH-GW-tTr"/>
+                    <tabBarItem key="tabBarItem" title="Rewards" image="Money Box-25" id="sYH-GW-tTr"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fBe-Rl-2aW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -788,11 +787,15 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Home-25" width="25" height="25"/>
+        <image name="Info-25" width="25" height="25"/>
+        <image name="Literature-25" width="25" height="25"/>
+        <image name="Money Box-25" width="25" height="25"/>
         <image name="Paulsens Logo White" width="300" height="108"/>
         <image name="XcodeGear" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="XZi-NM-igz"/>
         <segue reference="UTn-Ie-98d"/>
-        <segue reference="X3j-Xu-I9P"/>
     </inferredMetricsTieBreakers>
 </document>
