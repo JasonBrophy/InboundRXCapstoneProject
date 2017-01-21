@@ -15,14 +15,13 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var NotificationLabel: UILabel!
     
-    
     @IBAction func toggleNotifications(_ sender: UISwitch) {
         if (sender.isOn)    {
-            NotificationLabel.text = "Nofifications: On"
+            NotificationLabel.text = "Notifications: On"
             notificationsOn = true
         }
         else {
-            NotificationLabel.text = "Nofifications: Off"
+            NotificationLabel.text = "Notifications: Off"
             notificationsOn = false
         }
     }
@@ -30,6 +29,7 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationLabel.accessibilityIdentifier = "NotificationLabel"
 
         // Do any additional setup after loading the view.
     }
