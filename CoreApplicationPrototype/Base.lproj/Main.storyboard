@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Zp1-tX-188">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Zp1-tX-188">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -158,55 +158,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BGq-QR-tHT">
-                                <rect key="frame" x="0.0" y="355" width="375" height="312"/>
-                                <connections>
-                                    <segue destination="pFq-2h-XYd" kind="embed" id="LnB-gC-afx"/>
-                                </connections>
-                            </containerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Reward Points: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ZD-i9-fyl">
-                                <rect key="frame" x="128" y="235" width="118" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="p0p-pY-pgr"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Reward Points: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ZD-i9-fyl">
+                                <rect key="frame" x="129" y="398" width="116" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5q-u0-5cp">
-                                <rect key="frame" x="178" y="264" width="18" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="gYS-bv-WA9"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Current Deals!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YQ8-VZ-QUy">
-                                <rect key="frame" x="87" y="293" width="200" height="29"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Paulsens Logo White" translatesAutoresizingMaskIntoConstraints="NO" id="J6l-Zo-k9T">
-                                <rect key="frame" x="67" y="90" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Paulsens Coffee Bar BW" translatesAutoresizingMaskIntoConstraints="NO" id="oIs-uQ-1vw">
+                                <rect key="frame" x="0.0" y="140" width="375" height="250"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5q-u0-5cp">
+                                <rect key="frame" x="171" y="432" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Paulsens Logo White" translatesAutoresizingMaskIntoConstraints="NO" id="J6l-Zo-k9T">
+                                <rect key="frame" x="67" y="72" width="240" height="87"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2M-Yh-h7i">
+                                <rect key="frame" x="60" y="465" width="255" height="138"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                <inset key="titleEdgeInsets" minX="-300" minY="100" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Daily Deals" image="Xanax">
+                                    <color key="titleColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="pFq-2h-XYd" kind="show" id="jju-5l-nuw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="4ZD-i9-fyl" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="67E-QQ-6bW"/>
-                            <constraint firstItem="YQ8-VZ-QUy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="71" id="6QW-PZ-MfK"/>
-                            <constraint firstItem="BGq-QR-tHT" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="AMo-sn-Vdp"/>
-                            <constraint firstItem="YQ8-VZ-QUy" firstAttribute="top" secondItem="I5q-u0-5cp" secondAttribute="bottom" constant="3" id="V3h-N7-FYZ"/>
-                            <constraint firstItem="BGq-QR-tHT" firstAttribute="top" secondItem="YQ8-VZ-QUy" secondAttribute="bottom" constant="8" symbolic="YES" id="YPy-mY-eRI"/>
-                            <constraint firstAttribute="trailing" secondItem="BGq-QR-tHT" secondAttribute="trailing" id="ZFx-za-9Rd"/>
-                            <constraint firstItem="4ZD-i9-fyl" firstAttribute="centerX" secondItem="BGq-QR-tHT" secondAttribute="centerX" id="dyl-sv-TNt"/>
-                            <constraint firstItem="4ZD-i9-fyl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eoS-3i-4fa"/>
-                            <constraint firstItem="I5q-u0-5cp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="q3C-3W-rNB"/>
-                            <constraint firstItem="I5q-u0-5cp" firstAttribute="top" secondItem="4ZD-i9-fyl" secondAttribute="bottom" constant="8" symbolic="YES" id="vY2-L4-CCr"/>
-                            <constraint firstItem="I5q-u0-5cp" firstAttribute="centerX" secondItem="YQ8-VZ-QUy" secondAttribute="centerX" id="vvF-Jf-8p5"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="sSR-DL-le2">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="qRu-fJ-z9A">
@@ -833,7 +819,9 @@
         <image name="Info-25" width="25" height="25"/>
         <image name="Literature-25" width="25" height="25"/>
         <image name="Money Box-25" width="25" height="25"/>
+        <image name="Paulsens Coffee Bar BW" width="870" height="576"/>
         <image name="Paulsens Logo White" width="300" height="108"/>
+        <image name="Xanax" width="300" height="172"/>
         <image name="XcodeGear" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
