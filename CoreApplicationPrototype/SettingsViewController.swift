@@ -11,7 +11,7 @@ import UIKit
 class SettingsViewController: UIViewController {
 
    
-    private var notificationsOn = true
+    var notificationsOn = true
     
     @IBOutlet weak var NotificationLabel: UILabel!
     

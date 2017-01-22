@@ -69,19 +69,39 @@ class CoreApplicationPrototypeUITests: XCTestCase {
     
     func testLogin(){
         
+        let app = XCUIApplication()
+        app.navigationBars["Home"].buttons["Settings"].tap()
+        
+        let logOutButton = app.tables.buttons["Log Out"]
+        logOutButton.tap()
+        XCTAssert(app.staticTexts["Log In"].exists)
+        XCTAssertTrue(app.tabBars.buttons["Rewards"].isHittable == false)
+        let emailTextField = app.textFields["email address"]
+        let passwordTextField = app.secureTextFields["password"]
+        emailTextField.tap()
+        emailTextField.typeText("bob@example.com")
+        passwordTextField.tap()
+        passwordTextField.typeText("password")
+        app.switches["0"].tap()
+        XCTAssert(passwordTextField.exists == false)
+        app.switches["1"].tap()
+        XCTAssert(passwordTextField.exists)
+        app.buttons["Log In"].tap()
+        XCTAssert(app.tabBars.buttons["Rewards"].isHittable)
+
+        
     }
     
     func testSettings(){
+        
+        
         let app = XCUIApplication()
         let settingsButton = app.buttons["Settings"]
         settingsButton.tap()
         app.switches["1"].tap()
-        XCTAssertEqual("Notifications: Off", app.staticTexts["NotificationLabel"].label)
+        XCTAssert(app.switches["0"].exists)
         app.switches["0"].tap()
-        XCTAssertEqual("Notifications: On", app.staticTexts["NotificationLabel"].label)
-
-        
-        
+        XCTAssert(app.switches["1"].exists)
         
     }
     
