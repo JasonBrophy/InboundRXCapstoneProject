@@ -34,7 +34,25 @@ class AccountCreationViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    //pops the last three nav views off the stack and returns home
+    //Probably bad practice.
+    private func segueToHome() {
+        
+        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController];
+        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 4], animated: true);
+        
+    }
+    
+    
+    @IBAction func submitButtonPressed(_ sender: UIButton) {
+        //Error checking needed when we start to get to the Account Creatin page
+        //from multiple paths
+        segueToHome()
+        
+        //The Account Info that the user enter will need to be put into a model at this point
+    }
+    
+    
     /*
     // MARK: - Navigation
 

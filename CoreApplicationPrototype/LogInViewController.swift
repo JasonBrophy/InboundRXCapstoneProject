@@ -24,10 +24,24 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     /************ View Actions **********/
     
     
-    @IBAction func submitLogInInfo(_ sender: UIButton) {
+    //pops the last two nav views off the stack and returns home
+    //Probably bad practice.
+    private func segueToHome() {
+        
+        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController];
+        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true);
+        
+    }
+    
+    @IBAction func logInButtonPress(_ sender: UIButton) {
         
         //for prototype, just auto assume login success
         loginSuccess = true
+        
+        //Error checking needed when we start to get to the login page
+        //from multiple paths
+        segueToHome()
+        
         
     }
     
