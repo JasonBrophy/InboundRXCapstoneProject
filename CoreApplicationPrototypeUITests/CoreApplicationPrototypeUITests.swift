@@ -29,39 +29,34 @@ class CoreApplicationPrototypeUITests: XCTestCase {
     
     func testExample() {
         
-        let app = XCUIApplication()
-        let xcodemedsImage = app.images["XcodeMeds"]
-        xcodemedsImage.swipeLeft()
-        xcodemedsImage.swipeLeft()
         
+        let app = XCUIApplication()
         let tabBarsQuery = app.tabBars
         tabBarsQuery.buttons["Rewards"].tap()
-        tabBarsQuery.buttons["About"].tap()
-        
-        let historyButton = tabBarsQuery.buttons["History"]
-        historyButton.tap()
+        tabBarsQuery.buttons["History"].tap()
         
         let tablesQuery = app.tables
         tablesQuery.staticTexts["1969"].tap()
-        tablesQuery.cells.staticTexts["1972"].tap()
+        tablesQuery.staticTexts["1972"].tap()
+        tablesQuery.staticTexts["1984"].tap()
         
-        let staticText = tablesQuery.staticTexts["1984"]
+        let staticText = tablesQuery.staticTexts["1993"]
         staticText.tap()
-        tablesQuery.staticTexts["1993"].tap()
         staticText.tap()
+        tabBarsQuery.buttons["About"].tap()
         
         let homeButton = tabBarsQuery.buttons["Home"]
         homeButton.tap()
-        historyButton.tap()
-        staticText.tap()
-        homeButton.tap()
+        app.buttons["Daily Deals"].swipeLeft()
+        
+        let xcodemedsImage = app.images["XcodeMeds"]
         xcodemedsImage.swipeLeft()
-        xcodemedsImage.tap()
-        app.staticTexts["20"].tap()
-        app.buttons["Settings"].tap()
-        app.switches["1"].tap()
-        app.switches["0"].tap()
-        app.buttons["Edit Account Details"].tap()
+        xcodemedsImage.swipeLeft()
+        xcodemedsImage.swipeLeft()
+        xcodemedsImage.swipeLeft()
+        homeButton.tap()
+        app.images["Paulsens Coffee Bar BW"].tap()
+        
         
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
