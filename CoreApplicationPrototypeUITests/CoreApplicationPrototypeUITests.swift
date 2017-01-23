@@ -28,40 +28,32 @@ class CoreApplicationPrototypeUITests: XCTestCase {
     }
     
     func testExample() {
-        
         let app = XCUIApplication()
-        let xcodemedsImage = app.images["XcodeMeds"]
-        xcodemedsImage.swipeLeft()
-        xcodemedsImage.swipeLeft()
-        
         let tabBarsQuery = app.tabBars
         tabBarsQuery.buttons["Rewards"].tap()
-        tabBarsQuery.buttons["About"].tap()
-        
-        let historyButton = tabBarsQuery.buttons["History"]
-        historyButton.tap()
+        tabBarsQuery.buttons["History"].tap()
         
         let tablesQuery = app.tables
         tablesQuery.staticTexts["1969"].tap()
-        tablesQuery.cells.staticTexts["1972"].tap()
+        tablesQuery.staticTexts["1972"].tap()
+        tablesQuery.staticTexts["1984"].tap()
         
-        let staticText = tablesQuery.staticTexts["1984"]
+        let staticText = tablesQuery.staticTexts["1993"]
         staticText.tap()
-        tablesQuery.staticTexts["1993"].tap()
         staticText.tap()
+        tabBarsQuery.buttons["About"].tap()
         
         let homeButton = tabBarsQuery.buttons["Home"]
         homeButton.tap()
-        historyButton.tap()
-        staticText.tap()
-        homeButton.tap()
+        app.buttons["Daily Deals"].swipeLeft()
+        
+        let xcodemedsImage = app.images["XcodeMeds"]
         xcodemedsImage.swipeLeft()
-        xcodemedsImage.tap()
-        app.staticTexts["20"].tap()
-        app.buttons["Settings"].tap()
-        app.switches["1"].tap()
-        app.switches["0"].tap()
-        app.buttons["Edit Account Details"].tap()
+        xcodemedsImage.swipeLeft()
+        xcodemedsImage.swipeLeft()
+        xcodemedsImage.swipeLeft()
+        homeButton.tap()
+        app.images["Paulsens Coffee Bar BW"].tap()
         
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
@@ -69,19 +61,39 @@ class CoreApplicationPrototypeUITests: XCTestCase {
     
     func testLogin(){
         
+        let app = XCUIApplication()
+        app.navigationBars["Home"].buttons["Settings"].tap()
+        
+        let logOutButton = app.tables.buttons["Log Out"]
+        logOutButton.tap()
+        XCTAssert(app.staticTexts["Log In"].exists)
+        XCTAssertTrue(app.tabBars.buttons["Rewards"].isHittable == false)
+        let emailTextField = app.textFields["email address"]
+        let passwordTextField = app.secureTextFields["password"]
+        emailTextField.tap()
+        emailTextField.typeText("bob@example.com")
+        passwordTextField.tap()
+        passwordTextField.typeText("password")
+        app.switches["0"].tap()
+        XCTAssert(passwordTextField.exists == false)
+        app.switches["1"].tap()
+        XCTAssert(passwordTextField.exists)
+        app.buttons["Log In"].tap()
+        XCTAssert(app.tabBars.buttons["Rewards"].isHittable)
+
+        
     }
     
     func testSettings(){
+        
+        
         let app = XCUIApplication()
         let settingsButton = app.buttons["Settings"]
         settingsButton.tap()
         app.switches["1"].tap()
-        XCTAssertEqual("Notifications: Off", app.staticTexts["NotificationLabel"].label)
+        XCTAssert(app.switches["0"].exists)
         app.switches["0"].tap()
-        XCTAssertEqual("Notifications: On", app.staticTexts["NotificationLabel"].label)
-
-        
-        
+        XCTAssert(app.switches["1"].exists)
         
     }
     
@@ -108,5 +120,7 @@ class CoreApplicationPrototypeUITests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         
     }
+    
+    
     
 }
