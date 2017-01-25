@@ -27,9 +27,16 @@ class CoreApplicationPrototypeUITests: XCTestCase {
         super.tearDown()
     }
     
+    
+    
+    
+    
+    
+    
+    
+    //Tests out the app(general): clicking all the tab bars, clicking histoy tabs, and clicking on deals
+    //This is recorded code.
     func testExample() {
-        
-        
         let app = XCUIApplication()
         let tabBarsQuery = app.tabBars
         tabBarsQuery.buttons["Rewards"].tap()
@@ -56,12 +63,15 @@ class CoreApplicationPrototypeUITests: XCTestCase {
         xcodemedsImage.swipeLeft()
         homeButton.tap()
         app.images["Paulsens Coffee Bar BW"].tap()
-        
-        
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
+    
+    //Tests out the login page.
+    //First, starts at the home page
+    //Click on setting on the home page, then log out
+    //In the next view, sign in page, type in email and password. Make sure password shows by clicking switch
+    //Finally hit login.
+    //NOTE: this test is meant to fail.
     func testLogin(){
         
         let app = XCUIApplication()
@@ -87,8 +97,9 @@ class CoreApplicationPrototypeUITests: XCTestCase {
         
     }
     
+    
+    //Test out the setting page, So far this is only a switch for notification
     func testSettings(){
-        
         
         let app = XCUIApplication()
         let settingsButton = app.buttons["Settings"]
@@ -97,9 +108,11 @@ class CoreApplicationPrototypeUITests: XCTestCase {
         XCTAssert(app.switches["0"].exists)
         app.switches["0"].tap()
         XCTAssert(app.switches["1"].exists)
-        
     }
     
+    
+    //Tests the tab bar, to make sure the correct view is showing up to the 
+    //corresponding bar button. 
     func testTabBar(){
         let app = XCUIApplication()
         let tabBarsQuery = app.tabBars
@@ -118,10 +131,6 @@ class CoreApplicationPrototypeUITests: XCTestCase {
         let homeButton = tabBarsQuery.buttons["Home"]
         homeButton.tap()
         XCTAssert(app.staticTexts["Home"].exists)
-        
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        
     }
     
 }
