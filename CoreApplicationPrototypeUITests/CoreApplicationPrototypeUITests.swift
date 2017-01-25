@@ -133,4 +133,6 @@ class CoreApplicationPrototypeUITests: XCTestCase {
         XCTAssert(app.staticTexts["Home"].exists)
     }
     
+    
+    
 }
