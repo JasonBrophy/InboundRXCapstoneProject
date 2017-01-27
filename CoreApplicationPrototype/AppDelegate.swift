@@ -7,15 +7,60 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate {
 
     var window: UIWindow?
+    
+    //Create Instance of Beacon Manager
+    let beaconManager = ESTBeaconManager()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        self.beaconManager.delegate = self
+        self.beaconManager.requestAlwaysAuthorization()
+        
+        
+        self.beaconManager.startMonitoring(for: CLBeaconRegion(
+            proximityUUID: NSUUID(uuidString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")! as UUID,
+            major: 51207, minor: 48452, identifier: "monitored region"))
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) {(accepted, error) in
+            if !accepted {
+                print("Notification access denied.")
+            }
+        }
+        
+        
+        
         return true
+    }
+    
+    //Beacon Function
+    func beaconManager(manager: Any, didEnterRegion region: CLBeaconRegion) {
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Beacon in Range"
+        content.body = "Hello!"
+        content.sound = UNNotificationSound.default()
+        
+        let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 1, repeats: false)
+        
+        let notification = UNNotificationRequest(identifier: "Entered", content: content, trigger: trigger)
+        
+        
+        //Removes pending Notifications to prevent duplicates
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        
+
+        UNUserNotificationCenter.current().add(notification) {(error) in
+            if let error = error {
+                print("Uh oh! We had an error: \(error)")
+            }
+        }
+       
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
