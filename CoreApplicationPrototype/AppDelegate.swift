@@ -10,40 +10,41 @@ import UIKit
 import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
     
     //Create Instance of Beacon Manager
-    let beaconManager = ESTBeaconManager()
+    let beaconNotificationsManager = BeaconNotificationsManager()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        self.beaconManager.delegate = self
-        self.beaconManager.requestAlwaysAuthorization()
+        // You can get them by adding your app on https://cloud.estimote.com/#/apps
+        // ESTConfig.setupAppID("<#App ID#>", andAppToken: "<#App Token#>")
         
         
-        self.beaconManager.startMonitoring(for: CLBeaconRegion(
-            proximityUUID: NSUUID(uuidString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")! as UUID,
-            major: 51207, minor: 48452, identifier: "monitored region"))
         
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) {(accepted, error) in
-            if !accepted {
-                print("Notification access denied.")
-            }
-        }
+        self.beaconNotificationsManager.enableNotifications(
+            
+            for: BeaconID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D", major: 51207, minor: 48452),
+            enterMessage: "Hello, world.",
+            exitMessage: "Goodbye, world."
+        )
         
         
+        // NOTE: "exit" event has a built-in delay of 30 seconds, to make sure that the user has really exited the beacon's range. The delay is imposed by iOS and is non-adjustable.
         
         return true
     }
     
-    //Beacon Function
-    func beaconManager(manager: Any, didEnterRegion region: CLBeaconRegion) {
+    /*func callNotification() {
+        
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         
         let content = UNMutableNotificationContent()
         content.title = "Beacon in Range"
-        content.body = "Hello!"
+        content.body = "test"
         content.sound = UNNotificationSound.default()
         
         let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 1, repeats: false)
@@ -51,17 +52,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
         let notification = UNNotificationRequest(identifier: "Entered", content: content, trigger: trigger)
         
         
-        //Removes pending Notifications to prevent duplicates
-        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         
-
         UNUserNotificationCenter.current().add(notification) {(error) in
             if let error = error {
                 print("Uh oh! We had an error: \(error)")
             }
+        
         }
-       
-    }
+    }*/
+    
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

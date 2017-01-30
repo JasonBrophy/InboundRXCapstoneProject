@@ -15,6 +15,8 @@
 		7E6F04061E25947800D0F41A /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F04051E25947800D0F41A /* LogInViewController.swift */; };
 		7E6F04081E25949A00D0F41A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F04071E25949A00D0F41A /* SettingsViewController.swift */; };
 		7E6F040A1E2594B900D0F41A /* AccountCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F04091E2594B900D0F41A /* AccountCreationViewController.swift */; };
+		7E9EE8D71E3D69E600813AE4 /* BeaconID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9EE8D51E3D69E600813AE4 /* BeaconID.swift */; };
+		7E9EE8D81E3D69E600813AE4 /* BeaconNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9EE8D61E3D69E600813AE4 /* BeaconNotificationsManager.swift */; };
 		7ECF68B81E31CA8F00AF3511 /* DealsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF68B51E31CA8F00AF3511 /* DealsTableViewCell.swift */; };
 		7ECF68B91E31CA8F00AF3511 /* DealsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ECF68B61E31CA8F00AF3511 /* DealsTableViewCell.xib */; };
 		7ECF68BA1E31CA8F00AF3511 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF68B71E31CA8F00AF3511 /* HomeTableViewController.swift */; };
@@ -56,6 +58,8 @@
 		7E6F04051E25947800D0F41A /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		7E6F04071E25949A00D0F41A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7E6F04091E2594B900D0F41A /* AccountCreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCreationViewController.swift; sourceTree = "<group>"; };
+		7E9EE8D51E3D69E600813AE4 /* BeaconID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BeaconID.swift; path = "../../Notification (1)/Estimote/BeaconID.swift"; sourceTree = "<group>"; };
+		7E9EE8D61E3D69E600813AE4 /* BeaconNotificationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BeaconNotificationsManager.swift; path = "../../Notification (1)/Estimote/BeaconNotificationsManager.swift"; sourceTree = "<group>"; };
 		7ECF68B51E31CA8F00AF3511 /* DealsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealsTableViewCell.swift; sourceTree = "<group>"; };
 		7ECF68B61E31CA8F00AF3511 /* DealsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DealsTableViewCell.xib; sourceTree = "<group>"; };
 		7ECF68B71E31CA8F00AF3511 /* HomeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +122,8 @@
 		7ECF68D21E3AC47E00AF3511 /* BeaconFiles */ = {
 			isa = PBXGroup;
 			children = (
+				7E9EE8D51E3D69E600813AE4 /* BeaconID.swift */,
+				7E9EE8D61E3D69E600813AE4 /* BeaconNotificationsManager.swift */,
 				7ECF68CF1E3AC24A00AF3511 /* EstimoteSDK.framework */,
 			);
 			name = BeaconFiles;
@@ -254,15 +260,18 @@
 				TargetAttributes = {
 					DF2556ED1DE422EC006B3CC5 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 9PUG3ZA4ME;
 						ProvisioningStyle = Automatic;
 					};
 					DF2557011DE422EC006B3CC5 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 9PUG3ZA4ME;
 						ProvisioningStyle = Automatic;
 						TestTargetID = DF2556ED1DE422EC006B3CC5;
 					};
 					DF25570C1DE422EC006B3CC5 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 9PUG3ZA4ME;
 						ProvisioningStyle = Automatic;
 						TestTargetID = DF2556ED1DE422EC006B3CC5;
 					};
@@ -325,7 +334,9 @@
 				23E7282B1E29D6F800B25F3D /* HistoryTableViewCell.swift in Sources */,
 				7ECF68BA1E31CA8F00AF3511 /* HomeTableViewController.swift in Sources */,
 				7ECF68B81E31CA8F00AF3511 /* DealsTableViewCell.swift in Sources */,
+				7E9EE8D81E3D69E600813AE4 /* BeaconNotificationsManager.swift in Sources */,
 				7ECF68C11E32A4B800AF3511 /* DealsPageVC.swift in Sources */,
+				7E9EE8D71E3D69E600813AE4 /* BeaconID.swift in Sources */,
 				7E6F04041E25922500D0F41A /* RewardsViewController.swift in Sources */,
 				7E6F04001E2591DC00D0F41A /* AboutViewController.swift in Sources */,
 				7E6F04081E25949A00D0F41A /* SettingsViewController.swift in Sources */,
@@ -413,6 +424,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 9PUG3ZA4ME;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -462,6 +474,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 9PUG3ZA4ME;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;

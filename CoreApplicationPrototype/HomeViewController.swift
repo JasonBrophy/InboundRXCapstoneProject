@@ -34,6 +34,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateHomeUI()
+        //let delegate = UIApplication.shared.delegate as? AppDelegate
+        //delegate?.callNotification()
     }
 
     override func didReceiveMemoryWarning() {

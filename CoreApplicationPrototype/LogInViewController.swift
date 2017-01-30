@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class LogInViewController: UIViewController, UITextFieldDelegate {
     
@@ -37,6 +38,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         
         //for prototype, just auto assume login success
         loginSuccess = true
+        
         
         //Error checking needed when we start to get to the login page
         //from multiple paths
