@@ -57,21 +57,26 @@ class AccountCreationViewController: UIViewController {
         //Error checking needed when we start to get to the Account Creatin page
         
         //account creation function
-        func AccountCreation(email: String, password: String, securityQuestion: String, securityAnswer: String, firstName: String, lastName: String, address: String, birthday: String){
             
             let defaults = UserDefaults.standard
-            
-            if(defaults.object(forKey: email) != nil){
-                //create pop up error
-                //return tuple of (number, string error)
-            }else{
+        if(email.text == nil || password.text == nil || repeatPassword.text == nil || securityAnswer.text == nil){
+            //create items required to create popup error
+            return
+        }
+        if(password.text != repeatPassword.text){
+            //create popup error for passwords not matching, or, just show error in ui
+            return
+        }
+        if(defaults.object(forKey: email.text!) != nil){
+            //create pop up error
+            //return tuple of (number, string error)
+            return
+        }else{
                 
-                let userInformation: [String: String]=["email": email, "password": password, "securityQuestion": securityQuestion, "securityAnswer": securityAnswer, "firstName": firstName, "lastName": lastName, "address":address, "birthday": birthday]
+            let userInformation: [String: String]=["email": email.text!, "password": password.text!, "securityQuestion": securityQuestion.text!, "securityAnswer": securityAnswer.text!, "firstName": firstName.text ?? "", "lastName": lastName.text ?? "", "address":address.text ?? "", "birthdate": birthdate.text ?? ""]
                 
-                defaults.setValue(userInformation, forKey: email)
-            }
-            
-        //from multiple paths
+            defaults.setValue(userInformation, forKey: email.text!)
+        }//from multiple paths
         segueToHome()
         
         //The Account Info that the user enter will need to be put into a model at this point

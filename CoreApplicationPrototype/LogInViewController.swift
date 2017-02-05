@@ -36,8 +36,21 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     @IBAction func logInButtonPress(_ sender: UIButton) {
         
         //for prototype, just auto assume login success
+        if(usernameField.text == nil || passwordField.text == nil){
+            //Error for empty field
+            return
+        }
+        let userInfo = UserDefaults.standard.dictionary(forKey: usernameField.text!)
+        if(userInfo == nil){
+            //error, no user with that email found
+            return
+        }
+        if(passwordField.text! != userInfo?["dictionary"] as! String){
+            //passwords do not match
+            return
+        }
         loginSuccess = true
-        
+        var user: User = User(userEmail: usernameField.text!)
         //Error checking needed when we start to get to the login page
         //from multiple paths
         segueToHome()
