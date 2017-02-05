@@ -45,7 +45,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             //error, no user with that email found
             return
         }
-        if(passwordField.text! != userInfo?["dictionary"] as! String){
+        if(passwordField.text! != userInfo?["password"] as! String){
             //passwords do not match
             return
         }
