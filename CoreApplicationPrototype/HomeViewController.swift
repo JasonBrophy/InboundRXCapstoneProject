@@ -13,6 +13,7 @@ class HomeViewController: UIViewController {
     
     var userTotalRewardPoints = 0
     
+    
       
     
     
@@ -34,6 +35,13 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateHomeUI()
+        
+        let button = UIButton(frame: CGRect(x: 100, y: 150, width: 150, height: 50))
+        button.setTitle("Send Notification", for: .normal)
+        button.setTitleColor(.blue, for: .normal)
+        button.addTarget(self, action: #selector(sendNotification), for: .touchUpInside)
+        self.view.addSubview(button)
+
         //let delegate = UIApplication.shared.delegate as? AppDelegate
         //delegate?.callNotification()
     }
@@ -43,6 +51,10 @@ class HomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    // Test In App Notification with button
+    func sendNotification()
+    {
+        UserNotificationManager.shared.addNotification()
+    }
 }
 

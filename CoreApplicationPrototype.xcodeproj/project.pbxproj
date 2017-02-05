@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2325D4271E42ED8F00996C33 /* BeaconID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2325D4261E42ED8F00996C33 /* BeaconID.swift */; };
 		2325D4291E42EE3900996C33 /* BeaconNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2325D4281E42EE3900996C33 /* BeaconNotificationsManager.swift */; };
+		23A107A91E46CB33001FE7AF /* UserNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A107A81E46CB33001FE7AF /* UserNotificationsManager.swift */; };
 		23E7282B1E29D6F800B25F3D /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E7282A1E29D6F800B25F3D /* HistoryTableViewCell.swift */; };
 		2FEDDAD41E2C4DC50095013F /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 2FEDDAD31E2C4DC50095013F /* .gitignore */; };
 		7E6F04001E2591DC00D0F41A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F03FF1E2591DC00D0F41A /* AboutViewController.swift */; };
@@ -52,6 +53,7 @@
 /* Begin PBXFileReference section */
 		2325D4261E42ED8F00996C33 /* BeaconID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconID.swift; sourceTree = "<group>"; };
 		2325D4281E42EE3900996C33 /* BeaconNotificationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconNotificationsManager.swift; sourceTree = "<group>"; };
+		23A107A81E46CB33001FE7AF /* UserNotificationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNotificationsManager.swift; sourceTree = "<group>"; };
 		23E7282A1E29D6F800B25F3D /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		2FEDDAD31E2C4DC50095013F /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		7E6F03FF1E2591DC00D0F41A /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			children = (
 				2325D4261E42ED8F00996C33 /* BeaconID.swift */,
 				2325D4281E42EE3900996C33 /* BeaconNotificationsManager.swift */,
+				23A107A81E46CB33001FE7AF /* UserNotificationsManager.swift */,
 				7ECF68CF1E3AC24A00AF3511 /* EstimoteSDK.framework */,
 			);
 			name = BeaconFiles;
@@ -344,6 +347,7 @@
 				7ECF68CC1E32B04500AF3511 /* DealsViewController.swift in Sources */,
 				DF2556F21DE422EC006B3CC5 /* AppDelegate.swift in Sources */,
 				7E6F04021E25920C00D0F41A /* HistoryViewController.swift in Sources */,
+				23A107A91E46CB33001FE7AF /* UserNotificationsManager.swift in Sources */,
 				2325D4271E42ED8F00996C33 /* BeaconID.swift in Sources */,
 				7E6F040A1E2594B900D0F41A /* AccountCreationViewController.swift in Sources */,
 			);

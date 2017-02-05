@@ -14,10 +14,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
 
     var window: UIWindow?
     
-    //Create Instance of Beacon Manager
+    // What if this is inside the function below?****
+    // Create Instance of Beacon Manager
     let beaconNotificationsManager = BeaconNotificationsManager()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        // Test Notification while App is open
+        UserNotificationManager.shared.registerNotification()
         
         // Setup Beacon Info
         self.beaconNotificationsManager.enableNotifications(
