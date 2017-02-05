@@ -10,6 +10,15 @@ import UIKit
 
 class AccountCreationViewController: UIViewController {
 
+    @IBOutlet weak var email: UITextField!
+    @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var repeatPassword: UITextField!
+    @IBOutlet weak var firstName: UITextField!
+    @IBOutlet weak var lastName: UITextField!
+    @IBOutlet weak var address: UITextField!
+    @IBOutlet weak var birthdate: UITextField!
+    @IBOutlet weak var securityQuestion: UILabel!
+    @IBOutlet weak var securityAnswer: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -46,6 +55,22 @@ class AccountCreationViewController: UIViewController {
     
     @IBAction func submitButtonPressed(_ sender: UIButton) {
         //Error checking needed when we start to get to the Account Creatin page
+        
+        //account creation function
+        func AccountCreation(email: String, password: String, securityQuestion: String, securityAnswer: String, firstName: String, lastName: String, address: String, birthday: String){
+            
+            let defaults = UserDefaults.standard
+            
+            if(defaults.object(forKey: email) != nil){
+                //create pop up error
+                //return tuple of (number, string error)
+            }else{
+                
+                let userInformation: [String: String]=["email": email, "password": password, "securityQuestion": securityQuestion, "securityAnswer": securityAnswer, "firstName": firstName, "lastName": lastName, "address":address, "birthday": birthday]
+                
+                defaults.setValue(userInformation, forKey: email)
+            }
+            
         //from multiple paths
         segueToHome()
         
