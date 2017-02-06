@@ -39,8 +39,16 @@ class BeaconNotificationsManager: NSObject, ESTBeaconManagerDelegate {
     
     // Display beacon enter notification
     func beaconManager(_ manager: Any, didEnter region: CLBeaconRegion) {
+        print ("\(region.identifier)")
         if let message = self.enterMessages[region.identifier] {
             self.showNotificationWithMessage(message)
+            
+            //if entry beacon
+            if(region.identifier == "B9407F30-F5F8-466E-AFF9-25556B57FE6D:54381:53700") {
+                rewardPoints += 1
+                print (rewardPoints)
+            }
+            
             
         }
     }
@@ -94,7 +102,7 @@ class BeaconNotificationsManager: NSObject, ESTBeaconManagerDelegate {
 extension BeaconNotificationsManager: UNUserNotificationCenterDelegate
 {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        print("Will present notification")
+        print ("Using correct extention!")
         completionHandler([.alert, .sound])
     }
     
