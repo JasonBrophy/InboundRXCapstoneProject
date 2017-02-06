@@ -17,8 +17,8 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     
     /************ View Outlets *********/
     
-    @IBOutlet weak var usernameField: UITextField!
-    
+    @IBOutlet weak var emailField: UITextField!
+
     @IBOutlet weak var passwordField: UITextField!
     
     /************ View Actions **********/
@@ -34,23 +34,17 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func logInButtonPress(_ sender: UIButton) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let user = appDelegate.user
         
-        //for prototype, just auto assume login success
-        if(usernameField.text == nil || passwordField.text == nil){
-            //Error for empty field
+        let result = user.loginUser(emailField: emailField.text, passwordField: passwordField.text)
+        if(!result.0){
+            let alertController = UIAlertController(title: "Error", message: result.1, preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alertController, animated:true, completion:nil)
             return
         }
-        let userInfo = UserDefaults.standard.dictionary(forKey: usernameField.text!)
-        if(userInfo == nil){
-            //error, no user with that email found
-            return
-        }
-        if(passwordField.text! != userInfo?["password"] as! String){
-            //passwords do not match
-            return
-        }
-        loginSuccess = true
-        var user: User = User(userEmail: usernameField.text!)
+        self.loginSuccess = result.0
         //Error checking needed when we start to get to the login page
         //from multiple paths
         segueToHome()
@@ -75,7 +69,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        usernameField.delegate = self
+        emailField.delegate = self
         passwordField.delegate = self
         
         // Do any additional setup after loading the view.
