@@ -17,8 +17,8 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     
     /************ View Outlets *********/
     
-    @IBOutlet weak var usernameField: UITextField!
-    
+    @IBOutlet weak var emailField: UITextField!
+
     @IBOutlet weak var passwordField: UITextField!
     
     /************ View Actions **********/
@@ -34,10 +34,26 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func logInButtonPress(_ sender: UIButton) {
+
         
-        //for prototype, just auto assume login success
-        loginSuccess = true
+        //This allows to check whether what the user inputed, to login, was a match
+        //to a preexisting user, if not then show an error to the user to let them know
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let user = appDelegate.user
         
+        //check users input through the user object
+        let result = user.loginUser(emailField: emailField.text, passwordField: passwordField.text)
+
+        //Show the error, if no match found
+        if(!result.0){
+            let alertController = UIAlertController(title: "Error", message: result.1, preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alertController, animated:true, completion:nil)
+            return
+        }
+        
+        //if successful then loginSuccess equals true
+        self.loginSuccess = result.0
         //Error checking needed when we start to get to the login page
         //from multiple paths
         segueToHome()
@@ -62,7 +78,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        usernameField.delegate = self
+        emailField.delegate = self
         passwordField.delegate = self
         
         // Do any additional setup after loading the view.

@@ -20,6 +20,7 @@
 		7ECF68BA1E31CA8F00AF3511 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF68B71E31CA8F00AF3511 /* HomeTableViewController.swift */; };
 		7ECF68C11E32A4B800AF3511 /* DealsPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF68BF1E32A4B800AF3511 /* DealsPageVC.swift */; };
 		7ECF68CC1E32B04500AF3511 /* DealsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF68CB1E32B04500AF3511 /* DealsViewController.swift */; };
+		A364DB541E469BAB00B38C11 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A364DB531E469BAB00B38C11 /* User.swift */; };
 		DF2556F21DE422EC006B3CC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2556F11DE422EC006B3CC5 /* AppDelegate.swift */; };
 		DF2556F41DE422EC006B3CC5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2556F31DE422EC006B3CC5 /* HomeViewController.swift */; };
 		DF2556F71DE422EC006B3CC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF2556F51DE422EC006B3CC5 /* Main.storyboard */; };
@@ -60,6 +61,7 @@
 		7ECF68B71E31CA8F00AF3511 /* HomeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		7ECF68BF1E32A4B800AF3511 /* DealsPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealsPageVC.swift; sourceTree = "<group>"; };
 		7ECF68CB1E32B04500AF3511 /* DealsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealsViewController.swift; sourceTree = "<group>"; };
+		A364DB531E469BAB00B38C11 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
 		DF2556EE1DE422EC006B3CC5 /* CoreApplicationPrototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreApplicationPrototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF2556F11DE422EC006B3CC5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DF2556F31DE422EC006B3CC5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				DF2556F51DE422EC006B3CC5 /* Main.storyboard */,
 				7E6F04011E25920C00D0F41A /* HistoryViewController.swift */,
 				23E7282A1E29D6F800B25F3D /* HistoryTableViewCell.swift */,
+				A364DB531E469BAB00B38C11 /* User.swift */,
 				23F67DF81E25AEA000B0070E /* Supporting Files */,
 			);
 			path = CoreApplicationPrototype;
@@ -235,7 +238,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = InboundRXCapstone;
 				TargetAttributes = {
 					DF2556ED1DE422EC006B3CC5 = {
@@ -314,6 +317,7 @@
 				7ECF68C11E32A4B800AF3511 /* DealsPageVC.swift in Sources */,
 				7E6F04041E25922500D0F41A /* RewardsViewController.swift in Sources */,
 				7E6F04001E2591DC00D0F41A /* AboutViewController.swift in Sources */,
+				A364DB541E469BAB00B38C11 /* User.swift in Sources */,
 				7E6F04081E25949A00D0F41A /* SettingsViewController.swift in Sources */,
 				7E6F04061E25947800D0F41A /* LogInViewController.swift in Sources */,
 				DF2556F41DE422EC006B3CC5 /* HomeViewController.swift in Sources */,
@@ -393,6 +397,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -442,6 +447,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
