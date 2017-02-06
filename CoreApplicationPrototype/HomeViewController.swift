@@ -8,23 +8,27 @@
 
 import UIKit
 
+var rewardPoints = 0
+
 class HomeViewController: UIViewController {
 
     
-    var userTotalRewardPoints = 0
-    
-      
+    var userTotalRewardPoints: Int {
+        get{return rewardPoints}
+        set{ rewardPointsLabel.text = String(newValue)}
+        
+    }
     
     
     @IBOutlet weak var rewardLabel: UILabel!
     
     @IBOutlet weak var rewardPointsLabel: UILabel!
     
-    func updateHomeUI() {
+    internal func updateHomeUI() {
         //fetch users total points
         userTotalRewardPoints = 20 //dummy data
         //update points label
-        rewardPointsLabel.text = String(userTotalRewardPoints)
+        rewardPointsLabel.text = String(rewardPoints)
         //FUTURE - retrieve and update deals table
     }
     
@@ -34,6 +38,10 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateHomeUI()
+        
+
+        //let delegate = UIApplication.shared.delegate as? AppDelegate
+        //delegate?.callNotification()
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,6 +49,6 @@ class HomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    
 }
 

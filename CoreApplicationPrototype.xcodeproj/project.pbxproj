@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2325D4271E42ED8F00996C33 /* BeaconID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2325D4261E42ED8F00996C33 /* BeaconID.swift */; };
+		2325D4291E42EE3900996C33 /* BeaconNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2325D4281E42EE3900996C33 /* BeaconNotificationsManager.swift */; };
+		23A107A91E46CB33001FE7AF /* UserNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A107A81E46CB33001FE7AF /* UserNotificationsManager.swift */; };
 		23E7282B1E29D6F800B25F3D /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E7282A1E29D6F800B25F3D /* HistoryTableViewCell.swift */; };
 		2FEDDAD41E2C4DC50095013F /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 2FEDDAD31E2C4DC50095013F /* .gitignore */; };
 		7E6F04001E2591DC00D0F41A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F03FF1E2591DC00D0F41A /* AboutViewController.swift */; };
@@ -48,6 +51,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2325D4261E42ED8F00996C33 /* BeaconID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconID.swift; sourceTree = "<group>"; };
+		2325D4281E42EE3900996C33 /* BeaconNotificationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconNotificationsManager.swift; sourceTree = "<group>"; };
+		23A107A81E46CB33001FE7AF /* UserNotificationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNotificationsManager.swift; sourceTree = "<group>"; };
 		23E7282A1E29D6F800B25F3D /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		2FEDDAD31E2C4DC50095013F /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		7E6F03FF1E2591DC00D0F41A /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7ECF68D01E3AC24A00AF3511 /* EstimoteSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +120,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		7ECF68D21E3AC47E00AF3511 /* BeaconFiles */ = {
+			isa = PBXGroup;
+			children = (
+				2325D4261E42ED8F00996C33 /* BeaconID.swift */,
+				2325D4281E42EE3900996C33 /* BeaconNotificationsManager.swift */,
+				23A107A81E46CB33001FE7AF /* UserNotificationsManager.swift */,
+				7ECF68CF1E3AC24A00AF3511 /* EstimoteSDK.framework */,
+			);
+			name = BeaconFiles;
+			sourceTree = "<group>";
+		};
 		DF2556E51DE422EC006B3CC5 = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +155,8 @@
 		DF2556F01DE422EC006B3CC5 /* CoreApplicationPrototype */ = {
 			isa = PBXGroup;
 			children = (
+				7ECF68D11E3AC46600AF3511 /* ObjCBridge.h */,
+				7ECF68D21E3AC47E00AF3511 /* BeaconFiles */,
 				7ECF68CB1E32B04500AF3511 /* DealsViewController.swift */,
 				7ECF68B51E31CA8F00AF3511 /* DealsTableViewCell.swift */,
 				7ECF68B61E31CA8F00AF3511 /* DealsTableViewCell.xib */,
@@ -243,15 +263,18 @@
 				TargetAttributes = {
 					DF2556ED1DE422EC006B3CC5 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 9PUG3ZA4ME;
 						ProvisioningStyle = Automatic;
 					};
 					DF2557011DE422EC006B3CC5 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 9PUG3ZA4ME;
 						ProvisioningStyle = Automatic;
 						TestTargetID = DF2556ED1DE422EC006B3CC5;
 					};
 					DF25570C1DE422EC006B3CC5 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 9PUG3ZA4ME;
 						ProvisioningStyle = Automatic;
 						TestTargetID = DF2556ED1DE422EC006B3CC5;
 					};
@@ -311,6 +334,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2325D4291E42EE3900996C33 /* BeaconNotificationsManager.swift in Sources */,
 				23E7282B1E29D6F800B25F3D /* HistoryTableViewCell.swift in Sources */,
 				7ECF68BA1E31CA8F00AF3511 /* HomeTableViewController.swift in Sources */,
 				7ECF68B81E31CA8F00AF3511 /* DealsTableViewCell.swift in Sources */,
@@ -324,6 +348,8 @@
 				7ECF68CC1E32B04500AF3511 /* DealsViewController.swift in Sources */,
 				DF2556F21DE422EC006B3CC5 /* AppDelegate.swift in Sources */,
 				7E6F04021E25920C00D0F41A /* HistoryViewController.swift in Sources */,
+				23A107A91E46CB33001FE7AF /* UserNotificationsManager.swift in Sources */,
+				2325D4271E42ED8F00996C33 /* BeaconID.swift in Sources */,
 				7E6F040A1E2594B900D0F41A /* AccountCreationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -404,6 +430,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 9PUG3ZA4ME;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -454,6 +481,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 9PUG3ZA4ME;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -476,10 +504,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CoreApplicationPrototype",
+				);
 				INFOPLIST_FILE = CoreApplicationPrototype/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.InboundRXCapstone.CoreApplicationPrototype;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = CoreApplicationPrototype/ObjCBridge.h;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -488,10 +521,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CoreApplicationPrototype",
+				);
 				INFOPLIST_FILE = CoreApplicationPrototype/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.InboundRXCapstone.CoreApplicationPrototype;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = CoreApplicationPrototype/ObjCBridge.h;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

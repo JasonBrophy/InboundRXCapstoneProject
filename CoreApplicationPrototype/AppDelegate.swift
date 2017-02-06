@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
     //Set a global user for the application, initially the user email is noUser, any email should have an @, so this email should be a stock
@@ -26,6 +27,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navBarApperance.barTintColor = UIColor(red: 0.24, green: 0.34, blue: 0.45, alpha: 1.0)
         return true
     }
+    
+    
+    
+    
+    
+    
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
