@@ -54,18 +54,25 @@ class AccountCreationViewController: UIViewController {
     
     
     @IBAction func submitButtonPressed(_ sender: UIButton) {
-        //Error checking needed when we start to get to the Account Creatin page
         
-        //account creation function
+        
+        //Check users input to make sure everything that the required field are\
+        //correctly inputed. If user is successful doing so then they are returned to the home page
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let createUser = appDelegate.user
+        
+        //check users input
         let result = createUser.createAccount(email: email.text, password: password.text, repeatPassword: repeatPassword.text, securityQuestion: securityQuestion.text, securityAnswer: securityAnswer.text, firstName: firstName.text, lastName: lastName.text, address: address.text, birthdate: birthdate.text)
+
+        //show the type of error that the user is missing in their creat account application
         if(!result.0){
             let alertController = UIAlertController(title: "Error", message: result.1, preferredStyle: UIAlertControllerStyle.alert)
             alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self.present(alertController, animated:true, completion:nil)
             return
         }
+        
+        //else return to home, as a sign of success
         
         //from multiple paths
         segueToHome()
