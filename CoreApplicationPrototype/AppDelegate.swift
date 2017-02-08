@@ -52,9 +52,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         
         
         
-        // NOTE: "exit" event has a built-in delay of 30 seconds, to make sure that the user has really exited the beacon's range. The delay is imposed by iOS and is non-adjustable.
         
+        // NOTE: "exit" event has a built-in delay of 30 seconds, to make sure that the user has really exited the beacon's range. The delay is imposed by iOS and is non-adjustable.
+        navBarApperance.tintColor = UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 1.00)
         navBarApperance.barTintColor = UIColor(red: 0.24, green: 0.34, blue: 0.45, alpha: 1.0)
+        
+        navBarApperance.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
         return true
     }
