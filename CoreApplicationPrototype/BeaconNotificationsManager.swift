@@ -13,11 +13,22 @@ class BeaconNotificationsManager: NSObject, ESTBeaconManagerDelegate {
     
     private let beaconManager = ESTBeaconManager()
     
+    //lists to hold all notification and beacons
+    private var notificationsList = [Notification]()
+    private var BeaconsList = [BeaconID]()
+    
+    //Dictionary to connect up Beacons with thier corresponding Notifications
+    private var beaconNotificationDictionary = [BeaconID:Notification]()
+    
     private var enterMessages = [String: String]()      // Message when user enters beacon range
     private var exitMessages  = [String: String]()      // Message when user exits beacon range
     
     override init() {
         super.init()
+        
+        //Grabs all Notifications and Beacons from web server
+        retrieveNotifications()
+        retrieveBeacons()
         
         self.beaconManager.delegate = self
         self.beaconManager.requestAlwaysAuthorization() // Launch Beacon in background
@@ -28,6 +39,27 @@ class BeaconNotificationsManager: NSObject, ESTBeaconManagerDelegate {
             }
         }
     }
+    
+    //Make network call to web server for notifications and fills local notificationList
+    private func retrieveNotifications() {
+        //Dummy Hard code data for now
+        let notification1 = Notification(Title: "EntryNotification", Description: "Welcomes the User", entryMessage: "Welcome to Paulson's! You earned a Reward Point!", exitMessage: "Thanks for Stopping by!", BeaconID: "B9407F30-F5F8-466E-AFF9-25556B57FE6D:54381:53700")
+        
+        let notification2 = Notification(Title: "CoffeeNotification", Description: "Asks the User if they want Coffee", entryMessage: "Want some Coffee?", exitMessage: nil, BeaconID: "B9407F30-F5F8-466E-AFF9-25556B57FE6D:51207:48452")
+        
+        
+        
+        notificationsList.append(notification1)
+        notificationsList.append(notification2)
+    }
+    
+    ////Make network call to web server for Beacons and fills local beaconList
+    private func retrieveBeacons() {
+        //Dummy hard coded data for now
+        
+        
+    }
+    
     
     // Set enter and exit messages for beacons
     func enableNotifications(for beaconID: BeaconID, enterMessage: String?, exitMessage: String?) {
