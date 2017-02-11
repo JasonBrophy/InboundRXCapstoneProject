@@ -30,38 +30,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         var navBarApperance = UINavigationBar.appearance()
         
         
-        
-        //add first beacon to monitor
-        self.beaconNotificationsManager.enableNotifications(
-            
-            for: BeaconID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D", major: 54381, minor: 53700),
-            enterMessage: "Welcome to Paulsen's! You earned a point!!",
-            exitMessage: "Enjoy your Xanax!!!"
-        )
-        
-        //add second beacon to monitor
-        self.beaconNotificationsManager.enableNotifications(
-            
-            for: BeaconID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D", major: 51207, minor: 48452),
-            enterMessage: "Want some Coffee?",
-            exitMessage: "Leaving Coffee"
-        )
-        
-        
-        
-        
-        
-        
-        // NOTE: "exit" event has a built-in delay of 30 seconds, to make sure that the user has really exited the beacon's range. The delay is imposed by iOS and is non-adjustable.
-        
         navBarApperance.barTintColor = UIColor(red: 0.24, green: 0.34, blue: 0.45, alpha: 1.0)
         
         return true
     }
-    
-    
-    
-    
     
     
 
