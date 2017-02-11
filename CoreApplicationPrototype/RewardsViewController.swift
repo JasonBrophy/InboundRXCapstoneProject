@@ -10,6 +10,13 @@ import UIKit
 
 class RewardsViewController: UIViewController {
 
+    
+    @IBOutlet weak var phold: UILabel!
+    var points = 0
+    
+    func UpdatePoints(){
+        self.phold.text = String(points)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
