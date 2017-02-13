@@ -20,6 +20,22 @@ class User: NSObject {
         self.email = userEmail
     }
     
+    func loggedIn() -> Bool{
+        return self.email != "noUser"
+    }
+    
+    func logOut() -> (Bool, String){
+        if(self.email == "noUser"){
+            return (false, "No user to log out!")
+        }
+        else{
+            self.email = "noUser"
+            return (true, "")
+        }
+        
+        
+    }
+    
     // This function takes the emailField string and password string
     // for logging a user in.  The return value is a tuple of a 
     // Boolean for testing success of login, and a string, to be 
