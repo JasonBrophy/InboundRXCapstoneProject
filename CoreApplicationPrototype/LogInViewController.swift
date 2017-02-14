@@ -45,6 +45,9 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         //check users input through the user object
         let result = user.loginUser(emailField: emailField.text, passwordField: passwordField.text)
 
+        //loginSuccess = loginUser return item 0.
+        self.loginSuccess = result.0
+        
         //Show the error, if no match found
         if(!result.0){
             let alertController = UIAlertController(title: "Error", message: result.1, preferredStyle: UIAlertControllerStyle.alert)
@@ -53,8 +56,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        //if successful then loginSuccess equals true
-        self.loginSuccess = result.0
         //Error checking needed when we start to get to the login page
         //from multiple paths
         segueToHome()

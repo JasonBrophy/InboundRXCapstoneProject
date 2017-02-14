@@ -15,6 +15,9 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var NotificationLabel: UILabel!
     
+    @IBOutlet weak var logButton: UIButton!
+    
+    
     @IBAction func toggleNotifications(_ sender: UISwitch) {
         if (sender.isOn)    {
             NotificationLabel.text = "Notifications: On"
@@ -26,10 +29,58 @@ class SettingsViewController: UIViewController {
         }
     }
     
+    func logOutPush(){
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let user = appDelegate.user
+        let result = user.logOut()
+        if(!result.0){
+            let alertController = UIAlertController(title: "Error", message: result.1, preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alertController, animated:true, completion:nil)
+        }
+        else{
+         
+        }
+        
+    }
+    
+    @IBAction func handleLogTouch() {
+        if(logButton.currentTitle == "Log In"){
+        }
+        else{
+            self.logOutPush()
+            self.logButton.setTitle("Log In", for: UIControlState.normal)
+        }
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool){
+        super.viewDidAppear(animated)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let user = appDelegate.user
+        if user.loggedIn(){
+            logButton.setTitle("Log Out", for: UIControlState.normal)
+        }
+        else{
+            logButton.setTitle("Log In", for: UIControlState.normal)
+        }
+        
+        
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationLabel.accessibilityIdentifier = "NotificationLabel"
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let user = appDelegate.user
+        if user.loggedIn(){
+            logButton.setTitle("Log Out", for: UIControlState.normal)
+        }
+        else{
+            logButton.setTitle("Log In", for: UIControlState.normal
+            )
+        }
+        
 
         // Do any additional setup after loading the view.
     }
@@ -39,6 +90,11 @@ class SettingsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "logSegue"){
+            self.handleLogTouch()
+        }
+    }
 
     /*
     // MARK: - Navigation
