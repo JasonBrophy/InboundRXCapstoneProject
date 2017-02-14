@@ -12,6 +12,7 @@
 		23A107A91E46CB33001FE7AF /* UserNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A107A81E46CB33001FE7AF /* UserNotificationsManager.swift */; };
 		23E7282B1E29D6F800B25F3D /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E7282A1E29D6F800B25F3D /* HistoryTableViewCell.swift */; };
 		2FEDDAD41E2C4DC50095013F /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 2FEDDAD31E2C4DC50095013F /* .gitignore */; };
+		7E577B341E4E7912009B8BEA /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E577B331E4E7912009B8BEA /* Notification.swift */; };
 		7E6F04001E2591DC00D0F41A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F03FF1E2591DC00D0F41A /* AboutViewController.swift */; };
 		7E6F04021E25920C00D0F41A /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F04011E25920C00D0F41A /* HistoryViewController.swift */; };
 		7E6F04041E25922500D0F41A /* RewardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F04031E25922500D0F41A /* RewardsViewController.swift */; };
@@ -57,6 +58,7 @@
 		23A107A81E46CB33001FE7AF /* UserNotificationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNotificationsManager.swift; sourceTree = "<group>"; };
 		23E7282A1E29D6F800B25F3D /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		2FEDDAD31E2C4DC50095013F /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		7E577B331E4E7912009B8BEA /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		7E6F03FF1E2591DC00D0F41A /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		7E6F04011E25920C00D0F41A /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		7E6F04031E25922500D0F41A /* RewardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardsViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				2325D4261E42ED8F00996C33 /* BeaconID.swift */,
+				7E577B331E4E7912009B8BEA /* Notification.swift */,
 				2325D4281E42EE3900996C33 /* BeaconNotificationsManager.swift */,
 				23A107A81E46CB33001FE7AF /* UserNotificationsManager.swift */,
 				7ECF68CF1E3AC24A00AF3511 /* EstimoteSDK.framework */,
@@ -339,6 +342,7 @@
 			files = (
 				2325D4291E42EE3900996C33 /* BeaconNotificationsManager.swift in Sources */,
 				23E7282B1E29D6F800B25F3D /* HistoryTableViewCell.swift in Sources */,
+				7E577B341E4E7912009B8BEA /* Notification.swift in Sources */,
 				7ECF68BA1E31CA8F00AF3511 /* HomeTableViewController.swift in Sources */,
 				7ECF68B81E31CA8F00AF3511 /* DealsTableViewCell.swift in Sources */,
 				7ECF68C11E32A4B800AF3511 /* DealsPageVC.swift in Sources */,

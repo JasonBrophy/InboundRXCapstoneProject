@@ -12,6 +12,7 @@ struct BeaconID: Equatable, CustomStringConvertible, Hashable {
     let major: CLBeaconMajorValue
     let minor: CLBeaconMinorValue
     
+    
     init(proximityUUID: UUID, major: CLBeaconMajorValue, minor: CLBeaconMinorValue) {
         self.proximityUUID = proximityUUID
         self.major = major
