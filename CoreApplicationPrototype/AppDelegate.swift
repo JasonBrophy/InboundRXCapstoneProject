@@ -32,6 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         
         navBarApperance.barTintColor = UIColor(red: 0.24, green: 0.34, blue: 0.45, alpha: 1.0)
         
+        navBarApperance.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        
         return true
     }
     
