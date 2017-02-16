@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         
         // Test Notification while App is open
         UserNotificationManager.shared.registerNotification()
-        var navBarApperance = UINavigationBar.appearance()
+        let navBarApperance = UINavigationBar.appearance()
         
         
         navBarApperance.barTintColor = UIColor(red: 0.24, green: 0.34, blue: 0.45, alpha: 1.0)
