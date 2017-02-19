@@ -18,10 +18,12 @@ class RewardsViewController: UIViewController {
     var points = 0
     
     func UpdatePoints(){
+        
         self.phold.text = String(points)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        UpdatePoints()
         self.rewardsCollectionView.delegate = self
         self.rewardsCollectionView.dataSource = self
         // Do any additional setup after loading the view.
