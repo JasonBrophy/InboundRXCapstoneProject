@@ -17,11 +17,29 @@ class RewardsViewController: UIViewController {
     var images = [UIImage(named: "1reward"),UIImage(named: "2reward"),UIImage(named: "3reward"),UIImage(named: "4reward"),UIImage(named: "5reward")]
     var points = 0
     
+    //This will display the points in the text field
     func UpdatePoints(){
+        
         self.phold.text = String(points)
     }
+    
+    
+    //This is used to inc the points
+    func incPoints(amount:Int){
+        points = points + amount
+        UpdatePoints()
+    }
+    
+    //This can be used to decrease then points
+    func decPoints(amount:Int){
+        points = points - amount
+        UpdatePoints()
+    }
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        UpdatePoints()
         self.rewardsCollectionView.delegate = self
         self.rewardsCollectionView.dataSource = self
         // Do any additional setup after loading the view.
