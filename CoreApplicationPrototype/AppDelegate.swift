@@ -38,24 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
     }
     
     
-    var points = 0
-    
-    func loadPoints(){
-        
-        
-    }
-    
-    func incPoints(amount:Int){
-        points = points + amount
-    }
-    
-    func decPoints(amount:Int){
-        points = points - amount
-    }
-    
-    func getPoints() -> Int{
-        return points
-    }
+
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
