@@ -1,27 +1,29 @@
 //
-//  AccountCreationViewController.swift
+//  CreateAccountController.swift
 //  CoreApplicationPrototype
 //
-//  Created by Brett Chafin on 1/10/17.
+//  Created by Jason Brophy on 2/19/17.
 //  Copyright © 2017 InboundRXCapstone. All rights reserved.
 //
 
 import UIKit
 
-class AccountCreationViewController: UIViewController {
-
+class EditAccountViewController: UIViewController {
+    
+    
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
-    @IBOutlet weak var repeatPassword: UITextField!
     @IBOutlet weak var firstName: UITextField!
+    @IBOutlet weak var repeatPassword: UITextField!
     @IBOutlet weak var lastName: UITextField!
     @IBOutlet weak var address: UITextField!
-    @IBOutlet weak var birthdate: UITextField!
+    @IBOutlet weak var birthdate: UILabel!
     @IBOutlet weak var securityQuestion: UILabel!
     @IBOutlet weak var securityAnswer: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         
     }
@@ -38,7 +40,7 @@ class AccountCreationViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -49,7 +51,7 @@ class AccountCreationViewController: UIViewController {
     private func segueToHome() {
         
         let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController];
-        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true);
+        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 2], animated: true);
         
     }
     
@@ -60,11 +62,11 @@ class AccountCreationViewController: UIViewController {
         //Check users input to make sure everything that the required field are\
         //correctly inputed. If user is successful doing so then they are returned to the home page
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let createUser = appDelegate.user
+        let editUser = appDelegate.user
         
         //check users input
-        let result = createUser.createAccount(email: email.text, password: password.text, repeatPassword: repeatPassword.text, securityQuestion: securityQuestion.text, securityAnswer: securityAnswer.text, firstName: firstName.text, lastName: lastName.text, address: address.text, birthdate: birthdate.text)
-
+        let result = editUser.editAccount(email: email.text, password: password.text, repeatPassword: repeatPassword.text, firstName: firstName.text,  lastName: lastName.text, address: address.text, birthday: birthdate.text, securityQuestion: securityQuestion.text, securityAnswer: securityAnswer.text)
+        
         //show the type of error that the user is missing in their creat account application
         if(!result.0){
             let alertController = UIAlertController(title: "Error", message: result.1, preferredStyle: UIAlertControllerStyle.alert)
@@ -77,19 +79,19 @@ class AccountCreationViewController: UIViewController {
         
         //from multiple paths
         segueToHome()
-        
+    
         //The Account Info that the user enter will need to be put into a model at this point
     }
-    
-    
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 
 }

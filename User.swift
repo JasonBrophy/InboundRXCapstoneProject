@@ -111,7 +111,38 @@ class User: NSObject {
     }
     
     //edit account information function, not implemented
-    func EditAccount(email: String?, password: String?, firstName: String?, lastName: String?, address: String?, birthday: String?){
+    func editAccount(email: String?, password: String?, repeatPassword: String?, firstName: String?, lastName: String?, address: String?, birthday: String?, securityQuestion: String?, securityAnswer: String?) -> (Bool, String){
+        var userInfo = UserDefaults.standard.dictionary(forKey: self.email.lowercased())
+
+        if(userInfo == nil || securityAnswer! != userInfo!["securityAnswer"] as? String ?? ""){
+            return (false, "Invalid edit")
+        }
+        
+        
+        
+        if(password != ""){
+            if(password != repeatPassword){
+                return (false, "Passwords do not match")
+            }
+            userInfo!["password"] = password
+        }
+        if(firstName != ""){
+            userInfo!["firstName"] = firstName
+        }
+        if(lastName != ""){
+            userInfo!["lastName"] = lastName
+        }
+        if(address != ""){
+            userInfo!["address"] = address
+        }
+        if(birthday != ""){
+            userInfo!["birthdate"] = birthday
+        }
+        
+        let defaults = UserDefaults.standard
+        defaults.setValue(userInfo, forKey: self.email.lowercased())
+        defaults.synchronize()
+        return (true, "")
     }
     
     //recover password function not yet implemented

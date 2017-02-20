@@ -17,6 +17,7 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var logButton: UIButton!
     
+    @IBOutlet weak var acctMod: UIButton!
     
     @IBAction func toggleNotifications(_ sender: UISwitch) {
         if (sender.isOn)    {
@@ -38,10 +39,6 @@ class SettingsViewController: UIViewController {
             alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self.present(alertController, animated:true, completion:nil)
         }
-        else{
-         
-        }
-        
     }
     
     @IBAction func handleLogTouch() {
@@ -53,6 +50,17 @@ class SettingsViewController: UIViewController {
         }
     }
     
+    @IBAction func handleAcctTouch(_ sender: Any) {
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let user = appDelegate.user
+        if(user.loggedIn()){
+            performSegue(withIdentifier: "editAccount", sender: self)
+        }
+        else{
+            performSegue(withIdentifier: "createAccount", sender: self)
+        }
+    }
     
     override func viewDidAppear(_ animated: Bool){
         super.viewDidAppear(animated)
@@ -60,9 +68,12 @@ class SettingsViewController: UIViewController {
         let user = appDelegate.user
         if user.loggedIn(){
             logButton.setTitle("Log Out", for: UIControlState.normal)
+            acctMod.setTitle("Edit Account", for: UIControlState.normal)
         }
         else{
             logButton.setTitle("Log In", for: UIControlState.normal)
+            acctMod.setTitle("Create Account", for: UIControlState.normal)
+
         }
         
         
@@ -75,10 +86,11 @@ class SettingsViewController: UIViewController {
         let user = appDelegate.user
         if user.loggedIn(){
             logButton.setTitle("Log Out", for: UIControlState.normal)
+            acctMod.setTitle("Edit Account", for: UIControlState.normal)
         }
         else{
-            logButton.setTitle("Log In", for: UIControlState.normal
-            )
+            logButton.setTitle("Log In", for: UIControlState.normal)
+            acctMod.setTitle("Create Account", for: UIControlState.normal)
         }
         
 
