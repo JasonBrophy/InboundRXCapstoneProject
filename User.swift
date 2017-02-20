@@ -114,7 +114,7 @@ class User: NSObject {
     func editAccount(email: String?, password: String?, repeatPassword: String?, firstName: String?, lastName: String?, address: String?, birthday: String?, securityQuestion: String?, securityAnswer: String?) -> (Bool, String){
         var userInfo = UserDefaults.standard.dictionary(forKey: self.email.lowercased())
 
-        if(userInfo == nil || securityAnswer! != userInfo!["securityAnswer"]){
+        if(userInfo == nil || securityAnswer! != userInfo!["securityAnswer"] as? String ?? ""){
             return (false, "Invalid edit")
         }
         
@@ -140,7 +140,7 @@ class User: NSObject {
         }
         
         let defaults = UserDefaults.standard
-        defaults.setValue(userInfo, forKey: email!.lowercased())
+        defaults.setValue(userInfo, forKey: self.email.lowercased())
         defaults.synchronize()
         return (true, "")
     }
