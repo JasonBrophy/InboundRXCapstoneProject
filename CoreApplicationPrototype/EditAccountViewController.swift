@@ -17,7 +17,7 @@ class EditAccountViewController: UIViewController {
     @IBOutlet weak var repeatPassword: UITextField!
     @IBOutlet weak var lastName: UITextField!
     @IBOutlet weak var address: UITextField!
-    @IBOutlet weak var birthdate: UILabel!
+    @IBOutlet weak var birthdate: UITextField!
     @IBOutlet weak var securityQuestion: UILabel!
     @IBOutlet weak var securityAnswer: UITextField!
     
@@ -46,7 +46,7 @@ class EditAccountViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    //pops the last three nav views off the stack and returns home
+    //pops the last two nav views off the stack and returns home
     //Probably bad practice.
     private func segueToHome() {
         
@@ -58,14 +58,12 @@ class EditAccountViewController: UIViewController {
     
     @IBAction func submitButtonPressed(_ sender: UIButton) {
         
-        
-        //Check users input to make sure everything that the required field are\
-        //correctly inputed. If user is successful doing so then they are returned to the home page
+        // First grab the user for the application
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let editUser = appDelegate.user
         
-        //check users input
-        let result = editUser.editAccount(email: email.text, password: password.text, repeatPassword: repeatPassword.text, firstName: firstName.text,  lastName: lastName.text, address: address.text, birthday: birthdate.text, securityQuestion: securityQuestion.text, securityAnswer: securityAnswer.text)
+        //send the data in the fields to the user for the app to edit the current user
+        let result = editUser.editAccount(email: email.text ?? "", password: password.text ?? "", repeatPassword: repeatPassword.text ?? "", firstName: firstName.text ?? "",  lastName: lastName.text ?? "", address: address.text ?? "", birthday: birthdate.text ?? "", securityQuestion: securityQuestion.text ?? "", securityAnswer: securityAnswer.text ?? "")
         
         //show the type of error that the user is missing in their creat account application
         if(!result.0){
