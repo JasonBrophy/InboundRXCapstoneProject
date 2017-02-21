@@ -62,10 +62,11 @@ class AccountCreationViewController: UIViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let createUser = appDelegate.user
         
-        //check users input
+        //Send the text fields to the user create account function to create a user
         let result = createUser.createAccount(email: email.text, password: password.text, repeatPassword: repeatPassword.text, securityQuestion: securityQuestion.text, securityAnswer: securityAnswer.text, firstName: firstName.text, lastName: lastName.text, address: address.text, birthdate: birthdate.text)
 
-        //show the type of error that the user is missing in their creat account application
+        //show the type of error that the user is missing in their creat account application, if the 
+        // createAccount function returned an error.
         if(!result.0){
             let alertController = UIAlertController(title: "Error", message: result.1, preferredStyle: UIAlertControllerStyle.alert)
             alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))

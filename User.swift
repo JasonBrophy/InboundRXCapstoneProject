@@ -20,10 +20,15 @@ class User: NSObject {
         self.email = userEmail
     }
     
+    // Return true if there is a user logged in, false if there is not.
+    // Could be modified to return the username of the user if logged in as well.
     func loggedIn() -> Bool{
         return self.email != "noUser"
     }
     
+    //This function returns a boolean string tuple consisting of success status and possible error message.
+    // Return true if log out is successful (if there is a user to logout), 
+    // Return false if there is no currently logged in user, as well as a string message stating such
     func logOut() -> (Bool, String){
         if(self.email == "noUser"){
             return (false, "No user to log out!")
@@ -110,22 +115,29 @@ class User: NSObject {
 
     }
     
-    //edit account information function, not implemented
+    // This function retrieves the dictionary for the currently logged in user, then, dependent on the 
+    // correct match of the security question answer, updates any non empty passed in strings in the dictionary.
+    // It returns a boolean string tuple consisting of function success and possible error message.
     func editAccount(email: String?, password: String?, repeatPassword: String?, firstName: String?, lastName: String?, address: String?, birthday: String?, securityQuestion: String?, securityAnswer: String?) -> (Bool, String){
+        
+        //Read in the dictionary for the current user from storage in UserDefaults.
         var userInfo = UserDefaults.standard.dictionary(forKey: self.email.lowercased())
 
+        //If there is no user found, panic!, you are logged in without existing.
+        //If the security answer does not match the given answer passed in, return false, and an error string.
         if(userInfo == nil || securityAnswer! != userInfo!["securityAnswer"] as? String ?? ""){
             return (false, "Invalid edit")
         }
         
-        
-        
-        if(password != ""){
+        // If the password is not empty, and the passed in to change does not match the repeat password, 
+        // pass an error back stating such.  Otherwise, set the password to the new password.
+        if(password != nil){
             if(password != repeatPassword){
                 return (false, "Passwords do not match")
             }
             userInfo!["password"] = password
         }
+        //For each of the next four, if the item is not empty, update its value in the dictionary.
         if(firstName != ""){
             userInfo!["firstName"] = firstName
         }
@@ -139,6 +151,9 @@ class User: NSObject {
             userInfo!["birthdate"] = birthday
         }
         
+        
+        // Now store the information again for the user, as it has been updated.
+        // Synchronize to force the data to be recognized as updated, then return success.
         let defaults = UserDefaults.standard
         defaults.setValue(userInfo, forKey: self.email.lowercased())
         defaults.synchronize()

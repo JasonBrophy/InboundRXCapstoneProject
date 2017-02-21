@@ -63,6 +63,8 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    // Update the visibility of the password field based upon the check box
+    // This is done by setting it to secure/not secure, depending on button status.
     @IBAction func updatePasswordVisibility(_ sender: UIButton) {
         if viewPassword {
             passwordField.isSecureTextEntry = true;

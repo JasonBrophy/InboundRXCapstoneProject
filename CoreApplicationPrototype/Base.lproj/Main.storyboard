@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Zp1-tX-188">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Zp1-tX-188">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -521,7 +521,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Zn-dx-0G0" id="xRB-xs-dKJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="199"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6xz-Cz-OPi">
@@ -861,7 +861,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ez9-Po-ODt" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="Home-25" id="Nhm-CD-gnN"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="wBK-my-SJJ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wBK-my-SJJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -981,15 +981,6 @@
                                                 <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="optional" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tEK-98-g5P">
-                                                <rect key="frame" x="168" y="325" width="183" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="183" id="6lo-Cn-bfG"/>
-                                                </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="done"/>
-                                            </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Smn-nc-IcR">
                                                 <rect key="frame" x="30" y="373" width="315" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -1054,12 +1045,21 @@
                                                     <color key="titleColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="submitButtonPressed:" destination="K1h-S1-ycJ" eventType="touchUpInside" id="ByR-h0-OoI"/>
+                                                    <action selector="submitButtonPressed:" destination="u5I-Ea-zlm" eventType="touchUpInside" id="9Ht-gx-lYh"/>
                                                 </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Paulsens Logo White" translatesAutoresizingMaskIntoConstraints="NO" id="SlU-Hx-EjL">
                                                 <rect key="frame" x="37" y="50" width="300" height="108"/>
                                             </imageView>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="optional" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tEK-98-g5P">
+                                                <rect key="frame" x="168" y="325" width="183" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="183" id="6lo-Cn-bfG"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="done"/>
+                                            </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -1130,6 +1130,17 @@
                             <constraint firstItem="CFf-v5-6bI" firstAttribute="leading" secondItem="rv2-5a-Skl" secondAttribute="leading" id="dA4-24-6OX"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="address" destination="bk0-jc-akQ" id="GFp-7b-sCs"/>
+                        <outlet property="birthdate" destination="fAR-u9-fMu" id="OC7-7k-5NK"/>
+                        <outlet property="email" destination="xWH-ME-b9R" id="yS7-mq-Bgh"/>
+                        <outlet property="firstName" destination="tEK-98-g5P" id="agy-FO-WRH"/>
+                        <outlet property="lastName" destination="z47-0e-nWp" id="KJw-Dr-DvU"/>
+                        <outlet property="password" destination="sPa-Dl-8Dp" id="gHO-Z3-fI1"/>
+                        <outlet property="repeatPassword" destination="LoJ-5r-mA1" id="jub-aD-Val"/>
+                        <outlet property="securityAnswer" destination="6NB-FT-irM" id="DmX-4q-SSI"/>
+                        <outlet property="securityQuestion" destination="biJ-CA-t5z" id="gIR-Si-nxK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iw7-I9-KIf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
