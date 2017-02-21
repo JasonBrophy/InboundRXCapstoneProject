@@ -15,11 +15,18 @@ class RewardsViewController: UIViewController {
     @IBOutlet weak var phold: UILabel!
     //hardcoded array of images.
     var images = [UIImage(named: "1reward"),UIImage(named: "2reward"),UIImage(named: "3reward"),UIImage(named: "4reward"),UIImage(named: "5reward")]
+    
+    
+    //this is the popup that happens when a user presses for more info on a reward.
+    @IBOutlet weak var popUp: UIButton!
+    @IBAction func popUp(_ sender: Any) {
+        popUp.isHidden = true
+    }
     var points = 0
+    var myString = ""
     
     //This will display the points in the text field
     func UpdatePoints(){
-        
         self.phold.text = String(points)
     }
     
@@ -42,6 +49,7 @@ class RewardsViewController: UIViewController {
         UpdatePoints()
         self.rewardsCollectionView.delegate = self
         self.rewardsCollectionView.dataSource = self
+        popUp.isHidden = true
         // Do any additional setup after loading the view.
     }
 
@@ -66,11 +74,34 @@ extension RewardsViewController: UICollectionViewDelegate, UICollectionViewDataS
     //fill cell with an image in the array.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = rewardsCollectionView.dequeueReusableCell(withReuseIdentifier: "rewardsCollectionCell", for: indexPath) as! RewardsCollectionViewCell
-        cell.rewardsImageView.image = images[indexPath.row]
+        cell.infoButton.setBackgroundImage(images[indexPath.row], for: .normal)
+        myString = String(indexPath.row)
+        cell.infoButton.setTitle(myString, for: .normal)
+        cell.delegate = self
         return cell
     }
-    //when clicking on a cell, print out which one is getting selected.
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Selected item is: " , indexPath.row)
+        print(indexPath.row)
+    }
+    
+}
+
+extension RewardsViewController: RewardsCollectionViewCellDelegate {
+    
+    //function for the redeem button
+    func redeemDeal(forCell: RewardsCollectionViewCell) {
+        let x = forCell.infoButton.currentTitle!
+        forCell.redeemMe()
+        print("redeemed ", x)
+    }
+    
+    //function for the information popup
+    func infoDeal(forCell: RewardsCollectionViewCell) {
+        let x = forCell.infoButton.currentTitle!
+        let y = Int(x)
+        popUp.setBackgroundImage(images[y!], for: .normal)
+        popUp.isHidden = false
+        
     }
 }
