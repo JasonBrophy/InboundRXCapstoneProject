@@ -28,9 +28,6 @@ class RootTabViewController: UITabBarController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func unwindtoRoot(segue:UIStoryboardSegue) { }
-
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let rewardsTabItems = rootTabBar.items

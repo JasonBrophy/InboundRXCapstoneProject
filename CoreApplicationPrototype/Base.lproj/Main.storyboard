@@ -269,7 +269,6 @@
                         <outlet property="emailField" destination="4tj-c5-6ku" id="qeR-3N-FJh"/>
                         <outlet property="passwordField" destination="W7N-qE-jxu" id="0PI-gO-Rn3"/>
                         <segue destination="ndN-jw-PnF" kind="unwind" identifier="unwindLogintoHome" unwindAction="unwindtoHomeWithSegue:" id="Tyc-AL-Qua"/>
-                        <segue destination="ndN-jw-PnF" kind="unwind" identifier="unwindLogintoRoot" unwindAction="unwindtoRootWithSegue:" id="Hhg-b4-lo5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qjL-AT-S3z" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -524,7 +523,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Zn-dx-0G0" id="xRB-xs-dKJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="199"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6xz-Cz-OPi">
