@@ -782,7 +782,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kZv-IL-98K">
-                                <rect key="frame" x="16" y="245" width="343" height="365"/>
+                                <rect key="frame" x="16" y="197" width="343" height="413"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SdS-8Q-nFr">
@@ -883,7 +883,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YIB-9a-018" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="About" image="Info-25" id="GE7-3T-QCT"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gBn-mi-ZcH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="gBn-mi-ZcH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -902,7 +902,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ez9-Po-ODt" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="Home-25" id="Nhm-CD-gnN"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wBK-my-SJJ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="wBK-my-SJJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -921,7 +921,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rJP-dS-S39" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="History" image="Literature-25" id="cJs-sy-jXx"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fSk-Ba-dFe">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="fSk-Ba-dFe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -940,7 +940,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jfP-5K-Egs" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Rewards" image="Money Box-25" id="sYH-GW-tTr"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fBe-Rl-2aW">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="fBe-Rl-2aW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
