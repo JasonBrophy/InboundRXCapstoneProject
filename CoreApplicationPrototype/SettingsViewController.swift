@@ -53,16 +53,12 @@ class SettingsViewController: UIViewController {
     @IBAction func handleLogTouch() {
         // I would change this to be based on user login rather than button title
         // Feels like bad form
-        let tbc = self.tabBarController as! RootTabViewController
-        let rewardsTabItems = tbc.rootTabBar!.items
-        let rewardsItem = rewardsTabItems![1]
         if(logButton.currentTitle == "Log Out"){
             // No error return required, if this function fails, its
             // because there was no user to logout, so the text should be flipped
             // regardless.
             self.logOutPush()
             self.logButton.setTitle("Log In", for: UIControlState.normal)
-            rewardsItem.isEnabled = false
         }
     }
     

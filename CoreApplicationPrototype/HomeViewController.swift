@@ -37,19 +37,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tbc = self.tabBarController as! RootTabViewController
-        let rewardsTabItems = tbc.rootTabBar!.items
-        let rewardsItem = rewardsTabItems![1]
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let user = appDelegate.user
-        if(!user.loggedIn()){
-            rewardsItem.isEnabled = false
-        }
-        else{
-            rewardsItem.isEnabled = true
-        }
         
-
         updateHomeUI()
         
 
@@ -59,18 +47,6 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let tbc = self.tabBarController as! RootTabViewController
-        let rewardsTabItems = tbc.rootTabBar!.items
-        let rewardsItem = rewardsTabItems![1]
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let user = appDelegate.user
-        if(!user.loggedIn()){
-            rewardsItem.isEnabled = false
-        }
-        else{
-            rewardsItem.isEnabled = true
-        }
-        
         
         updateHomeUI()
         
