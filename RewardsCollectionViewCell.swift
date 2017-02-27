@@ -16,6 +16,9 @@ protocol RewardsCollectionViewCellDelegate {
 class RewardsCollectionViewCell: UICollectionViewCell {
     var delegate: RewardsCollectionViewCellDelegate? = nil
     
+    @IBOutlet var productLabel: UILabel!
+    @IBOutlet var productView: UIImageView!
+    
     //background information
     @IBOutlet weak var infoButton: UIButton!
     @IBAction func infoButton(_ sender: Any) {

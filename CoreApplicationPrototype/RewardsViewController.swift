@@ -8,14 +8,13 @@
 
 import UIKit
 
-class RewardsViewController: UIViewController {
-
+class RewardsViewController: UIViewController{
     
     @IBOutlet weak var rewardsCollectionView: UICollectionView!
     @IBOutlet weak var phold: UILabel!
     //hardcoded array of images.
     var images = [UIImage(named: "1reward"),UIImage(named: "2reward"),UIImage(named: "3reward"),UIImage(named: "4reward"),UIImage(named: "5reward")]
-    
+    var productTitles: [String] = ["Product 1", "Product 2", "Product 3", "Product 4", "Product 5"]
     
     //this is the popup that happens when a user presses for more info on a reward.
     @IBOutlet weak var popUp: UIButton!
@@ -61,8 +60,30 @@ class RewardsViewController: UIViewController {
 
 }
 
+
 extension RewardsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return productTitles.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "rewardsCollectionCell", for: indexPath) as! RewardsCollectionViewCell
+        cell.productLabel.text = productTitles[indexPath.row]
+        cell.productView.image = images[indexPath.row]
+        
+        myString = String(indexPath.row)
+        cell.infoButton.setTitle(myString, for: .normal)
+        cell.delegate = self
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("Cell \(indexPath.row) selected")
+    }
+    
+    /*
     //number of kinds of sections. We only want one type of dimension, so return 1
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -84,6 +105,7 @@ extension RewardsViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.row)
     }
+     */
     
 }
 
@@ -105,3 +127,4 @@ extension RewardsViewController: RewardsCollectionViewCellDelegate {
         
     }
 }
+
