@@ -28,6 +28,7 @@
 		7ECF68D01E3AC24A00AF3511 /* EstimoteSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ECF68CF1E3AC24A00AF3511 /* EstimoteSDK.framework */; };
 		7F3A28401E53FE0300EFAE30 /* RewardsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3A283F1E53FE0300EFAE30 /* RewardsCollectionViewCell.swift */; };
 		A364DB541E469BAB00B38C11 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A364DB531E469BAB00B38C11 /* User.swift */; };
+		DF2538A91E642B0C00360F8C /* WebCallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2538A81E642B0C00360F8C /* WebCallController.swift */; };
 		DF2556F21DE422EC006B3CC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2556F11DE422EC006B3CC5 /* AppDelegate.swift */; };
 		DF2556F41DE422EC006B3CC5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2556F31DE422EC006B3CC5 /* HomeViewController.swift */; };
 		DF2556F71DE422EC006B3CC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF2556F51DE422EC006B3CC5 /* Main.storyboard */; };
@@ -77,6 +78,7 @@
 		7ECF68D11E3AC46600AF3511 /* ObjCBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjCBridge.h; sourceTree = "<group>"; };
 		7F3A283F1E53FE0300EFAE30 /* RewardsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RewardsCollectionViewCell.swift; path = ../RewardsCollectionViewCell.swift; sourceTree = "<group>"; };
 		A364DB531E469BAB00B38C11 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
+		DF2538A81E642B0C00360F8C /* WebCallController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebCallController.swift; sourceTree = "<group>"; };
 		DF2556EE1DE422EC006B3CC5 /* CoreApplicationPrototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreApplicationPrototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF2556F11DE422EC006B3CC5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DF2556F31DE422EC006B3CC5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +143,14 @@
 			name = BeaconFiles;
 			sourceTree = "<group>";
 		};
+		DF2538A51E642A1A00360F8C /* WebCallFiles */ = {
+			isa = PBXGroup;
+			children = (
+				DF2538A81E642B0C00360F8C /* WebCallController.swift */,
+			);
+			name = WebCallFiles;
+			sourceTree = "<group>";
+		};
 		DF2556E51DE422EC006B3CC5 = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +175,7 @@
 		DF2556F01DE422EC006B3CC5 /* CoreApplicationPrototype */ = {
 			isa = PBXGroup;
 			children = (
+				DF2538A51E642A1A00360F8C /* WebCallFiles */,
 				7ECF68D11E3AC46600AF3511 /* ObjCBridge.h */,
 				7ECF68D21E3AC47E00AF3511 /* BeaconFiles */,
 				7ECF68CB1E32B04500AF3511 /* DealsViewController.swift */,
@@ -352,6 +363,7 @@
 				7ECF68BA1E31CA8F00AF3511 /* HomeTableViewController.swift in Sources */,
 				7ECF68B81E31CA8F00AF3511 /* DealsTableViewCell.swift in Sources */,
 				7ECF68C11E32A4B800AF3511 /* DealsPageVC.swift in Sources */,
+				DF2538A91E642B0C00360F8C /* WebCallController.swift in Sources */,
 				7E6F04041E25922500D0F41A /* RewardsViewController.swift in Sources */,
 				7E6F04001E2591DC00D0F41A /* AboutViewController.swift in Sources */,
 				A364DB541E469BAB00B38C11 /* User.swift in Sources */,
