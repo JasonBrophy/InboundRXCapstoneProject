@@ -15,10 +15,11 @@ protocol RewardsCollectionViewCellDelegate {
 
 class RewardsCollectionViewCell: UICollectionViewCell {
     var delegate: RewardsCollectionViewCellDelegate? = nil
+    var product: Product? = nil
     
     @IBOutlet var productLabel: UILabel!
-    @IBOutlet var productView: UIImageView!
-    
+    @IBOutlet var productCost: UILabel!
+    @IBOutlet var productButton: UIButton!
     
     
     //background information
@@ -28,12 +29,11 @@ class RewardsCollectionViewCell: UICollectionViewCell {
     }
     
     //redeem button
-    @IBOutlet weak var redeemButton: UIButton!
     @IBAction func redeemButton(_ sender: Any) {
         delegate?.redeemDeal(forCell: self)
     }
     //action when the redeem button is pressed.
     func redeemMe() {
-        redeemButton.setTitle("Redeemed", for: .normal)
+            //Do Nothing
     }
 }
