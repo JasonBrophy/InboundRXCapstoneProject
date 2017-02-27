@@ -11,6 +11,7 @@
  Must edit info.plist
     Add the key "App Transport Security Settings" of type Dictionary
     Under this key, add the subkey "Allow Arbitrary Loads" of type Boolean and set it to "YES"
+    (If this still doesn't work, clean the project (Shift+Command+k))
  */
 
 class WebCallController {
