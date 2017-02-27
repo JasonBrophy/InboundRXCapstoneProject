@@ -29,6 +29,7 @@
 		7ECF68D01E3AC24A00AF3511 /* EstimoteSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ECF68CF1E3AC24A00AF3511 /* EstimoteSDK.framework */; };
 		7F3A28401E53FE0300EFAE30 /* RewardsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3A283F1E53FE0300EFAE30 /* RewardsCollectionViewCell.swift */; };
 		A364DB541E469BAB00B38C11 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A364DB531E469BAB00B38C11 /* User.swift */; };
+		A3C2E9A31E63CF07001BC63B /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2E9A21E63CF07001BC63B /* PopUpViewController.swift */; };
 		DF2556F21DE422EC006B3CC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2556F11DE422EC006B3CC5 /* AppDelegate.swift */; };
 		DF2556F41DE422EC006B3CC5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2556F31DE422EC006B3CC5 /* HomeViewController.swift */; };
 		DF2556F71DE422EC006B3CC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF2556F51DE422EC006B3CC5 /* Main.storyboard */; };
@@ -79,6 +80,7 @@
 		7ECF68D11E3AC46600AF3511 /* ObjCBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjCBridge.h; sourceTree = "<group>"; };
 		7F3A283F1E53FE0300EFAE30 /* RewardsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RewardsCollectionViewCell.swift; path = ../RewardsCollectionViewCell.swift; sourceTree = "<group>"; };
 		A364DB531E469BAB00B38C11 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
+		A3C2E9A21E63CF07001BC63B /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		DF2556EE1DE422EC006B3CC5 /* CoreApplicationPrototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreApplicationPrototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF2556F11DE422EC006B3CC5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DF2556F31DE422EC006B3CC5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				7ECF68BF1E32A4B800AF3511 /* DealsPageVC.swift */,
 				7E6F04031E25922500D0F41A /* RewardsViewController.swift */,
 				7F3A283F1E53FE0300EFAE30 /* RewardsCollectionViewCell.swift */,
+				A3C2E9A21E63CF07001BC63B /* PopUpViewController.swift */,
 				DF2556F51DE422EC006B3CC5 /* Main.storyboard */,
 				7E6F04011E25920C00D0F41A /* HistoryViewController.swift */,
 				23E7282A1E29D6F800B25F3D /* HistoryTableViewCell.swift */,
@@ -352,6 +355,7 @@
 				2325D4291E42EE3900996C33 /* BeaconNotificationsManager.swift in Sources */,
 				23E7282B1E29D6F800B25F3D /* HistoryTableViewCell.swift in Sources */,
 				7E577B341E4E7912009B8BEA /* Notification.swift in Sources */,
+				A3C2E9A31E63CF07001BC63B /* PopUpViewController.swift in Sources */,
 				7ECF68BA1E31CA8F00AF3511 /* HomeTableViewController.swift in Sources */,
 				7ECF68B81E31CA8F00AF3511 /* DealsTableViewCell.swift in Sources */,
 				7ECF68C11E32A4B800AF3511 /* DealsPageVC.swift in Sources */,

@@ -865,10 +865,10 @@
             </objects>
             <point key="canvasLocation" x="1068" y="1324.5877061469266"/>
         </scene>
-        <!--View Controller-->
+        <!--Pop Up View Controller-->
         <scene sceneID="OZR-Q3-Cos">
             <objects>
-                <viewController id="9zM-Ep-aIe" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="popUpProduct" id="9zM-Ep-aIe" customClass="PopUpViewController" customModule="CoreApplicationPrototype" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xbl-Vx-0dK"/>
                         <viewControllerLayoutGuide type="bottom" id="Whs-Zy-58T"/>
@@ -891,11 +891,6 @@
                                         <rect key="frame" x="8" y="37" width="224" height="196"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hEe-bK-RRq" userLabel="Close">
-                                        <rect key="frame" x="97" y="337" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqh-Iz-c3E" userLabel="Description">
                                         <rect key="frame" x="8" y="241" width="224" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -903,6 +898,14 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tPj-h0-E4Z">
+                                        <rect key="frame" x="75" y="320" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Close"/>
+                                        <connections>
+                                            <action selector="closePopUp:" destination="9zM-Ep-aIe" eventType="touchUpInside" id="vbE-cd-l49"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.69929801587205898" blue="0.75569042905070227" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -953,7 +956,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YIB-9a-018" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="About" image="Info-25" id="GE7-3T-QCT"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gBn-mi-ZcH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="gBn-mi-ZcH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -972,7 +975,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ez9-Po-ODt" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="Home-25" id="Nhm-CD-gnN"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wBK-my-SJJ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="wBK-my-SJJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -991,7 +994,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rJP-dS-S39" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="History" image="Literature-25" id="cJs-sy-jXx"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fSk-Ba-dFe">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="fSk-Ba-dFe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1010,7 +1013,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jfP-5K-Egs" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Rewards" image="Money Box-25" id="sYH-GW-tTr"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fBe-Rl-2aW">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="fBe-Rl-2aW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
