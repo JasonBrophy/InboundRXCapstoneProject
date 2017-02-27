@@ -842,13 +842,6 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5U1-zO-ix7">
-                                <rect key="frame" x="16" y="197" width="343" height="413"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="popUp:" destination="ehp-8H-kv3" eventType="touchUpInside" id="koT-kq-nhf"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -857,7 +850,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="phold" destination="vMd-nh-ByA" id="mTg-r1-Dt9"/>
-                        <outlet property="popUp" destination="5U1-zO-ix7" id="uGI-We-GDC"/>
                         <outlet property="rewardsCollectionView" destination="kZv-IL-98K" id="dkN-3C-wkp"/>
                     </connections>
                 </viewController>
@@ -913,6 +905,11 @@
                                     <constraint firstAttribute="width" constant="240" id="pcV-ed-lbr"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qng-0w-Yiw">
+                                <rect key="frame" x="261" y="584" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>

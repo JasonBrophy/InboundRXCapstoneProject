@@ -16,11 +16,15 @@ class RewardsViewController: UIViewController{
     var images = [UIImage(named: "1reward"),UIImage(named: "2reward"),UIImage(named: "3reward"),UIImage(named: "4reward"),UIImage(named: "5reward")]
     var productTitles: [String] = ["Product 1", "Product 2", "Product 3", "Product 4", "Product 5"]
     
+    
+    
+    /*
     //this is the popup that happens when a user presses for more info on a reward.
     @IBOutlet weak var popUp: UIButton!
     @IBAction func popUp(_ sender: Any) {
         popUp.isHidden = true
-    }
+    }*/
+    
     var points = 0
     var myString = ""
     
@@ -48,8 +52,9 @@ class RewardsViewController: UIViewController{
         UpdatePoints()
         self.rewardsCollectionView.delegate = self
         self.rewardsCollectionView.dataSource = self
-        popUp.isHidden = true
+        //popUp.isHidden = true
         // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -74,7 +79,7 @@ extension RewardsViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         myString = String(indexPath.row)
         cell.infoButton.setTitle(myString, for: .normal)
-        cell.delegate = self
+        //cell.delegate = self
         
         return cell
     }
@@ -82,30 +87,6 @@ extension RewardsViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Cell \(indexPath.row) selected")
     }
-    
-    /*
-    //number of kinds of sections. We only want one type of dimension, so return 1
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    //count how many images are in the array.
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count
-    }
-    //fill cell with an image in the array.
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = rewardsCollectionView.dequeueReusableCell(withReuseIdentifier: "rewardsCollectionCell", for: indexPath) as! RewardsCollectionViewCell
-        cell.infoButton.setBackgroundImage(images[indexPath.row], for: .normal)
-        myString = String(indexPath.row)
-        cell.infoButton.setTitle(myString, for: .normal)
-        cell.delegate = self
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row)
-    }
-     */
     
 }
 
@@ -120,10 +101,10 @@ extension RewardsViewController: RewardsCollectionViewCellDelegate {
     
     //function for the information popup
     func infoDeal(forCell: RewardsCollectionViewCell) {
-        let x = forCell.infoButton.currentTitle!
-        let y = Int(x)
-        popUp.setBackgroundImage(images[y!], for: .normal)
-        popUp.isHidden = false
+        //let x = forCell.infoButton.currentTitle!
+        //let y = Int(x)
+        //popUp.setBackgroundImage(images[y!], for: .normal)
+        //popUp.isHidden = false
         
     }
 }
