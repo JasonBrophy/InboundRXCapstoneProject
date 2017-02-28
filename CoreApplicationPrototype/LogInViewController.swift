@@ -28,10 +28,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     //pops the last two nav views off the stack and returns home
     //Probably bad practice.
     private func segueToHome() {
-        
-        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController];
-        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true);
-        
+            performSegue(withIdentifier: "unwindLogintoHome", sender: self)
     }
     
     @IBAction func logInButtonPress(_ sender: UIButton) {
@@ -61,6 +58,10 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         segueToHome()
         
         
+    }
+    
+    @IBAction func dismiss(_ sender: UIButton) {
+        segueToHome()
     }
     
     // Update the visibility of the password field based upon the check box

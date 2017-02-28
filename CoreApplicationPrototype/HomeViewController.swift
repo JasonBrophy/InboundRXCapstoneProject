@@ -19,7 +19,9 @@ class HomeViewController: UIViewController {
         
     }
     
-    
+    @IBAction func unwindtoHome(segue:UIStoryboardSegue) { }
+
+   
     @IBOutlet weak var rewardLabel: UILabel!
     
     @IBOutlet weak var rewardPointsLabel: UILabel!
@@ -33,16 +35,26 @@ class HomeViewController: UIViewController {
     }
     
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         updateHomeUI()
         
 
         //let delegate = UIApplication.shared.delegate as? AppDelegate
         //delegate?.callNotification()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        updateHomeUI()
+        
+        
+        //let delegate = UIApplication.shared.delegate as? AppDelegate
+        //delegate?.callNotification()
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
