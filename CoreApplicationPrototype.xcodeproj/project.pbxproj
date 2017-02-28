@@ -145,6 +145,14 @@
 			name = BeaconFiles;
 			sourceTree = "<group>";
 		};
+		DF2538A51E642A1A00360F8C /* WebCallFiles */ = {
+			isa = PBXGroup;
+			children = (
+				DF2538A81E642B0C00360F8C /* WebCallController.swift */,
+			);
+			name = WebCallFiles;
+			sourceTree = "<group>";
+		};
 		DF2556E51DE422EC006B3CC5 = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +177,7 @@
 		DF2556F01DE422EC006B3CC5 /* CoreApplicationPrototype */ = {
 			isa = PBXGroup;
 			children = (
+				DF2538A51E642A1A00360F8C /* WebCallFiles */,
 				7ECF68D11E3AC46600AF3511 /* ObjCBridge.h */,
 				7ECF68D21E3AC47E00AF3511 /* BeaconFiles */,
 				7ECF68CB1E32B04500AF3511 /* DealsViewController.swift */,
@@ -359,6 +368,7 @@
 				7ECF68BA1E31CA8F00AF3511 /* HomeTableViewController.swift in Sources */,
 				7ECF68B81E31CA8F00AF3511 /* DealsTableViewCell.swift in Sources */,
 				7ECF68C11E32A4B800AF3511 /* DealsPageVC.swift in Sources */,
+				DF2538A91E642B0C00360F8C /* WebCallController.swift in Sources */,
 				7E6F04041E25922500D0F41A /* RewardsViewController.swift in Sources */,
 				7E6F04001E2591DC00D0F41A /* AboutViewController.swift in Sources */,
 				A364DB541E469BAB00B38C11 /* User.swift in Sources */,
