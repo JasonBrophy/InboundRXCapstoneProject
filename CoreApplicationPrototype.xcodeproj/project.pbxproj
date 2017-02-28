@@ -30,6 +30,7 @@
 		7F3A28401E53FE0300EFAE30 /* RewardsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3A283F1E53FE0300EFAE30 /* RewardsCollectionViewCell.swift */; };
 		A364DB541E469BAB00B38C11 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A364DB531E469BAB00B38C11 /* User.swift */; };
 		A3C2E9A31E63CF07001BC63B /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2E9A21E63CF07001BC63B /* PopUpViewController.swift */; };
+		DF2538A91E642B0C00360F8C /* WebCallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2538A81E642B0C00360F8C /* WebCallController.swift */; };
 		DF2556F21DE422EC006B3CC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2556F11DE422EC006B3CC5 /* AppDelegate.swift */; };
 		DF2556F41DE422EC006B3CC5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2556F31DE422EC006B3CC5 /* HomeViewController.swift */; };
 		DF2556F71DE422EC006B3CC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF2556F51DE422EC006B3CC5 /* Main.storyboard */; };
@@ -81,6 +82,7 @@
 		7F3A283F1E53FE0300EFAE30 /* RewardsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RewardsCollectionViewCell.swift; path = ../RewardsCollectionViewCell.swift; sourceTree = "<group>"; };
 		A364DB531E469BAB00B38C11 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
 		A3C2E9A21E63CF07001BC63B /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		DF2538A81E642B0C00360F8C /* WebCallController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebCallController.swift; sourceTree = "<group>"; };
 		DF2556EE1DE422EC006B3CC5 /* CoreApplicationPrototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreApplicationPrototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF2556F11DE422EC006B3CC5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DF2556F31DE422EC006B3CC5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
