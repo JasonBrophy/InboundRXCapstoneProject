@@ -12,6 +12,7 @@ var rewardPoints = 0
 
 class HomeViewController: UIViewController {
 
+    let webCallController = WebCallController()
     
     var userTotalRewardPoints: Int {
         get{return rewardPoints}
@@ -39,7 +40,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         updateHomeUI()
-        
+        webCallController.printBeaconList()
 
         //let delegate = UIApplication.shared.delegate as? AppDelegate
         //delegate?.callNotification()
