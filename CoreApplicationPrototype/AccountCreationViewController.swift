@@ -8,23 +8,25 @@
 
 import UIKit
 
-class AccountCreationViewController: UIViewController {
+class AccountCreationViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var repeatPassword: UITextField!
-    @IBOutlet weak var firstName: UITextField!
-    @IBOutlet weak var lastName: UITextField!
+    @IBOutlet weak var phone: UITextField!
     @IBOutlet weak var address: UITextField!
-    @IBOutlet weak var birthdate: UITextField!
-    @IBOutlet weak var securityQuestion: UILabel!
-    @IBOutlet weak var securityAnswer: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.email.delegate = self
+        self.password.delegate = self
+        self.repeatPassword.delegate = self
+        self.phone.delegate = self
+        self.address.delegate = self
         // Do any additional setup after loading the view.
-        
+    
     }
+    
     
     //'Return' (Labeled as Done) closes the keyboard.
     //'_' uses no argument label
@@ -33,37 +35,34 @@ class AccountCreationViewController: UIViewController {
         return true
     }
     
+    
     //touching anywhere outside the keyboard UI will close the keyboard.
     //'_' uses no argument label
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    //pops the last three nav views off the stack and returns home
-    //Probably bad practice.
+    
+    // Perform an unwind segue back to home.
     private func segueToHome() {
-        
-        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController];
-        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true);
-        
+        performSegue(withIdentifier: "unwindCreateAccToHome", sender: self)
     }
     
     
     @IBAction func submitButtonPressed(_ sender: UIButton) {
-        
-        
         //Check users input to make sure everything that the required field are\
         //correctly inputed. If user is successful doing so then they are returned to the home page
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let createUser = appDelegate.user
         
         //Send the text fields to the user create account function to create a user
-        let result = createUser.createAccount(email: email.text, password: password.text, repeatPassword: repeatPassword.text, securityQuestion: securityQuestion.text, securityAnswer: securityAnswer.text, firstName: firstName.text, lastName: lastName.text, address: address.text, birthdate: birthdate.text)
+        let result = createUser.createAccount(email: email.text, password: password.text, repeatPassword: repeatPassword.text, phone: phone.text, address: address.text)
 
         //show the type of error that the user is missing in their creat account application, if the 
         // createAccount function returned an error.
@@ -79,7 +78,6 @@ class AccountCreationViewController: UIViewController {
         //from multiple paths
         segueToHome()
         
-        //The Account Info that the user enter will need to be put into a model at this point
     }
     
     
