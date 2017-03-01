@@ -44,7 +44,11 @@ class RewardsViewController: UIViewController{
     
     //This will display the points in the text field
     func UpdatePoints(){
-        self.phold.text = String(points)
+        // In final form, call user to update and return points.
+        // SHould only need user function to be updated.
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let user = appDelegate.user
+        self.phold.text = user.updatePoints()
     }
     
     @IBAction func showDetail(_ sender: Any?) {
@@ -75,10 +79,11 @@ class RewardsViewController: UIViewController{
         }
         self.products = temp
         
-      /*  self.products = [Product(title: productTitles[0], description: descriptions[0], cost: costs[0], image: images[0]!), Product(title: productTitles[1], description: descriptions[1], cost: costs[1], image: images[1]!), Product(title: productTitles[2], description: descriptions[2], cost: costs[2], image: images[2]!), Product(title: productTitles[3], description: descriptions[3], cost: costs[3], image: images[3]!), Product(title: productTitles[4], description: descriptions[4], cost: costs[4], image: images[4]!)]
-*/
-        //popUp.isHidden = true
-        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UpdatePoints()
         
     }
     

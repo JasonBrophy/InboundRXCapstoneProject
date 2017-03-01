@@ -1,25 +1,23 @@
 //
-//  LogInViewController.swift
+//  ConfirmCredentialsViewController.swift
 //  CoreApplicationPrototype
 //
-//  Created by Brett Chafin on 11/30/16.
-//  Copyright © 2016 InboundRXCapstone. All rights reserved.
+//  Created by Jason Brophy on 3/1/17.
+//  Copyright © 2017 InboundRXCapstone. All rights reserved.
 //
 
 import UIKit
-import UserNotifications
 
-class LogInViewController: UIViewController, UITextFieldDelegate {
-    
-    /************ Local Varibles *******/
+class ConfirmCredentialsViewController: UIViewController, UITextFieldDelegate {
     
     var loginSuccess = false
     var viewPassword = false
     
+    
     /************ View Outlets *********/
     
     @IBOutlet weak var emailField: UITextField!
-
+    
     @IBOutlet weak var passwordField: UITextField!
     
     /************ View Actions **********/
@@ -28,11 +26,11 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     //pops the last two nav views off the stack and returns home
     //Probably bad practice.
     private func segueToHome() {
-            performSegue(withIdentifier: "unwindLogintoHome", sender: self)
+        performSegue(withIdentifier: "unwindLogintoHome", sender: self)
     }
     
-    @IBAction func logInButtonPress(_ sender: UIButton) {
-
+    @IBAction func confirmButtonPress(_ sender: UIButton) {
+        
         
         //This allows to check whether what the user inputed, to login, was a match
         //to a preexisting user, if not then show an error to the user to let them know
@@ -40,8 +38,8 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         let user = appDelegate.user
         
         //check users input through the user object
-        let result = user.loginUser(emailField: emailField.text, passwordField: passwordField.text)
-
+        let result = user.securityTest(emailField: emailField.text, passwordField: passwordField.text)
+        
         //loginSuccess = loginUser return item 0.
         self.loginSuccess = result.0
         
@@ -55,13 +53,8 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         
         //Error checking needed when we start to get to the login page
         //from multiple paths
-        segueToHome()
+        performSegue(withIdentifier: "validEdit", sender: self)
         
-        
-    }
-    
-    @IBAction func dismiss(_ sender: UIButton) {
-        segueToHome()
     }
     
     // Update the visibility of the password field based upon the check box
@@ -117,5 +110,4 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
      // Pass the selected object to the new view controller.
      }
      */
-    
 }

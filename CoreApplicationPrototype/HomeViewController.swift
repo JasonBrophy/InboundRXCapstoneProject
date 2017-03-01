@@ -40,7 +40,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         updateHomeUI()
-        webCallController.printBeaconList()
+        // webCallController.printBeaconList()
 
         //let delegate = UIApplication.shared.delegate as? AppDelegate
         //delegate?.callNotification()

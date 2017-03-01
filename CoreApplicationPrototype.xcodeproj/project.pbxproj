@@ -13,6 +13,7 @@
 		23E7282B1E29D6F800B25F3D /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E7282A1E29D6F800B25F3D /* HistoryTableViewCell.swift */; };
 		2F424BDC1E5A90C500143BA0 /* EditAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F424BDB1E5A90C500143BA0 /* EditAccountViewController.swift */; };
 		2F83ACCC1E6298B000DDC9DD /* RootTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F83ACCB1E6298B000DDC9DD /* RootTabViewController.swift */; };
+		2F92EBCF1E66C35D00B8C699 /* ConfirmCredentialsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F92EBCE1E66C35D00B8C699 /* ConfirmCredentialsViewController.swift */; };
 		2FEDDAD41E2C4DC50095013F /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 2FEDDAD31E2C4DC50095013F /* .gitignore */; };
 		7E577B341E4E7912009B8BEA /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E577B331E4E7912009B8BEA /* Notification.swift */; };
 		7E6F04001E2591DC00D0F41A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F03FF1E2591DC00D0F41A /* AboutViewController.swift */; };
@@ -64,6 +65,7 @@
 		23E7282A1E29D6F800B25F3D /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		2F424BDB1E5A90C500143BA0 /* EditAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAccountViewController.swift; sourceTree = "<group>"; };
 		2F83ACCB1E6298B000DDC9DD /* RootTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabViewController.swift; sourceTree = "<group>"; };
+		2F92EBCE1E66C35D00B8C699 /* ConfirmCredentialsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmCredentialsViewController.swift; sourceTree = "<group>"; };
 		2FEDDAD31E2C4DC50095013F /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		7E577B331E4E7912009B8BEA /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		7E6F03FF1E2591DC00D0F41A /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				7ECF68D21E3AC47E00AF3511 /* BeaconFiles */,
 				7ECF68CB1E32B04500AF3511 /* DealsViewController.swift */,
 				7ECF68B51E31CA8F00AF3511 /* DealsTableViewCell.swift */,
+				2F92EBCE1E66C35D00B8C699 /* ConfirmCredentialsViewController.swift */,
 				2F424BDB1E5A90C500143BA0 /* EditAccountViewController.swift */,
 				7ECF68B61E31CA8F00AF3511 /* DealsTableViewCell.xib */,
 				7ECF68B71E31CA8F00AF3511 /* HomeTableViewController.swift */,
@@ -375,6 +378,7 @@
 				7E6F04001E2591DC00D0F41A /* AboutViewController.swift in Sources */,
 				A364DB541E469BAB00B38C11 /* User.swift in Sources */,
 				2F83ACCC1E6298B000DDC9DD /* RootTabViewController.swift in Sources */,
+				2F92EBCF1E66C35D00B8C699 /* ConfirmCredentialsViewController.swift in Sources */,
 				2F424BDC1E5A90C500143BA0 /* EditAccountViewController.swift in Sources */,
 				7E6F04081E25949A00D0F41A /* SettingsViewController.swift in Sources */,
 				7F3A28401E53FE0300EFAE30 /* RewardsCollectionViewCell.swift in Sources */,
