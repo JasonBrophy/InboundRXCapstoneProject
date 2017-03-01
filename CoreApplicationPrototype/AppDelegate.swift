@@ -29,10 +29,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         UserNotificationManager.shared.registerNotification()
         let navBarApperance = UINavigationBar.appearance()
         
-        
+        navBarApperance.tintColor = UIColor.white
         navBarApperance.barTintColor = UIColor(red: 0.24, green: 0.34, blue: 0.45, alpha: 1.0)
         
         navBarApperance.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        
+        //Change top status bar to light theme
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         
         return true
     }
