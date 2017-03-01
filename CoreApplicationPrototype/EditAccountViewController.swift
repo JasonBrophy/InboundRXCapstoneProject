@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditAccountViewController: UIViewController {
+class EditAccountViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBOutlet weak var email: UITextField!
@@ -19,7 +19,11 @@ class EditAccountViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.email.delegate = self
+        self.password.delegate = self
+        self.repeatPassword.delegate = self
+        self.phone.delegate = self
+        self.address.delegate = self
         // Do any additional setup after loading the view.
         
     }

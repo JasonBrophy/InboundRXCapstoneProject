@@ -23,8 +23,7 @@ class ConfirmCredentialsViewController: UIViewController, UITextFieldDelegate {
     /************ View Actions **********/
     
     
-    //pops the last two nav views off the stack and returns home
-    //Probably bad practice.
+    //Unwind segue back to the home screen
     private func segueToHome() {
         performSegue(withIdentifier: "unwindLogintoHome", sender: self)
     }
