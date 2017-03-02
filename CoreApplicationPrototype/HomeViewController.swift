@@ -16,7 +16,7 @@ class HomeViewController: UIViewController {
     
     var userTotalRewardPoints: Int {
         get{return rewardPoints}
-        set{ rewardPointsLabel.text = String(newValue)}
+//        set{ rewardPointsLabel.text = String(newValue)}
         
     }
     
@@ -29,9 +29,9 @@ class HomeViewController: UIViewController {
     
     internal func updateHomeUI() {
         //fetch users total points
-        userTotalRewardPoints = 20 //dummy data
+//        userTotalRewardPoints = 20 //dummy data
         //update points label
-        rewardPointsLabel.text = String(rewardPoints)
+//        rewardPointsLabel.text = String(rewardPoints)
         //FUTURE - retrieve and update deals table
     }
     
@@ -41,6 +41,55 @@ class HomeViewController: UIViewController {
         
         updateHomeUI()
         // webCallController.printBeaconList()
+        webCallController.getBeaconList { (beaconList) in
+            if beaconList != nil {
+                var i = 0
+                for dict in beaconList! {
+                    print("Dictionary \(i):")
+                    print(dict)
+                    print("\n---\n")
+                    i = i+1
+                }
+            }
+        }
+        
+        webCallController.getHistoricalEventList { (historicalEventsList) in
+            if historicalEventsList != nil {
+                var i = 0
+                for dict in historicalEventsList! {
+                    print("Event \(i):")
+                    print(dict)
+                    print("\n---\n")
+                    i = i+1
+                }
+            }
+        }
+        
+        webCallController.getRewardsList { (rewardsList) in
+            if rewardsList != nil {
+                var i = 0
+                for dict in rewardsList! {
+                    print("Reward \(i):")
+                    print(dict)
+                    print("\n---\n")
+                    i = i+1
+                }
+            }
+        }
+        
+        webCallController.getDailyDealList { (dailyDealList) in
+            if dailyDealList != nil {
+                var i = 0
+                for dict in dailyDealList! {
+                    print("Daily deal \(i):")
+                    print(dict)
+                    print("\n---\n")
+                    i = i+1
+                }
+            }
+        }
+
+
 
         //let delegate = UIApplication.shared.delegate as? AppDelegate
         //delegate?.callNotification()

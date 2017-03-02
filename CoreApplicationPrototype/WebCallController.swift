@@ -32,10 +32,10 @@ class WebCallController {
             }
             
             // Otherwise, print the data to the console
-            let str = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-            print("\n\nDataRecieved:\n")
-            print(str!)
-            print("\n-----\n")
+//            let str = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+//            print("\n\nDataRecieved:\n")
+//            print(str!)
+//            print("\n-----\n")
             
             // Otherwise, convert the data recieved into JSON
             do {
@@ -55,7 +55,7 @@ class WebCallController {
     // Callback function is run syncronously after this function
     func webLogIn(urlToCall: String) {
         // Prepare json data
-        let json = ["user": ["email": "admin@inboundrx.com", "password": "password123"]]
+        let json = ["user": ["email": "test@test.com", "password": "password123"]]
         
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
         
@@ -81,10 +81,10 @@ class WebCallController {
                 return
             }
             // Otherwise, print the data to the console
-            let str = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-            print("\n\nDataRecieved:\n")
-            print(str!)
-            print("\n-----\n")
+//            let str = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+//            print("\n\nDataRecieved:\n")
+//            print(str!)
+//            print("\n-----\n")
             
             // Signal the semaphore
             semaphore.signal()
@@ -95,24 +95,107 @@ class WebCallController {
         semaphore.wait()
     }
 
-    
+    //Print the list of beacons to the console
     func printBeaconList() {
         // Test logging in
         webLogIn(urlToCall: "http://paulsens-beacon.herokuapp.com/login")
         
-        webCall(urlToCall: "http://paulsens-beacon.herokuapp.com/beacons.json") { (response) in
-            if let dictionaryArray = response as? Dictionary<String, AnyObject> {
-                var i = 1
-                let beaconsList = dictionaryArray["beacons"] as? Array<Dictionary<String, AnyObject>>
-                for dictionary in beaconsList! {
-                    print("Dictionary \(i):\n")
-                    print(dictionary)
-                    print("\n-----\n")
-                    i = i+1
-                }
+        webCall(urlToCall: "http://paulsens-beacon.herokuapp.com/beacons.json") { (dictionaryArray) in
+            var i = 1
+            let beaconsList = dictionaryArray["beacons"] as? Array<Dictionary<String, AnyObject>>
+            for dictionary in beaconsList! {
+                print("Dictionary \(i):\n")
+                print(dictionary)
+                print("\n-----\n")
+                i = i+1
             }
         }
     }
+    
+    //Returns an array of dictionaries, where each dictionary represents a beacon in the web server
+    //Returns nil if the web server call does not correctly return data
+    //NOTE: Returns data via closure
+    func getBeaconList(callback: @escaping (Array<Dictionary<String, AnyObject>>?) -> ()) {
+        //Log in
+        webLogIn(urlToCall: "http://paulsens-beacon.herokuapp.com/login")
+        
+        //Call web server to return beacon list
+        webCall(urlToCall: "http://paulsens-beacon.herokuapp.com/beacons.json") { (beaconJson) in
+            if let beaconList = beaconJson["beacons"] as? Array<Dictionary<String, AnyObject>>{
+                callback(beaconList)
+            }
+            else {
+                callback(nil)
+            }
+        }
+    }
+    
+    //Returns an array of dictionaries, where each dictionary represents a historical event in the web server
+    //Returns nil if the web server call does not correctly return data
+    //NOTE: Returns data via closure
+    func getHistoricalEventList(callback: @escaping (Array<Dictionary<String, AnyObject>>?) -> ()) {
+        //Log in
+        webLogIn(urlToCall: "http://paulsens-beacon.herokuapp.com/login")
+        
+        //Call web server to return beacon list
+        webCall(urlToCall: "http://paulsens-beacon.herokuapp.com/historical_events.json") { (historicalEventsJson) in
+            if let historicalEventList = historicalEventsJson["historical_events"] as? Array<Dictionary<String, AnyObject>>{
+                callback(historicalEventList)
+            }
+            else {
+                callback(nil)
+            }
+        }
+    }
+
+    //Returns an array of dictionaries, where each dictionary represents a reward in the promotions table on the web server
+    //Returns nil if the web server call does not correctly return data
+    //NOTE: Returns data via closure
+    func getRewardsList(callback: @escaping (Array<Dictionary<String, AnyObject>>?) -> ()) {
+        //Log in
+        webLogIn(urlToCall: "http://paulsens-beacon.herokuapp.com/login")
+        
+        //Call web server to return beacon list
+        webCall(urlToCall: "http://paulsens-beacon.herokuapp.com/promotions.json") { (promotionsJson) in
+            if let promotionsList = promotionsJson["promotions"] as? Array<Dictionary<String, AnyObject>> {
+                var rewardsList = [[String: AnyObject]]()
+                for promotion in promotionsList {
+                    if(promotion["daily_deal"] as! Bool == false) {
+                        rewardsList.append(promotion)
+                    }
+                }
+                callback(rewardsList)
+            }
+            else {
+                callback(nil)
+            }
+        }
+    }
+
+    //Returns an array of dictionaries, where each dictionary represents a daily deal in the promotions table on the web server
+    //Returns nil if the web server call does not correctly return data
+    //NOTE: Returns data via closure
+    func getDailyDealList(callback: @escaping (Array<Dictionary<String, AnyObject>>?) -> ()) {
+        //Log in
+        webLogIn(urlToCall: "http://paulsens-beacon.herokuapp.com/login")
+        
+        //Call web server to return beacon list
+        webCall(urlToCall: "http://paulsens-beacon.herokuapp.com/promotions.json") { (promotionsJson) in
+            if let promotionsList = promotionsJson["promotions"] as? Array<Dictionary<String, AnyObject>> {
+                var dailyDealList = [[String: AnyObject]]()
+                for promotion in promotionsList {
+                    if(promotion["daily_deal"] as! Bool == true) {
+                        dailyDealList.append(promotion)
+                    }
+                }
+                callback(dailyDealList)
+            }
+            else {
+                callback(nil)
+            }
+        }
+    }
+
 }
 
 
