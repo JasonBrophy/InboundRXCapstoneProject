@@ -259,6 +259,19 @@ class WebCallController {
         //Call the POST function to send data to web server
         postRequest(urlToCall: "http://paulsens-beacon.herokuapp.com/account", data: data)
     }
+    
+    
+    // Log a user in to the web server
+    // Expected dictionary formats:
+    // ["email": emailString, "password": passwordString]
+    func userLogIn(userDict: Dictionary<String, String>) {
+        // Create a new dictionary in the format which the web server expects
+        // ["user": dictionaryWithUserInfo]
+        let data = ["user": userDict]
+        
+        //Call the POST function to send data to web server
+        postRequest(urlToCall: "http://paulsens-beacon.herokuapp.com/login", data: data)
+    }
 }
 
 
