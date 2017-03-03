@@ -87,9 +87,9 @@ class User: NSObject {
         //Get the dictionary for this email, lowercased, if it exists
         let userInfo = UserDefaults.standard.dictionary(forKey: emailField!.lowercased())
         // Comment in the next line to add webserver dictionary creation
-        let webServerDict: [String: [String: String]] = ["user":["email": emailField!, "password": passwordField!]]
+        let webServerDict: [String: String] = ["email": emailField!, "password": passwordField!]
         let webCallController = WebCallController()
-        webCallController.postRequest(urlToCall: "http://paulsens-beacon.herokuapp.com/login", data: webServerDict)
+        webCallController.userLogIn(userDict: webServerDict)
 
         // If there is no user with this email, or the password is incorrect		
         // Return an error stating as such, but not specifying which for security.
