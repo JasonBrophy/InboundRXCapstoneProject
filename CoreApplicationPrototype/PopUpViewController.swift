@@ -10,18 +10,21 @@ import UIKit
 
 class PopUpViewController: UIViewController {
     
-    var product: Product? = nil
+    var product: Product? = nil //This is to be set upon passing control to this view by the external controller.
     
-    @IBOutlet weak var productTitle: UILabel!
-    @IBOutlet weak var productCost: UILabel!
-    @IBOutlet weak var productDesc: UILabel!
+    @IBOutlet weak var productTitle: UILabel! // The product title on the popup
+    @IBOutlet weak var productCost: UILabel!  // The product cost on the popup
+    @IBOutlet weak var productDesc: UILabel!  // The product description on the popup
     
-    @IBOutlet weak var productRedeem: UIButton!
-    @IBOutlet weak var productImage: UIImageView!
+    @IBOutlet weak var productRedeem: UIButton! //The popup redeem button
+    @IBOutlet weak var productImage: UIImageView! //
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.white.withAlphaComponent(0.8)
+        // Set the color behind the popup, then, update the fields with the passed
+        // in products information.  This view will never reappear when dismissed without 
+        // A did load, so no need to override WillAppear
+        self.view.backgroundColor = UIColor.white.withAlphaComponent(0.95)
         if(product != nil){
             productTitle.text = product!.title
             productCost.text = String(product!.cost)
@@ -36,7 +39,6 @@ class PopUpViewController: UIViewController {
     }
     
     @IBAction func dismissView() {
-        //performSegue(withIdentifier: "unwindPopupToReward", sender: self)
         self.dismiss(animated: true, completion: nil)
     }
     

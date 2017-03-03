@@ -33,10 +33,10 @@ class RootTabViewController: UITabBarController, UITabBarControllerDelegate{
             
                 // Handler used to transition to login
                 let loginButton = UIAlertAction(title: "Login", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction) -> Void in
-                self.performSegue(withIdentifier: "tabToLogin", sender: self) // IN PROGRESS
+                self.performSegue(withIdentifier: "tabToLogin", sender: self)
                 })
             
-            
+                // Handler to dismiss
                 let cancelButton  = UIAlertAction(title: "Cancel",  style: UIAlertActionStyle.cancel, handler: {(ACTION) in
                 alert.dismiss(animated: true, completion: nil)})
             

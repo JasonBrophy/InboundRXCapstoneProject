@@ -28,10 +28,6 @@ class RewardsViewController: UIViewController{
     @IBOutlet weak var prodButton: UIButton!
     @IBOutlet weak var phold: UILabel!
     //hardcoded array of images.
-    var images = [UIImage(named: "1reward"),UIImage(named: "2reward"),UIImage(named: "3reward"),UIImage(named: "4reward"),UIImage(named: "5reward")]
-    var productTitles: [String] = ["Product 1", "Product 2", "Product 3", "Product 4", "Product 5"]
-    var descriptions = ["a", "b", "c", "d", "e"]
-    var costs = [1, 2, 3, 4, 10]
     var products: [Product]? = nil
     
     
@@ -43,7 +39,7 @@ class RewardsViewController: UIViewController{
     var myString = ""
     
     //This will display the points in the text field
-    func UpdatePoints(){
+    func updatePoints(){
         // In final form, call user to update and return points.
         // SHould only need user function to be updated.
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -58,47 +54,60 @@ class RewardsViewController: UIViewController{
     //This is used to inc the points
     func incPoints(amount:Int){
         points = points + amount
-        UpdatePoints()
+        updatePoints()
     }
     
     //This can be used to decrease then points
     func decPoints(amount:Int){
         points = points - amount
-        UpdatePoints()
+        updatePoints()
     }
     
+    
+    // Get the information from the web server regarding the rewards that are redeemable.
+    func updateRewards() {
+        var temp: [Product] = [] //A Temporary array of products to populate
+        let webCallController = WebCallController() // Create a web call controller object to make the call.
+        webCallController.getRewardsList { (rewardsList) in
+            // If the rewardsList retrieved is not empty, run through each dictionary in the list
+            // If its not a daily deal, its a reward, so grab its relevant info to create the product.
+            if rewardsList != nil {
+                for dict in rewardsList! {
+                    if(dict["daily_deal"] as! Bool == false){
+                        temp.append(Product(title: dict["title"] as! String, description: dict["description"] as! String, cost: dict["cost"] as! Int, image: UIImage(named: "1reward")!))
+                    }
+                    
+                }
+                self.products = temp // Set this controllers products to be the populated array of products.
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        UpdatePoints()
+        updatePoints()
+        updateRewards()
         self.rewardsCollectionView.delegate = self
         self.rewardsCollectionView.dataSource = self
-        var temp: [Product] = []
-        for count in 0..<images.count{
-            temp.append(Product(title: productTitles[count], description: descriptions[count], cost: costs[count], image: images[count]!))
-        }
-        self.products = temp
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        UpdatePoints()
+        updatePoints()
+        updateRewards()
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // If the segue prepared for is going to the popup, and there is a product list
+        // Get the cell the call came from and pass that cell's product on to the popup.
         if(segue.identifier == "rewardPopUp2" && sender != nil && products != nil){
             let button = sender as! UIButton
+            let content = button.superview
+            let cell = content?.superview as! RewardsCollectionViewCell
             let nextScene = segue.destination as! PopUpViewController
-            for count in 0..<products!.count{
-                let currImg = products![count].image
-                if(button.currentImage!.isEqual(currImg)){
-                    nextScene.product = products![count]
-                    break
-                }
-            
-            }
+            nextScene.product = cell.product
         }
     }
 
@@ -107,7 +116,6 @@ class RewardsViewController: UIViewController{
         // Dispose of any resources that can be recreated.
     }
  
-
 }
 
 
@@ -120,6 +128,9 @@ extension RewardsViewController: UICollectionViewDelegate, UICollectionViewDataS
         return 0
     }
     
+    
+    // This function sets the cell's respective elements to the correct information by pulling it from the 
+    // corresponding spot in the products list.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "rewardsCollectionCell", for: indexPath) as! RewardsCollectionViewCell
         cell.product = products![indexPath.row]
@@ -131,6 +142,8 @@ extension RewardsViewController: UICollectionViewDelegate, UICollectionViewDataS
         return cell
     }
     
+    
+    // This just prints the cell selected, can be removed.
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Cell \(indexPath.row) selected")
     }
@@ -138,6 +151,7 @@ extension RewardsViewController: UICollectionViewDelegate, UICollectionViewDataS
     
 }
 
+//All of this could potentially be removed.
 extension RewardsViewController: RewardsCollectionViewCellDelegate {
     
     //function for the redeem button

@@ -31,12 +31,13 @@ class ConfirmCredentialsViewController: UIViewController, UITextFieldDelegate {
     @IBAction func confirmButtonPress(_ sender: UIButton) {
         
         
-        //This allows to check whether what the user inputed, to login, was a match
-        //to a preexisting user, if not then show an error to the user to let them know
+        // Fetch the currently logged in user.
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let user = appDelegate.user
         
         //check users input through the user object
+        // Using security test with a logged in user means
+        // It will check specifically whether the credentials matched the current user, not any user
         let result = user.securityTest(emailField: emailField.text, passwordField: passwordField.text)
         
         //loginSuccess = loginUser return item 0.
@@ -50,8 +51,7 @@ class ConfirmCredentialsViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        //Error checking needed when we start to get to the login page
-        //from multiple paths
+        // At this point, we have a valid edit account request, so send the user to the edit account page.
         performSegue(withIdentifier: "validEdit", sender: self)
         
     }

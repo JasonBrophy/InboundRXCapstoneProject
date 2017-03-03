@@ -64,6 +64,12 @@ class User: NSObject {
         //from multiple paths
     }
     
+    
+    // This function checks the credentials for a logging in user against
+    // Any user not yet logged in found in the database, and checks the credentials
+    // Of only the logged in user if used when a user is logged in.  It returns
+    // a tuple of a result, true or false, a string error message, and the user's points
+    // If they are logged in, to set the value only if being logged in.
     func securityTest(emailField: String?, passwordField: String?) -> (Bool, String, Int){
         //If either field is blank, return false and an error message
         //in string format to state as such.
@@ -71,6 +77,9 @@ class User: NSObject {
             //Error for empty field
             return (false, "A field was left empty", 0)
         }
+        // If we are trying to check credentials of a logged in user
+        // Make sure the email of the user logged in matches that of the person supplied
+        // So the password check is for the correct user.
         if(self.email != "noUser" && emailField?.lowercased() != self.email.lowercased()){
             return (false, "Invalid credentials", 0)
         }
@@ -115,14 +124,16 @@ class User: NSObject {
             return (false, "Email already used")
         }
         
+        // Populate the locally stored information, and a start to the server information for account creation.
         let storedInfo: [String: String] = ["email": email!.lowercased(), "password": password!, "points": "0"]
         var toServer: [String: String] = ["email": email!.lowercased(), "password": password!]
 
-        
+        // If the phone argument was not empty, add an entry for phone number
         if(phone != ""){
             toServer["phone"] = phone
         }
-            
+        
+        // If the address argument was not empty, add an entry for the address.
         if(address != ""){
             toServer["address"] = address
         }
@@ -149,20 +160,23 @@ class User: NSObject {
             return (false, "Invalid edit")
         }
         
-        // If the password is not empty, and the passed in to change does not match the repeat password, 
-        // pass an error back stating such.  Otherwise, set the password to the new password.
+        // If the user did not leave the password field blank.
         if(password != nil){
+            //If their password does not match the password repetition, return an error
             if(password != repeatPassword){
                 return (false, "Passwords do not match")
             }
+            // Populate a locally stored dictionary entry and to server dictionary entry with this new password.
             localStored!["password"] = password
             toServer["password"] = password
         }
         
+        // If the phone entry is not empty, add its updated info to the dictionary.
         if(phone != ""){
             toServer["phone"] = phone
         }
         
+        //If the address entry is not empty, add its updated info to the dictionary.
         if(address != ""){
             toServer["address"] = address
         }
@@ -175,6 +189,8 @@ class User: NSObject {
         return (true, "")
     }
     
+    
+    // Currently just grab a random integer between 0-100, return that string.
     func updatePoints() -> String {
         // To be updated when web server is implemented.
         self.points = Int(arc4random_uniform(100))
