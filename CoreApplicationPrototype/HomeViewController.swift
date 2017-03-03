@@ -41,54 +41,57 @@ class HomeViewController: UIViewController {
         
         updateHomeUI()
         // webCallController.printBeaconList()
-        webCallController.getBeaconList { (beaconList) in
-            if beaconList != nil {
-                var i = 0
-                for dict in beaconList! {
-                    print("Dictionary \(i):")
-                    print(dict)
-                    print("\n---\n")
-                    i = i+1
-                }
-            }
-        }
-        
-        webCallController.getHistoricalEventList { (historicalEventsList) in
-            if historicalEventsList != nil {
-                var i = 0
-                for dict in historicalEventsList! {
-                    print("Event \(i):")
-                    print(dict)
-                    print("\n---\n")
-                    i = i+1
-                }
-            }
-        }
-        
-        webCallController.getRewardsList { (rewardsList) in
-            if rewardsList != nil {
-                var i = 0
-                for dict in rewardsList! {
-                    print("Reward \(i):")
-                    print(dict)
-                    print("\n---\n")
-                    i = i+1
-                }
-            }
-        }
-        
-        webCallController.getDailyDealList { (dailyDealList) in
-            if dailyDealList != nil {
-                var i = 0
-                for dict in dailyDealList! {
-                    print("Daily deal \(i):")
-                    print(dict)
-                    print("\n---\n")
-                    i = i+1
-                }
-            }
-        }
+//        webCallController.getBeaconList { (beaconList) in
+//            if beaconList != nil {
+//                var i = 0
+//                for dict in beaconList! {
+//                    print("Dictionary \(i):")
+//                    print(dict)
+//                    print("\n---\n")
+//                    i = i+1
+//                }
+//            }
+//        }
+//        
+//        webCallController.getHistoricalEventList { (historicalEventsList) in
+//            if historicalEventsList != nil {
+//                var i = 0
+//                for dict in historicalEventsList! {
+//                    print("Event \(i):")
+//                    print(dict)
+//                    print("\n---\n")
+//                    i = i+1
+//                }
+//            }
+//        }
+//        
+//        webCallController.getRewardsList { (rewardsList) in
+//            if rewardsList != nil {
+//                var i = 0
+//                for dict in rewardsList! {
+//                    print("Reward \(i):")
+//                    print(dict)
+//                    print("\n---\n")
+//                    i = i+1
+//                }
+//            }
+//        }
+//        
+//        webCallController.getDailyDealList { (dailyDealList) in
+//            if dailyDealList != nil {
+//                var i = 0
+//                for dict in dailyDealList! {
+//                    print("Daily deal \(i):")
+//                    print(dict)
+//                    print("\n---\n")
+//                    i = i+1
+//                }
+//            }
+//        }
 
+        // Test alling the new user function
+        let newUser = ["email": "newUser2@test.com", "password": "qwerty"]
+        webCallController.createNewUser(userDict: newUser)
 
 
         //let delegate = UIApplication.shared.delegate as? AppDelegate
