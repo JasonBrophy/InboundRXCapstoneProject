@@ -16,6 +16,9 @@
 
 class WebCallController {
     
+    // --------------------------
+    // ----- Core functions -----
+    // --------------------------
     
     // Make a call to a web address to retrieve some data
     // Returns an array of dictionaries via a completion handler
@@ -98,7 +101,7 @@ class WebCallController {
   
     
     // Make a POST request to the web server
-    func postRequest(urlToCall: String, data: Dictionary<String, AnyObject>) {
+    func postRequest(urlToCall: String, data: Dictionary<String, Any>) {
         // Convert data into JSON format
         let jsonData = try? JSONSerialization.data(withJSONObject: data)
         
@@ -125,7 +128,15 @@ class WebCallController {
             print(str!)
             print("\n-----\n")
         }
+        // Let the dataTask resume (run the urlsession request, essentially)
+        task.resume()
+    
     }
+
+    
+    // ---------------------------------------------------------------
+    // ----- Functions to retrieve specific data from web server -----
+    // ---------------------------------------------------------------
 
     
     // Print the list of beacons to the console
@@ -233,4 +244,25 @@ class WebCallController {
         }
     }
 
+    
+    // Add a new user to the web server
+    // Expected dictionary formats:
+    // ["email": emailString, "password": passwordString]
+    // ["email": emailString, "password": passwordString, "address": addressString]
+    // ["email": emailString, "password": passwordString, "phone": phoneString]
+    // ["email": emailString, "password": passwordString, "address": addressString, "phone": phoneString]
+    func createNewUser(userDict: Dictionary<String, String>) {
+        // Create a new dictionary in the format which the web server expects
+        // ["user": dictionaryWithUserInfo]
+        let data = ["user": userDict]
+        
+        //Call the POST function to send data to web server
+        postRequest(urlToCall: "http://paulsens-beacon.herokuapp.com/account", data: data)
+    }
 }
+
+
+
+
+
+
