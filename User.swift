@@ -38,6 +38,7 @@ class User: NSObject {
         else{
             self.email = "noUser"
             self.points = 0
+            let webCallController = WebCallController()
             return (true, "")
         }
     }
@@ -86,14 +87,16 @@ class User: NSObject {
         //Get the dictionary for this email, lowercased, if it exists
         let userInfo = UserDefaults.standard.dictionary(forKey: emailField!.lowercased())
         // Comment in the next line to add webserver dictionary creation
-        // let webServerDict: [String: String] = ["email": emailField!, "password": passwordField!]
-        
-        // If there is no user with this email, or the password is incorrect
+        let webServerDict: [String: [String: String]] = ["user":["email": emailField!, "password": passwordField!]]
+        let webCallController = WebCallController()
+        webCallController.postRequest(urlToCall: "http://paulsens-beacon.herokuapp.com/login", data: webServerDict)
+
+        // If there is no user with this email, or the password is incorrect		
         // Return an error stating as such, but not specifying which for security.
-        if(userInfo == nil || passwordField! != userInfo?["password"] as! String){
+        /*if(userInfo == nil || passwordField! != userInfo?["password"] as! String){
             //passwords do not match
             return (false, "Invalid email or password", 0)
-        }
+        }*/
         let pointsString = userInfo!["points"] as! String
         return (true, "", Int(pointsString)!)
 
@@ -137,6 +140,9 @@ class User: NSObject {
         if(address != ""){
             toServer["address"] = address
         }
+        
+        let webCallController = WebCallController()
+        webCallController.createNewUser(userDict: toServer)
         
         //Set the defaults item matching key of email lowercased to be
         //the dictionary provided.

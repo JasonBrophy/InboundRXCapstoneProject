@@ -90,8 +90,8 @@ class HomeViewController: UIViewController {
 //        }
 
         // Test alling the new user function
-        let newUser = ["email": "newUser2@test.com", "password": "qwerty"]
-        webCallController.createNewUser(userDict: newUser)
+    //    let newUser = ["email": "newUser2@test.com", "password": "qwerty"]
+        //webCallController.createNewUser(userDict: newUser)
 
 
         //let delegate = UIApplication.shared.delegate as? AppDelegate

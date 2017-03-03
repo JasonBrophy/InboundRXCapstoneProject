@@ -56,7 +56,7 @@ class WebCallController {
 
     
     // Make a call to the web server to sign in
-    // Callback function is run syncronously after this function
+    // Callback function is run synchronously after this function
     func webLogIn(urlToCall: String) {
         // Prepare json data
         let json = ["user": ["email": "test@test.com", "password": "password123"]]
