@@ -39,6 +39,7 @@ class User: NSObject {
             self.email = "noUser"
             self.points = 0
             let webCallController = WebCallController()
+            webCallController.userLogOut()
             return (true, "")
         }
     }
