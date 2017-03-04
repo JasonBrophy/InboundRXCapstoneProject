@@ -199,7 +199,17 @@ class User: NSObject {
     // Currently just grab a random integer between 0-100, return that string.
     func updatePoints() -> String {
         // To be updated when web server is implemented.
-        self.points = Int(arc4random_uniform(100))
+        let webCallController = WebCallController()
+        webCallController.getUserPoints { (userPoints) in
+            // If the rewardsList retrieved is not empty, run through each dictionary in the list
+            // If its not a daily deal, its a reward, so grab its relevant info to create the product.
+            if(userPoints != "" || userPoints != nil){
+                self.points = Int(Float(userPoints!)!)
+            }
+            else{
+                self.points = 0
+            }
+        }
         return String(self.points)
     }
 
