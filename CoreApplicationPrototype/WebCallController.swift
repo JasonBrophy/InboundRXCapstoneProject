@@ -57,14 +57,13 @@ class WebCallController {
     
     // Make a call to the web server to sign in
     // Callback function is run synchronously after this function
-    func webLogIn(urlToCall: String) {
+    func webLogIn(loginCredentials: Dictionary<String, Any>) {
         // Prepare json data
-        let json = ["user": ["email": "test@test.com", "password": "password123"]]
-        
+        let json = loginCredentials
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
         
         // Create post request
-        let url = URL(string: urlToCall)!
+        let url = URL(string: "http://paulsens-beacon.herokuapp.com/login")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         
@@ -123,10 +122,10 @@ class WebCallController {
                 return
             }
             // Otherwise, print the data to the console
-            let str = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-            print("\n\nDataRecieved:\n")
-            print(str!)
-            print("\n-----\n")
+//            let str = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+//            print("\n\nDataRecieved from POST:\n")
+//            print(str!)
+//            print("\n-----\n")
         }
         // Let the dataTask resume (run the urlsession request, essentially)
         task.resume()
@@ -142,7 +141,7 @@ class WebCallController {
     // Print the list of beacons to the console
     func printBeaconList() {
         // Test logging in
-        webLogIn(urlToCall: "http://paulsens-beacon.herokuapp.com/login")
+        webLogIn(loginCredentials: ["user": ["email": "test@test.com", "password": "password123"]])
         
         webCall(urlToCall: "http://paulsens-beacon.herokuapp.com/beacons.json") { (dictionaryArray) in
             var i = 1
@@ -162,7 +161,8 @@ class WebCallController {
     // NOTE: Returns data via closure
     func getBeaconList(callback: @escaping (Array<Dictionary<String, AnyObject>>?) -> ()) {
         // Log in
-        webLogIn(urlToCall: "http://paulsens-beacon.herokuapp.com/login")
+        webLogIn(loginCredentials: ["user": ["email": "test@test.com", "password": "password123"]])
+
         
         // Call web server to return beacon list
         webCall(urlToCall: "http://paulsens-beacon.herokuapp.com/beacons.json") { (beaconJson) in
@@ -181,7 +181,7 @@ class WebCallController {
     // NOTE: Returns data via closure
     func getHistoricalEventList(callback: @escaping (Array<Dictionary<String, AnyObject>>?) -> ()) {
         // Log in
-        webLogIn(urlToCall: "http://paulsens-beacon.herokuapp.com/login")
+        webLogIn(loginCredentials: ["user": ["email": "test@test.com", "password": "password123"]])
         
         // Call web server to return beacon list
         webCall(urlToCall: "http://paulsens-beacon.herokuapp.com/historical_events.json") { (historicalEventsJson) in
@@ -200,8 +200,8 @@ class WebCallController {
     // NOTE: Returns data via closure
     func getRewardsList(callback: @escaping (Array<Dictionary<String, AnyObject>>?) -> ()) {
         // Log in
-        webLogIn(urlToCall: "http://paulsens-beacon.herokuapp.com/login")
-        
+        webLogIn(loginCredentials: ["user": ["email": "test@test.com", "password": "password123"]])
+
         // Call web server to return beacon list
         webCall(urlToCall: "http://paulsens-beacon.herokuapp.com/promotions.json") { (promotionsJson) in
             if let promotionsList = promotionsJson["promotions"] as? Array<Dictionary<String, AnyObject>> {
@@ -225,7 +225,7 @@ class WebCallController {
     // NOTE: Returns data via closure
     func getDailyDealList(callback: @escaping (Array<Dictionary<String, AnyObject>>?) -> ()) {
         // Log in
-        webLogIn(urlToCall: "http://paulsens-beacon.herokuapp.com/login")
+        webLogIn(loginCredentials: ["user": ["email": "test@test.com", "password": "password123"]])
         
         // Call web server to return beacon list
         webCall(urlToCall: "http://paulsens-beacon.herokuapp.com/promotions.json") { (promotionsJson) in
@@ -269,8 +269,22 @@ class WebCallController {
         // ["user": dictionaryWithUserInfo]
         let data = ["user": userDict]
         
-        //Call the POST function to send data to web server
-        postRequest(urlToCall: "http://paulsens-beacon.herokuapp.com/login", data: data)
+        // Call the weblogin function to log the user in
+        webLogIn(loginCredentials: data)
+    }
+    
+    
+    // Returns a string representing the point value of the currently logged in user
+    func getUserPoints(callback: @escaping (String?) -> ()) {
+        // Call web server to return the user's points
+        webCall(urlToCall: "http://paulsens-beacon.herokuapp.com/account/points.json") { (pointsJson) in
+            if let points = pointsJson["value"] as? String {
+                callback(points)
+            }
+            else {
+                callback(nil)
+            }
+        }
     }
 }
 

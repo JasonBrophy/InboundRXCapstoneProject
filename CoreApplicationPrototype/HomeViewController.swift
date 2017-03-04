@@ -92,6 +92,13 @@ class HomeViewController: UIViewController {
         // Test alling the new user function
     //    let newUser = ["email": "newUser2@test.com", "password": "qwerty"]
         //webCallController.createNewUser(userDict: newUser)
+        
+        // Test getting user points
+        // First log a user in, then retrieve and print points
+        webCallController.userLogIn(userDict: ["email": "newuser1@test.com", "password": "123456"])
+        webCallController.getUserPoints { (points) in
+            print("\n\nUser points: "+points!+"\n\n")
+        }
 
 
         //let delegate = UIApplication.shared.delegate as? AppDelegate
