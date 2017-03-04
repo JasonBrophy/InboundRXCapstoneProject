@@ -129,7 +129,41 @@ class WebCallController {
         }
         // Let the dataTask resume (run the urlsession request, essentially)
         task.resume()
+    }
     
+    
+    // Make a POST request to the web server
+    func deleteRequest(urlToCall: String) {
+        
+        // Create DELETE request
+        let url = URL(string: urlToCall)!
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        
+        // Create semaphore
+        let semaphore = DispatchSemaphore(value: 0)
+        
+        // Execute the request
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            // If there was an error, print it to the console and return from the function
+            if error != nil {
+                print("There was an error!:\n")
+                print(error!)
+                return
+            }
+            // Otherwise, print the data to the console
+            //            let str = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+            //            print("\n\nDataRecieved from POST:\n")
+            //            print(str!)
+            //            print("\n-----\n")
+            
+            // Signal the semaphore
+            semaphore.signal()
+        }
+        // Let the dataTask resume (run the urlsession request, essentially)
+        task.resume()
+        // Wait on the semaphore within the callback function
+        semaphore.wait()
     }
 
     
@@ -271,6 +305,11 @@ class WebCallController {
         
         // Call the weblogin function to log the user in
         webLogIn(loginCredentials: data)
+    }
+    
+    // Log the current user out
+    func userLogOut() {
+        deleteRequest(urlToCall: "http://paulsens-beacon.herokuapp.com/logout")
     }
     
     

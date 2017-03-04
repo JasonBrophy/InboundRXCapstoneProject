@@ -99,6 +99,12 @@ class HomeViewController: UIViewController {
         webCallController.getUserPoints { (points) in
             print("\n\nUser points: "+points!+"\n\n")
         }
+        webCallController.userLogOut()
+        webCallController.getUserPoints { (points) in
+            if((points) != nil) {
+                print("\n\nUser points after logging out: "+points!+"\n\n")
+            }
+        }
 
 
         //let delegate = UIApplication.shared.delegate as? AppDelegate
