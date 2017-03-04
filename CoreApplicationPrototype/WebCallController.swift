@@ -275,6 +275,7 @@ class WebCallController {
     
     
     // Returns a string representing the point value of the currently logged in user
+    // Returns nil if point value cannot be extracted from the web call
     func getUserPoints(callback: @escaping (String?) -> ()) {
         // Call web server to return the user's points
         webCall(urlToCall: "http://paulsens-beacon.herokuapp.com/account/points.json") { (pointsJson) in
