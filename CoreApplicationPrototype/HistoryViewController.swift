@@ -20,11 +20,25 @@ class HistoryViewController: UITableViewController {
     var selectedIndexPath  = -1              // -1 means no rows exist in section
     private var eventArray = [event]()       // Array of events for cells
     
-    
+    let webCallController = WebCallController()
     // Load data into table view cells
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        //server call
+        webCallController.getHistoricalEventList { (historicalEventsList) in
+            if historicalEventsList != nil {
+                var i = 0
+                for dict in historicalEventsList! {
+                    print("Event \(i):")
+                    print(dict)
+                    print("\n---\n")
+                    i = i+1
+                }
+            }
+        }
+        
         tableView.tableFooterView = UIView() // Create blank rows after filled in cells
         eventArray = [event(year:"1969", image: #imageLiteral(resourceName: "Image0")),
                       event(year:"1972", image: #imageLiteral(resourceName: "Image1")),
