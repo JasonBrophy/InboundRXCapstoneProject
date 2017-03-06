@@ -40,7 +40,10 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         updateHomeUI()
-        // webCallController.printBeaconList()
+        
+        
+        /*
+        webCallController.printBeaconList()
         webCallController.getBeaconList { (beaconList) in
             if beaconList != nil {
                 var i = 0
@@ -52,6 +55,7 @@ class HomeViewController: UIViewController {
                 }
             }
         }
+        
         
         webCallController.getHistoricalEventList { (historicalEventsList) in
             if historicalEventsList != nil {
@@ -88,6 +92,8 @@ class HomeViewController: UIViewController {
                 }
             }
         }
+ 
+        */
 
 
 
