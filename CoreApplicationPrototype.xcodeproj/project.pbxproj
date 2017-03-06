@@ -15,6 +15,7 @@
 		2F83ACCC1E6298B000DDC9DD /* RootTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F83ACCB1E6298B000DDC9DD /* RootTabViewController.swift */; };
 		2F92EBCF1E66C35D00B8C699 /* ConfirmCredentialsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F92EBCE1E66C35D00B8C699 /* ConfirmCredentialsViewController.swift */; };
 		2FEDDAD41E2C4DC50095013F /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 2FEDDAD31E2C4DC50095013F /* .gitignore */; };
+		48CD79171E6BCCE900694253 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF2556F81DE422EC006B3CC5 /* Assets.xcassets */; };
 		7E577B341E4E7912009B8BEA /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E577B331E4E7912009B8BEA /* Notification.swift */; };
 		7E6F04001E2591DC00D0F41A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F03FF1E2591DC00D0F41A /* AboutViewController.swift */; };
 		7E6F04021E25920C00D0F41A /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F04011E25920C00D0F41A /* HistoryViewController.swift */; };
@@ -35,7 +36,6 @@
 		DF2556F21DE422EC006B3CC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2556F11DE422EC006B3CC5 /* AppDelegate.swift */; };
 		DF2556F41DE422EC006B3CC5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2556F31DE422EC006B3CC5 /* HomeViewController.swift */; };
 		DF2556F71DE422EC006B3CC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF2556F51DE422EC006B3CC5 /* Main.storyboard */; };
-		DF2556F91DE422EC006B3CC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF2556F81DE422EC006B3CC5 /* Assets.xcassets */; };
 		DF2556FC1DE422EC006B3CC5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF2556FA1DE422EC006B3CC5 /* LaunchScreen.storyboard */; };
 		DF2557071DE422EC006B3CC5 /* CoreApplicationPrototypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2557061DE422EC006B3CC5 /* CoreApplicationPrototypeTests.swift */; };
 		DF2557121DE422EC006B3CC5 /* CoreApplicationPrototypeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2557111DE422EC006B3CC5 /* CoreApplicationPrototypeUITests.swift */; };
@@ -339,9 +339,9 @@
 			files = (
 				2FEDDAD41E2C4DC50095013F /* .gitignore in Resources */,
 				DF2556FC1DE422EC006B3CC5 /* LaunchScreen.storyboard in Resources */,
-				DF2556F91DE422EC006B3CC5 /* Assets.xcassets in Resources */,
 				7ECF68B91E31CA8F00AF3511 /* DealsTableViewCell.xib in Resources */,
 				DF2556F71DE422EC006B3CC5 /* Main.storyboard in Resources */,
+				48CD79171E6BCCE900694253 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

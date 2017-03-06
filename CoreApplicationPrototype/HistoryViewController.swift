@@ -12,6 +12,11 @@ import UIKit
 struct event  {
     let year  : String!  // Year the event occurred
     let image : UIImage! // Image depicting event
+    
+    init(year: String, image: UIImage) {
+        self.year = year
+        self.image = image
+    }
 }
 
 class HistoryViewController: UITableViewController {
@@ -20,17 +25,45 @@ class HistoryViewController: UITableViewController {
     var selectedIndexPath  = -1              // -1 means no rows exist in section
     private var eventArray = [event]()       // Array of events for cells
     
-    
+    let webCallController = WebCallController()
     // Load data into table view cells
+    
+    func loadHistory(){
+        var temp: [event] = []
+        //server call
+        webCallController.getHistoricalEventList { (historicalEventsList) in
+            if historicalEventsList != nil {
+                var i = 0
+                for dict in historicalEventsList! {
+                    print("Event \(i):")
+                    print(dict)
+                    print("\n---\n")
+                    temp.append(event(year: dict["date"] as! String, image: #imageLiteral(resourceName: "Image0")))
+                    i = i+1
+                }
+              
+                self.eventArray = temp
+                
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
         tableView.tableFooterView = UIView() // Create blank rows after filled in cells
-        eventArray = [event(year:"1969", image: #imageLiteral(resourceName: "Image0")),
-                      event(year:"1972", image: #imageLiteral(resourceName: "Image1")),
-                      event(year:"1984", image: #imageLiteral(resourceName: "Image0")),
-                      event(year:"1993", image: #imageLiteral(resourceName: "Image1"))
-                     ]
+        //eventArray = [event(year:"1969", image: #imageLiteral(resourceName: "Image0")),
+        //              event(year:"1972", image: #imageLiteral(resourceName: "Image1")),
+        //              event(year:"1984", image: #imageLiteral(resourceName: "Image0")),
+        //              event(year:"1993", image: #imageLiteral(resourceName: "Image1"))
+        //             ]
+        loadHistory()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadHistory()
     }
     
     // CONFIGURING A TABLE VIEW (REQUIRED)
