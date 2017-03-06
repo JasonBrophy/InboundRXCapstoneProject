@@ -41,7 +41,9 @@ class HistoryViewController: UITableViewController {
                     temp.append(event(year: dict["date"] as! String, image: #imageLiteral(resourceName: "Image0")))
                     i = i+1
                 }
+              
                 self.eventArray = temp
+                
             }
         }
     }
@@ -51,12 +53,17 @@ class HistoryViewController: UITableViewController {
         super.viewDidLoad()
         
         tableView.tableFooterView = UIView() // Create blank rows after filled in cells
-        eventArray = [event(year:"1969", image: #imageLiteral(resourceName: "Image0")),
-                      event(year:"1972", image: #imageLiteral(resourceName: "Image1")),
-                      event(year:"1984", image: #imageLiteral(resourceName: "Image0")),
-                      event(year:"1993", image: #imageLiteral(resourceName: "Image1"))
-                     ]
-        //loadHistory()
+        //eventArray = [event(year:"1969", image: #imageLiteral(resourceName: "Image0")),
+        //              event(year:"1972", image: #imageLiteral(resourceName: "Image1")),
+        //              event(year:"1984", image: #imageLiteral(resourceName: "Image0")),
+        //              event(year:"1993", image: #imageLiteral(resourceName: "Image1"))
+        //             ]
+        loadHistory()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadHistory()
     }
     
     // CONFIGURING A TABLE VIEW (REQUIRED)
