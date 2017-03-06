@@ -20,8 +20,8 @@ class DealsViewController: UIViewController {
         super.viewDidLoad()
         
         //this is where we will load up info the each daily deal
-        mainImage.image = #imageLiteral(resourceName: "1dailydeal")              //temp code
-        mainLabel.text = restorationIdentifier     //temp code
+        //mainImage.image = #imageLiteral(resourceName: "1dailydeal")              //temp code
+        //mainLabel.text = restorationIdentifier     //temp code
         
 
         // Do any additional setup after loading the view.
