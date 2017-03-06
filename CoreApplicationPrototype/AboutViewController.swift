@@ -7,45 +7,24 @@
 //
 
 import UIKit
-import MapKit
 
 class AboutViewController: UIViewController {
 
-    // Shows texts for About
-    @IBOutlet weak var aboutLabel: UILabel!
+    //Variables
     
-    // Display map directions
-    func map() {
-        // Destination Coordinates
-        let latitude:  CLLocationDegrees = 45.536317
-        let longitude: CLLocationDegrees = -122.619141
-        
-        let regionDistance: CLLocationDistance = 1000
-        let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        let region = MKCoordinateRegionMakeWithDistance(center, regionDistance, regionDistance)
-        
-        // How the map appears
-        let option = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: region.center), MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: region.span)]
-        
-        // Place map marker on location
-        let placemark = MKPlacemark(coordinate: center)
-        
-        let mapItem = MKMapItem(placemark: placemark)
-        
-        mapItem.name = "Paulsen's Pharmacy"
-        mapItem.openInMaps(launchOptions: option)
-    }
+    @IBOutlet weak var UIAboutTextView: UITextView!
   
     // Create confirmation alert function
-    func createAlert(title: String, message: String, action: UIAlertAction){
+    func createAlert(title: String, message: String){
         
         // Alert style confirmation
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         
-        // Handler used to transition to other code, cancel confirmation
-        let noButton  = UIAlertAction(title: "NO",  style: UIAlertActionStyle.destructive, handler: nil)
+        // Handler used to transition to other code
+        let yesButton = UIAlertAction(title: "YES", style: UIAlertActionStyle.default, handler: nil)  // YES confirm
+        let noButton  = UIAlertAction(title: "NO",  style: UIAlertActionStyle.default, handler: nil)  // NO
         
-        alert.addAction(action)     // Add YES button to Alert controller
+        alert.addAction(yesButton)  // Add YES button to Alert controller
         alert.addAction(noButton)   // Add NO  button to Alert controller
         
         // Completion: do something after alert is displayed
@@ -54,29 +33,35 @@ class AboutViewController: UIViewController {
     
     // Safari Transfer confirmation
     @IBAction func url() {
+        let link = "https://www.paulsenspharmacy.com"
         let inputTitle   = "WEBSITE TRANSFER"
         let inputMessage = "Do you want to open this website in Safari?"
         
-        let link = "https://www.paulsenspharmacy.com"
-        // Action Handler to open URL
+        // Alert style confirmation
+        let alert = UIAlertController(title: inputTitle, message: inputMessage, preferredStyle: UIAlertControllerStyle.alert)
+        
+        // Handler used to transition to other code
         let yesButton = UIAlertAction(title: "YES", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction) -> Void in
-            UIApplication.shared.open(NSURL(string: link)! as URL)
+            UIApplication.shared.open(NSURL(string: link)! as URL) // IN PROGRESS
             })
         
-        createAlert(title: inputTitle, message: inputMessage, action: yesButton)
-    }
+        
+        let noButton  = UIAlertAction(title: "NO",  style: UIAlertActionStyle.cancel, handler: {(ACTION) in
+            alert.dismiss(animated: true, completion: nil)})
+        
+        alert.addAction(yesButton)  // Add YES button to Alert controller
+        alert.addAction(noButton)   // Add NO  button to Alert controller
+        
+        // Completion: do something after alert is displayed
+        present(alert, animated: true, completion: nil)  // Display Alert
+        }
     
     // Map Transfer confirmation
     @IBAction func address() {
         let inputTitle   = "MAP TRANSFER"
         let inputMessage = "Do you want to open this address in Maps?"
         
-        // Open Apple Maps to show directions
-        let yesButton = UIAlertAction(title: "YES", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction) -> Void in
-           self.map()
-        })
-
-        createAlert(title: inputTitle, message: inputMessage, action: yesButton)
+        createAlert(title: inputTitle, message: inputMessage)
     }
     
     // Phone Transfer confirmation
@@ -84,14 +69,17 @@ class AboutViewController: UIViewController {
         let inputTitle   = "PHONE TRANSFER"
         let inputMessage = "Do you want to call this number?"
         
-        // Call number in "phone"
-        let phone = "TEL://5032871163"
-        let yesButton = UIAlertAction(title: "YES", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction) -> Void in
-            UIApplication.shared.open(NSURL(string: phone)! as URL)
-        })
-        
-        createAlert(title: inputTitle, message: inputMessage, action: yesButton)
+        createAlert(title: inputTitle, message: inputMessage)
     }
+    
+    //Overriding viewDidLayoutSubviews() so when app opens and
+    //about and clicked the UIAboutTextView does not start in the middle
+    //it'll start from the top
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        UIAboutTextView.setContentOffset(CGPoint.zero, animated: false)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,14 +88,14 @@ class AboutViewController: UIViewController {
 
         self.automaticallyAdjustsScrollViewInsets = false
         
-        // Allows multiple lines for a UILabel
-        aboutLabel.numberOfLines = 0
-        
-        aboutLabel.text = "Paulsen's Pharmacy\n\n"+"Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\n"+"Monday - Friday 9:00am - 6:30pm\nSaturday 10:00am - 2:00pm"
+        UIAboutTextView.text = "Paulsen's Pharmacy\n\n"+"Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.\n\n"+"Monday - Friday 9:00am - 6:30pm\nSaturday 10:00am - 2:00pm"
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+  
 }

@@ -143,10 +143,8 @@ class BeaconNotificationsManager: NSObject, ESTBeaconManagerDelegate {
         //TODO: interface with points system
         //if entry beacon
         if(region.identifier == "B9407F30-F5F8-466E-AFF9-25556B57FE6D:54381:53700") {
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let user = appDelegate.user
-            
-            user.incrementPoints()
+            rewardPoints += 1
+            print (rewardPoints)
         }
     }
     

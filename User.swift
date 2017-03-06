@@ -181,9 +181,4 @@ class User: NSObject {
         return String(self.points)
     }
 
-    // Increment points when entering Entry Beacon Region
-    func incrementPoints()
-    {
-        points += 1
-    }
 }
