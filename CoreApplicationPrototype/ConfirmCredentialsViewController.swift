@@ -56,6 +56,7 @@ class ConfirmCredentialsViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    
     // Update the visibility of the password field based upon the check box
     // This is done by setting it to secure/not secure, depending on button status.
     @IBAction func updatePasswordVisibility(_ sender: UISwitch) {
@@ -81,6 +82,7 @@ class ConfirmCredentialsViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
     }
     
+    
     //'Return' (Labeled as Done) closes the keyboard.
     //'_' uses no argument label
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -88,11 +90,13 @@ class ConfirmCredentialsViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    
     //touching anywhere outside the keyboard UI will close the keyboard.
     //'_' uses no argument label
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -100,13 +104,4 @@ class ConfirmCredentialsViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
 }

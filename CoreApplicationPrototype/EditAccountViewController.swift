@@ -18,13 +18,15 @@ class EditAccountViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var address: UITextField!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        //set the UITextfield delegates to this class so they use the overridden functions to dismiss the keyboard
         self.email.delegate = self
         self.password.delegate = self
         self.repeatPassword.delegate = self
         self.phone.delegate = self
         self.address.delegate = self
-        // Do any additional setup after loading the view.
         
     }
     
@@ -40,6 +42,7 @@ class EditAccountViewController: UIViewController, UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -71,22 +74,9 @@ class EditAccountViewController: UIViewController, UITextFieldDelegate {
         }
         
         //else return to home, as a sign of success
-        
-        //from multiple paths
         segueToHome()
     
-        //The Account Info that the user enter will need to be put into a model at this point
     }
-
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 
 }

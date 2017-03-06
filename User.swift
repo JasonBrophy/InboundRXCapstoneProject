@@ -98,7 +98,14 @@ class User: NSObject {
             //passwords do not match
             return (false, "Invalid email or password", 0)
         }*/
-        let pointsString = userInfo!["points"] as! String
+        var pointsString : String = ""
+        if((userInfo) != nil){
+            pointsString = userInfo!["points"] as! String
+        }else{
+            pointsString = self.updatePoints()
+            let storedInfo: [String: String] = ["email": self.email.lowercased(), "points": pointsString]
+            UserDefaults.standard.setValue(storedInfo, forKey: self.email.lowercased())
+        }
         return (true, "", Int(pointsString)!)
 
     }
@@ -129,7 +136,7 @@ class User: NSObject {
         }
         
         // Populate the locally stored information, and a start to the server information for account creation.
-        let storedInfo: [String: String] = ["email": email!.lowercased(), "password": password!, "points": "0"]
+        let storedInfo: [String: String] = ["email": email!.lowercased(), "points": "0"]
         var toServer: [String: String] = ["email": email!.lowercased(), "password": password!]
 
         // If the phone argument was not empty, add an entry for phone number
@@ -148,6 +155,12 @@ class User: NSObject {
         //Set the defaults item matching key of email lowercased to be
         //the dictionary provided.
         defaults.setValue(storedInfo, forKey: email!.lowercased())
+        
+        
+        //Makes the user login
+        self.email = email!.lowercased()
+        self.points = 0
+        
         
         //Successfully created account, so return true, and the empty string
         return (true, "")
@@ -197,14 +210,13 @@ class User: NSObject {
     }
     
     
-    // Currently just grab a random integer between 0-100, return that string.
+    // Currently grabbing information from the server about points
     func updatePoints() -> String {
-        // To be updated when web server is implemented.
+        
         let webCallController = WebCallController()
         webCallController.getUserPoints { (userPoints) in
-            // If the rewardsList retrieved is not empty, run through each dictionary in the list
-            // If its not a daily deal, its a reward, so grab its relevant info to create the product.
-            if(userPoints != "" || userPoints != nil){
+            //if the points were not null, set the points to the value retrieved.
+            if(userPoints != "" && userPoints != nil){
                 self.points = Int(Float(userPoints!)!)
             }
             else{

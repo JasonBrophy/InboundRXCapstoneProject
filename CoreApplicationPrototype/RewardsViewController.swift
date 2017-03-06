@@ -31,36 +31,24 @@ class RewardsViewController: UIViewController{
     var products: [Product]? = nil
     
     
-    
     @IBAction func unwindtoRewards(segue:UIStoryboardSegue) { }
 
     
     var points = 0
     var myString = ""
     
+    
     //This will display the points in the text field
     func updatePoints(){
-        // In final form, call user to update and return points.
-        // SHould only need user function to be updated.
+        //Call user to update and return points.
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let user = appDelegate.user
         self.phold.text = user.updatePoints()
     }
     
+    
     @IBAction func showDetail(_ sender: Any?) {
         self.performSegue(withIdentifier: "rewardPopUp2", sender: sender as! UIButton)
-    }
-    
-    //This is used to inc the points
-    func incPoints(amount:Int){
-        points = points + amount
-        updatePoints()
-    }
-    
-    //This can be used to decrease then points
-    func decPoints(amount:Int){
-        points = points - amount
-        updatePoints()
     }
     
     
@@ -82,6 +70,7 @@ class RewardsViewController: UIViewController{
             }
         }
     }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,12 +81,14 @@ class RewardsViewController: UIViewController{
         
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updatePoints()
         updateRewards()
         
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // If the segue prepared for is going to the popup, and there is a product list
@@ -110,16 +101,19 @@ class RewardsViewController: UIViewController{
             nextScene.product = cell.product
         }
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
  
+    
 }
 
 
 extension RewardsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if products != nil{

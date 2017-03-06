@@ -18,12 +18,13 @@ class AccountCreationViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //set the UITextfield delegates to this class so they use the overridden functions to dismiss the keyboard
         self.email.delegate = self
         self.password.delegate = self
         self.repeatPassword.delegate = self
         self.phone.delegate = self
         self.address.delegate = self
-        // Do any additional setup after loading the view.
     
     }
     
@@ -55,9 +56,9 @@ class AccountCreationViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    //Check users input to make sure everything that the required fields are
+    //correctly inputed. If user is successful doing so then they are returned to the home page
     @IBAction func submitButtonPressed(_ sender: UIButton) {
-        //Check users input to make sure everything that the required field are\
-        //correctly inputed. If user is successful doing so then they are returned to the home page
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let createUser = appDelegate.user
         
@@ -74,21 +75,9 @@ class AccountCreationViewController: UIViewController, UITextFieldDelegate {
         }
         
         //else return to home, as a sign of success
-        
-        //from multiple paths
         segueToHome()
         
     }
-    
-    
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

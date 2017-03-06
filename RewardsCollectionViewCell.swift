@@ -14,26 +14,20 @@ protocol RewardsCollectionViewCellDelegate {
 }
 
 class RewardsCollectionViewCell: UICollectionViewCell {
+
     var delegate: RewardsCollectionViewCellDelegate? = nil
     var product: Product? = nil
     
+    //The items in the cell of the collection view
     @IBOutlet var productLabel: UILabel!
     @IBOutlet var productCost: UILabel!
     @IBOutlet var productButton: UIButton!
     
     
-    //background information
-    @IBOutlet weak var infoButton: UIButton!
-    @IBAction func infoButton(_ sender: Any) {
-        delegate?.infoDeal(forCell: self)
-    }
-    
-    //redeem button
+    //redeem button, does nothing at the moment
     @IBAction func redeemButton(_ sender: Any) {
         delegate?.redeemDeal(forCell: self)
     }
-    //action when the redeem button is pressed.
-    func redeemMe() {
-            //Do Nothing
-    }
+    
+    
 }

@@ -10,14 +10,16 @@ import UIKit
 
 class PopUpViewController: UIViewController {
     
+    
     var product: Product? = nil //This is to be set upon passing control to this view by the external controller.
+    
     
     @IBOutlet weak var productTitle: UILabel! // The product title on the popup
     @IBOutlet weak var productCost: UILabel!  // The product cost on the popup
     @IBOutlet weak var productDesc: UILabel!  // The product description on the popup
-    
     @IBOutlet weak var productRedeem: UIButton! //The popup redeem button
-    @IBOutlet weak var productImage: UIImageView! //
+    @IBOutlet weak var productImage: UIImageView! //The image of the popup
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,16 +33,18 @@ class PopUpViewController: UIViewController {
             productDesc.text = product!.description
             productImage.image = product!.image
         }
-        // Do any additional setup after loading the view.
     }
+    
     
     @IBAction func redeemReward(_ sender: Any) {
         //Nothing yet
     }
     
+    
     @IBAction func dismissView() {
         self.dismiss(animated: true, completion: nil)
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

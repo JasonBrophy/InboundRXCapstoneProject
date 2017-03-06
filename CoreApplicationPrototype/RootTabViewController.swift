@@ -18,9 +18,10 @@ class RootTabViewController: UITabBarController, UITabBarControllerDelegate{
         // Do any additional setup after loading the view.
     }
     
+    
+    // If the selected tab bar item is the Rewards item, do the contained test for login, otherwise behave normally
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        // If the selected tab bar item is the Rewards item, do the contained test for login, otherwise behave normally
-        if(item.title == "Rewards"){
+            if(item.title == "Rewards"){
             // Alert style confirmation
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let user = appDelegate.user
@@ -50,6 +51,7 @@ class RootTabViewController: UITabBarController, UITabBarControllerDelegate{
         }
     }
     
+    
     // Override the delegate select allowance to only allow access to rewards if the user is logged in
     // Returning false in the instance they are attempting to go to rewards while not logged in
     // prevents the navigation from taking place.  In all other cases, return true to allow the transition.
@@ -65,20 +67,11 @@ class RootTabViewController: UITabBarController, UITabBarControllerDelegate{
         return true
     }
     
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
