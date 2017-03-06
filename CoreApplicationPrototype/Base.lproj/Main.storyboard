@@ -77,7 +77,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="About" id="DHn-kS-Cf7"/>
                     <connections>
-                        <outlet property="UIAboutTextView" destination="ebY-mi-2ID" id="j0N-Zr-qhm"/>
+                        <outlet property="aboutLabel" destination="otO-g6-xSP" id="1jh-lU-HJL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HQs-bW-2Qb" userLabel="First Responder" sceneMemberID="firstResponder"/>
