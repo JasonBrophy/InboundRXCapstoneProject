@@ -105,6 +105,8 @@ class HomeViewController: UIViewController {
                 print("\n\nUser points after logging out: "+points!+"\n\n")
             }
         }
+ 
+        */
 
 
         //let delegate = UIApplication.shared.delegate as? AppDelegate
