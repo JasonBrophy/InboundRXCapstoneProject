@@ -69,6 +69,8 @@ class WebCallController {
         
         // Insert a header specifying that json data is in the request
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        // Insert a header to specify that we want a JSON formatted response
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
         // Insert the actual json data into the request
         request.httpBody = jsonData
         
@@ -111,6 +113,8 @@ class WebCallController {
         
         // Insert JSON header and JSON data
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        // Insert a header to specify that we want a JSON formatted response
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
         request.httpBody = jsonData
         
         // Execute the request
@@ -138,6 +142,8 @@ class WebCallController {
         // Create DELETE request
         let url = URL(string: urlToCall)!
         var request = URLRequest(url: url)
+        // Insert a header to specify that we want a JSON formatted response
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
         request.httpMethod = "DELETE"
         
         // Create semaphore
@@ -179,6 +185,8 @@ class WebCallController {
         
         // Insert JSON header and JSON data
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        // Insert a header to specify that we want a JSON formatted response
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
         request.httpBody = jsonData
         
         // Execute the request

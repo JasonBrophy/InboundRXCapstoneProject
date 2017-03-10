@@ -41,8 +41,10 @@ class HomeViewController: UIViewController {
         
         updateHomeUI()
         
-        webCallController.userLogIn(userDict: ["email": "user@test.com", "password": "123456"])
-        webCallController.editUser(userDict: ["email": "user@test.com", "password": "qwerty"])
+        //webCallController.createNewUser(userDict: ["email": "neveruse@test.com", "password": "123456"])
+        //webCallController.userLogIn(userDict: ["email": "user@test.com", "password": "123456"])
+        //webCallController.editUser(userDict: ["email": "user@test.com", "password": "qwerty"])
+        //webCallController.userLogOut()
         
         /*
         webCallController.printBeaconList()
