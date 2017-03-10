@@ -86,6 +86,7 @@ class RewardsViewController: UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updatePoints()
+        self.rewardsCollectionView.reloadData()
     }
     
     
