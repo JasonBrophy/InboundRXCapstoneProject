@@ -28,7 +28,7 @@ class BeaconNotificationsManager: NSObject, ESTBeaconManagerDelegate {
         //Grabs all Notifications and Beacons from web server
         //print("Requesting beacons")
         
-        retrieveBeacons()
+        //retrieveBeacons()
         
         //print(beaconNotificationDictionary)
         
@@ -71,6 +71,7 @@ class BeaconNotificationsManager: NSObject, ESTBeaconManagerDelegate {
         webCallController.getBeaconList { (beaconList) in
             if beaconList != nil {
                 
+                var i = 0
                 //loop through every beacon returned and create local beacon object and corresponding notification
                 for dict in beaconList! {
                     
@@ -81,6 +82,8 @@ class BeaconNotificationsManager: NSObject, ESTBeaconManagerDelegate {
                     let minor_string = dict["minor_uuid"] as! String
                     let major_string = dict["major_uuid"] as! String
                     
+                    print("adding beacon \(i)")
+                    i = i+1
                     let beacon = BeaconID(UUIDString: uuid, major: UInt16(major_string)!, minor: UInt16(minor_string)!)
                     
                     

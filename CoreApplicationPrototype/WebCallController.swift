@@ -35,10 +35,10 @@ class WebCallController {
             }
             
             // Otherwise, print the data to the console
-//            let str = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-//            print("\n\nDataRecieved:\n")
-//            print(str!)
-//            print("\n-----\n")
+            let str = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+            print("\n\nDataRecieved:\n")
+            print(str!)
+            print("\n-----\n")
             
             // Otherwise, convert the data recieved into JSON
             do {
@@ -84,10 +84,10 @@ class WebCallController {
                 return
             }
             // Otherwise, print the data to the console
-//            let str = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-//            print("\n\nDataRecieved:\n")
-//            print(str!)
-//            print("\n-----\n")
+            let str = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+            print("\n\nDataRecieved:\n")
+            print(str!)
+            print("\n-----\n")
             
             // Signal the semaphore
             semaphore.signal()
@@ -122,17 +122,17 @@ class WebCallController {
                 return
             }
             // Otherwise, print the data to the console
-//            let str = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-//            print("\n\nDataRecieved from POST:\n")
-//            print(str!)
-//            print("\n-----\n")
+            let str = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+            print("\n\nDataRecieved from POST:\n")
+            print(str!)
+            print("\n-----\n")
         }
         // Let the dataTask resume (run the urlsession request, essentially)
         task.resume()
     }
     
     
-    // Make a POST request to the web server
+    // Make a DELETE request to the web server
     func deleteRequest(urlToCall: String) {
         
         // Create DELETE request
@@ -153,7 +153,7 @@ class WebCallController {
             }
             // Otherwise, print the data to the console
             //            let str = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-            //            print("\n\nDataRecieved from POST:\n")
+            //            print("\n\nDataRecieved from DELETE:\n")
             //            print(str!)
             //            print("\n-----\n")
             
@@ -164,6 +164,39 @@ class WebCallController {
         task.resume()
         // Wait on the semaphore within the callback function
         semaphore.wait()
+    }
+    
+    
+    // Make a PATCH request to the web server
+    func patchRequest(urlToCall: String, data: Dictionary<String, Any>) {
+        // Convert data into JSON format
+        let jsonData = try? JSONSerialization.data(withJSONObject: data)
+        
+        // Create PATCH request
+        let url = URL(string: urlToCall)!
+        var request = URLRequest(url: url)
+        request.httpMethod = "PATCH"
+        
+        // Insert JSON header and JSON data
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.httpBody = jsonData
+        
+        // Execute the request
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            // If there was an error, print it to the console and return from the function
+            if error != nil {
+                print("There was an error!:\n")
+                print(error!)
+                return
+            }
+            // Otherwise, print the data to the console
+            let str = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+            print("\n\nDataRecieved from PATCH:\n")
+            print(str!)
+            print("\n-----\n")
+        }
+        // Let the dataTask resume (run the urlsession request, essentially)
+        task.resume()
     }
 
     
@@ -325,6 +358,22 @@ class WebCallController {
                 callback(nil)
             }
         }
+    }
+    
+    
+    // Edit an existing user's info
+    // Expected dictionary formats:
+    // ["email": emailString, "password": edited_passwordString]
+    // ["email": emailString, "password": edited_passwordString, "address": edited_addressString]
+    // ["email": emailString, "password": edited_passwordString, "phone": edited_phoneString]
+    // ["email": emailString, "password": edited_passwordString, "address": edited_addressString, "phone": edited_phoneString]
+    func editUser(userDict: Dictionary<String, String>) {
+        // Create a new dictionary in the format which the web server expects
+        // ["user": dictionaryWithUserInfo]
+        let data = ["user": userDict]
+        
+        //Call the PATCH function to send data to web server telling it to alter that entry in the user table
+        patchRequest(urlToCall: "http://paulsens-beacon.herokuapp.com/account", data: data)
     }
 }
 
