@@ -12,10 +12,12 @@ import UIKit
 struct event  {
     let year  : String!  // Year the event occurred
     let image : UIImage! // Image depicting event
+    let title : String!
     
-    init(year: String, image: UIImage) {
+    init(year: String, image: UIImage, title: String) {
         self.year = year
         self.image = image
+        self.title = title
     }
 }
 
@@ -38,7 +40,7 @@ class HistoryViewController: UITableViewController {
                     print("Event \(i):")
                     print(dict)
                     print("\n---\n")
-                    temp.append(event(year: dict["date"] as! String, image: #imageLiteral(resourceName: "Image0")))
+                    temp.append(event(year: dict["date"] as! String, image: #imageLiteral(resourceName: "Image0"), title: dict["title"] as! String))
                     i = i+1
                 }
               
@@ -82,6 +84,7 @@ class HistoryViewController: UITableViewController {
         
         cell.yearLabel.text    = eventArray[indexPath.row].year  // Set label in custom cell
         cell.historyView.image = eventArray[indexPath.row].image // Set image in custom cell
+        cell.titleLabel.text = eventArray[indexPath.row].title
         
         return cell
     }
