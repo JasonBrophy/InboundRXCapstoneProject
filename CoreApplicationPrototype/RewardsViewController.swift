@@ -28,7 +28,7 @@ class RewardsViewController: UIViewController{
     @IBOutlet weak var prodButton: UIButton!
     @IBOutlet weak var phold: UILabel!
     //hardcoded array of images.
-    var products: [Product]? = nil
+    var products = [Product]()
     
     
     @IBAction func unwindtoRewards(segue:UIStoryboardSegue) { }
@@ -54,7 +54,6 @@ class RewardsViewController: UIViewController{
     
     // Get the information from the web server regarding the rewards that are redeemable.
     func updateRewards() {
-        var temp: [Product] = [] //A Temporary array of products to populate
         let webCallController = WebCallController() // Create a web call controller object to make the call.
 //        webCallController.getRewardsList { (rewardsList) in
 //            // If the rewardsList retrieved is not empty, run through each dictionary in the list
@@ -85,15 +84,14 @@ class RewardsViewController: UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updatePoints()
-        updateRewards()
-        
+        self.rewardsCollectionView.reloadData()
     }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // If the segue prepared for is going to the popup, and there is a product list
         // Get the cell the call came from and pass that cell's product on to the popup.
-        if(segue.identifier == "rewardPopUp2" && sender != nil && products != nil){
+        if(segue.identifier == "rewardPopUp2" && sender != nil){
             let button = sender as! UIButton
             let content = button.superview
             let cell = content?.superview as! RewardsCollectionViewCell
@@ -116,10 +114,7 @@ extension RewardsViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if products != nil{
-            return products!.count
-        }
-        return 0
+        return products.count
     }
     
     
@@ -127,22 +122,16 @@ extension RewardsViewController: UICollectionViewDelegate, UICollectionViewDataS
     // corresponding spot in the products list.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "rewardsCollectionCell", for: indexPath) as! RewardsCollectionViewCell
-        cell.product = products![indexPath.row]
-        cell.productLabel.text = products![indexPath.row].title
-        cell.productButton.setImage(products![indexPath.row].image, for: UIControlState.normal)
-        cell.productCost.text = String(describing: products![indexPath.row].cost)
+        cell.product = products[indexPath.row]
+        cell.productLabel.text = products[indexPath.row].title
+        cell.productButton.setImage(products[indexPath.row].image, for: UIControlState.normal)
+        cell.productCost.text = String(describing: products[indexPath.row].cost)
         
         myString = String(indexPath.row)        
         return cell
     }
     
-    
-    // This just prints the cell selected, can be removed.
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Cell \(indexPath.row) selected")
-    }
-    
-    
+
 }
 
 //All of this could potentially be removed.
