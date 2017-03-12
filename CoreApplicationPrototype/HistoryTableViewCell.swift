@@ -15,6 +15,6 @@ class HistoryTableViewCell: UITableViewCell
    
     @IBOutlet weak var titleLabel: UILabel!  // Event title
     
-    class var expandedHeight: CGFloat { get { return 310 } }  //Height of custom view when expanded
+    class var expandedHeight: CGFloat { get { return 355 } }  //Height of custom view when expanded
     class var defaultHeight : CGFloat { get { return 44  } }  //Default height of view
 }
