@@ -214,15 +214,15 @@ class User: NSObject {
     func updatePoints() -> String {
         
         let webCallController = WebCallController()
-        webCallController.getUserPoints { (userPoints) in
-            //if the points were not null, set the points to the value retrieved.
-            if(userPoints != "" && userPoints != nil){
-                self.points = Int(Float(userPoints!)!)
-            }
-            else{
-                self.points = 0
-            }
-        }
+//        webCallController.getUserPoints { (userPoints) in
+//            //if the points were not null, set the points to the value retrieved.
+//            if(userPoints != "" && userPoints != nil){
+//                self.points = Int(Float(userPoints!)!)
+//            }
+//            else{
+//                self.points = 0
+//            }
+//        }
         return String(self.points)
     }
 

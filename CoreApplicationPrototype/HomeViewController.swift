@@ -41,11 +41,14 @@ class HomeViewController: UIViewController {
         
         updateHomeUI()
         
-        //webCallController.createNewUser(userDict: ["email": "neveruse@test.com", "password": "123456"])
-        //webCallController.userLogIn(userDict: ["email": "user@test.com", "password": "123456"])
+//        let response = webCallController.createNewUser(userDict: ["email": "neveruse@test.com", "password": "123456"])
+//        print("Response: ")
+//        print(response)
+        //webCallController.userLogIn(userDict: ["email": "user@test.com", "password": "nopenope"])
         //webCallController.editUser(userDict: ["email": "user@test.com", "password": "qwerty"])
         //webCallController.userLogOut()
         
+        /*
         webCallController.getBeaconList { (tuple: (Bool, String, Array<Dictionary<String, AnyObject>>?)) in
             let (isError, error, beaconList) = tuple
             if isError == false {
@@ -61,7 +64,6 @@ class HomeViewController: UIViewController {
             }
         }
         
-        /*
         webCallController.getHistoricalEventList { (historicalEventsList) in
             if historicalEventsList != nil {
                 var i = 0

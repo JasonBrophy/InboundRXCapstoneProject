@@ -56,19 +56,19 @@ class RewardsViewController: UIViewController{
     func updateRewards() {
         var temp: [Product] = [] //A Temporary array of products to populate
         let webCallController = WebCallController() // Create a web call controller object to make the call.
-        webCallController.getRewardsList { (rewardsList) in
-            // If the rewardsList retrieved is not empty, run through each dictionary in the list
-            // If its not a daily deal, its a reward, so grab its relevant info to create the product.
-            if rewardsList != nil {
-                for dict in rewardsList! {
-                    if(dict["daily_deal"] as! Bool == false){
-                        temp.append(Product(title: dict["title"] as! String, description: dict["description"] as! String, cost: dict["cost"] as! Int, image: UIImage(named: "1reward")!))
-                    }
-                    
-                }
-                self.products = temp // Set this controllers products to be the populated array of products.
-            }
-        }
+//        webCallController.getRewardsList { (rewardsList) in
+//            // If the rewardsList retrieved is not empty, run through each dictionary in the list
+//            // If its not a daily deal, its a reward, so grab its relevant info to create the product.
+//            if rewardsList != nil {
+//                for dict in rewardsList! {
+//                    if(dict["daily_deal"] as! Bool == false){
+//                        temp.append(Product(title: dict["title"] as! String, description: dict["description"] as! String, cost: dict["cost"] as! Int, image: UIImage(named: "1reward")!))
+//                    }
+//                    
+//                }
+//                self.products = temp // Set this controllers products to be the populated array of products.
+//            }
+//        }
     }
     
 

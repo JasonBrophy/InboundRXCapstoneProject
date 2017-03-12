@@ -31,21 +31,21 @@ class HistoryViewController: UITableViewController {
     func loadHistory(){
         var temp: [event] = []
         //server call
-        webCallController.getHistoricalEventList { (historicalEventsList) in
-            if historicalEventsList != nil {
-                var i = 0
-                for dict in historicalEventsList! {
-                    print("Event \(i):")
-                    print(dict)
-                    print("\n---\n")
-                    temp.append(event(year: dict["date"] as! String, image: #imageLiteral(resourceName: "Image0")))
-                    i = i+1
-                }
-              
-                self.eventArray = temp
-                
-            }
-        }
+//        webCallController.getHistoricalEventList { (historicalEventsList) in
+//            if historicalEventsList != nil {
+//                var i = 0
+//                for dict in historicalEventsList! {
+//                    print("Event \(i):")
+//                    print(dict)
+//                    print("\n---\n")
+//                    temp.append(event(year: dict["date"] as! String, image: #imageLiteral(resourceName: "Image0")))
+//                    i = i+1
+//                }
+//              
+//                self.eventArray = temp
+//                
+//            }
+//        }
     }
     
     override func viewDidLoad() {
