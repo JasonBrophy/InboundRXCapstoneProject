@@ -233,10 +233,10 @@ class WebCallController {
                 return
             }
             // Otherwise, print the data to the console
-            let str = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-            print("\n\nDataRecieved from PATCH:\n")
-            print(str!)
-            print("\n-----\n")
+//            let str = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+//            print("\n\nDataRecieved from PATCH:\n")
+//            print(str!)
+//            print("\n-----\n")
             
             // Convert the data recieved into JSON
             do {

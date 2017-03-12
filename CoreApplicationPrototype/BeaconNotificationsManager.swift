@@ -28,7 +28,7 @@ class BeaconNotificationsManager: NSObject, ESTBeaconManagerDelegate {
         //Grabs all Notifications and Beacons from web server
         //print("Requesting beacons")
         
-        //retrieveBeacons()
+      //  retrieveBeacons()
         
         //print(beaconNotificationDictionary)
         
@@ -60,7 +60,7 @@ class BeaconNotificationsManager: NSObject, ESTBeaconManagerDelegate {
         }
     }
     
-    
+/*
     ////Make network call to web server for Beacons and fills local beaconList
     private func retrieveBeacons() {
         
@@ -68,54 +68,51 @@ class BeaconNotificationsManager: NSObject, ESTBeaconManagerDelegate {
         /*This closure happens async, so i've moved all work for retrieving and monitoring beacons/notification
           to happend here to prevent concurrency issues
         */
-//        webCallController.getBeaconList { (beaconList) in
-//            if beaconList != nil {
-//                
-//                var i = 0
-//                //loop through every beacon returned and create local beacon object and corresponding notification
-//                for dict in beaconList! {
-//                    
-//                
-//                    //create beacon object
-//                    let uuid = dict["uuid"] as! String
-//                    let uuid_string = dict["uuid"] as! String
-//                    let minor_string = dict["minor_uuid"] as! String
-//                    let major_string = dict["major_uuid"] as! String
-//                    
-//                    print("adding beacon \(i)")
-//                    i = i+1
-//                    let beacon = BeaconID(UUIDString: uuid, major: UInt16(major_string)!, minor: UInt16(minor_string)!)
-//                    
-//                    
-//                    //grab array of notifications contained in the beacon. This should only contain one element
-//                    let notificationArray = dict["notifications"] as! Array<Dictionary<String, Any>>
-//                    let notification = notificationArray[0]
-//                    
-//                    let entry_message = notification["entry_message"] as! String
-//                    let exit_message = notification["exit_message"] as? String
-//                    let description = notification["description"] as! String
-//                    let title = notification["title"] as! String
-//                    
-//                    let notification1 = Notification(Title: title, Description: description, entryMessage: entry_message, exitMessage: exit_message, BeaconID: uuid_string + ":" + major_string + ":" + minor_string)
-//                    
-//                    
-//                    //Add the newly created beacon and notifications to thier corresponding lists
-//                    self.BeaconsList.append(beacon)
-//                    self.notificationsList.append(notification1)
-//                    
-//                }
-//                
-//            }
-//            
-//            //Go through our new lists and link up the notifications to the beacons
-//            self.linkBeacons()
-//            
-//            //print("finished linking beacons")
-//            //print(self.beaconNotificationDictionary)
-//        }
+        webCallController.getBeaconList { (beaconList) in
+            if beaconList != nil {
+                
+                //loop through every beacon returned and create local beacon object and corresponding notification
+                for dict in beaconList! {
+                    
+                
+                    //create beacon object
+                    let uuid = dict["uuid"] as! String
+                    let uuid_string = dict["uuid"] as! String
+                    let minor_string = dict["minor_uuid"] as! String
+                    let major_string = dict["major_uuid"] as! String
+                    
+                    let beacon = BeaconID(UUIDString: uuid, major: UInt16(major_string)!, minor: UInt16(minor_string)!)
+                    
+                    
+                    //grab array of notifications contained in the beacon. This should only contain one element
+                    let notificationArray = dict["notifications"] as! Array<Dictionary<String, Any>>
+                    let notification = notificationArray[0]
+                    
+                    let entry_message = notification["entry_message"] as! String
+                    let exit_message = notification["exit_message"] as? String
+                    let description = notification["description"] as! String
+                    let title = notification["title"] as! String
+                    
+                    let notification1 = Notification(Title: title, Description: description, entryMessage: entry_message, exitMessage: exit_message, BeaconID: uuid_string + ":" + major_string + ":" + minor_string)
+                    
+                    
+                    //Add the newly created beacon and notifications to thier corresponding lists
+                    self.BeaconsList.append(beacon)
+                    self.notificationsList.append(notification1)
+                    
+                }
+                
+            }
+            
+            //Go through our new lists and link up the notifications to the beacons
+            self.linkBeacons()
+            
+            //print("finished linking beacons")
+            //print(self.beaconNotificationDictionary)
+        }
         
     }
-    
+    */
     
     //Creates dictionary entry for beacon/notification and begins monitoring for said beacon
     func enableNotifications(for beaconID: BeaconID, notification: Notification) {

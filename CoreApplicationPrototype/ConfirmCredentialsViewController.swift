@@ -10,9 +10,9 @@ import UIKit
 
 class ConfirmCredentialsViewController: UIViewController, UITextFieldDelegate {
     
-    var loginSuccess = false
-    var viewPassword = false
+    /************ Class Varibles ********/
     
+    var viewPassword = false
     
     /************ View Outlets *********/
     
@@ -40,10 +40,7 @@ class ConfirmCredentialsViewController: UIViewController, UITextFieldDelegate {
         // It will check specifically whether the credentials matched the current user, not any user
         let result = user.securityTest(emailField: emailField.text, passwordField: passwordField.text)
         
-        //loginSuccess = loginUser return item 0.
-        self.loginSuccess = result.0
-        
-        //Show the error, if no match found
+        //Show the error, if there was an error returned
         if(!result.0){
             let alertController = UIAlertController(title: "Error", message: result.1, preferredStyle: UIAlertControllerStyle.alert)
             alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))

@@ -142,7 +142,7 @@
                         <outlet property="acctMod" destination="JDW-tA-6wK" id="8Vt-1h-Igv"/>
                         <outlet property="logButton" destination="h64-J0-kwR" id="vJq-90-9sx"/>
                         <segue destination="K1h-S1-ycJ" kind="show" identifier="createAccount" id="XGi-6i-n2c"/>
-                        <segue destination="kjk-x8-OXx" kind="show" identifier="editAccount" id="ROH-DW-ZBm"/>
+                        <segue destination="u5I-Ea-zlm" kind="show" identifier="editAccount" id="KnM-t7-rkw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="soh-An-Ys1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -972,85 +972,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RrY-Tf-Kwm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="129" y="1396"/>
-        </scene>
-        <!--Confirm Credentials-->
-        <scene sceneID="LMr-O9-ZtM">
-            <objects>
-                <viewController title="Confirm Credentials" id="kjk-x8-OXx" customClass="ConfirmCredentialsViewController" customModule="CoreApplicationPrototype" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Wwy-8Z-Hhw"/>
-                        <viewControllerLayoutGuide type="bottom" id="j3e-gJ-l4v"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="RaK-hd-A4W">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r7H-P0-5Ao">
-                                <rect key="frame" x="0.0" y="-20" width="375" height="667"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPR-fr-zWF">
-                                        <rect key="frame" x="55" y="528" width="238" height="49"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                        <state key="normal" title="Confirn">
-                                            <color key="titleColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="confirmButtonPress:" destination="kjk-x8-OXx" eventType="touchUpInside" id="I4k-MU-Iy5"/>
-                                            <action selector="logInButtonPress:" destination="35z-UT-98c" eventType="touchUpInside" id="8QF-iq-hkN"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="view password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c5U-WX-SZn">
-                                        <rect key="frame" x="60" y="324" width="130" height="23"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Pgu-ZK-eco">
-                                        <rect key="frame" x="252" y="316" width="51" height="31"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                        <connections>
-                                            <action selector="updatePasswordVisibility:" destination="kjk-x8-OXx" eventType="valueChanged" id="c7b-2I-uil"/>
-                                            <action selector="updatePasswordVisibility:" destination="35z-UT-98c" eventType="valueChanged" id="gig-jQ-jlm"/>
-                                        </connections>
-                                    </switch>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="M5x-dc-Zev">
-                                        <rect key="frame" x="60" y="267" width="255" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="done" secureTextEntry="YES"/>
-                                    </textField>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Paulsens Logo White" translatesAutoresizingMaskIntoConstraints="NO" id="R6s-R5-igl">
-                                        <rect key="frame" x="68" y="99" width="239" height="124"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email address" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="nAe-2t-ByQ">
-                                        <rect key="frame" x="60" y="229" width="255" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done"/>
-                                    </textField>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="DPR-fr-zWF" secondAttribute="bottom" constant="90" id="EMV-Ct-ROW"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <connections>
-                        <outlet property="emailField" destination="nAe-2t-ByQ" id="8vM-fm-hHf"/>
-                        <outlet property="passwordField" destination="M5x-dc-Zev" id="hNf-DT-HmW"/>
-                        <segue destination="u5I-Ea-zlm" kind="show" identifier="validEdit" id="2AR-XR-lq7"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="a65-CN-1J8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2848.8000000000002" y="-1237.3313343328336"/>
         </scene>
         <!--Edit Account-->
         <scene sceneID="3ct-q0-x5n">
