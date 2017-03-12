@@ -13,11 +13,13 @@ struct event  {
     let year  : String!  // Year the event occurred
     let image : UIImage! // Image depicting event
     let title : String!
+    let des   : String!
     
-    init(year: String, image: UIImage, title: String) {
+    init(year: String, image: UIImage, title: String, des: String) {
         self.year = year
         self.image = image
         self.title = title
+        self.des = des
     }
 }
 
@@ -38,9 +40,9 @@ class HistoryViewController: UITableViewController {
                 var i = 0
                 for dict in historicalEventsList! {
                     print("Event \(i):")
-                    print(dict)
+                    print(dict["description"] as Any)
                     print("\n---\n")
-                    temp.append(event(year: dict["date"] as! String, image: #imageLiteral(resourceName: "Image0"), title: dict["title"] as! String))
+                    temp.append(event(year: dict["date"] as! String, image: #imageLiteral(resourceName: "Image0"), title: dict["title"] as! String, des: dict["description"] as! String))
                     i = i+1
                 }
               
