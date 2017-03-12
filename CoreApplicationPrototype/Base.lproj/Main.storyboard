@@ -516,6 +516,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="desLabel" destination="cj3-Wu-BwS" id="jeA-KP-Mnz"/>
                                     <outlet property="historyView" destination="Pre-Nw-WEP" id="mGh-1S-LDY"/>
                                     <outlet property="titleLabel" destination="UkL-xC-emO" id="tGe-p1-kd6"/>
                                     <outlet property="yearLabel" destination="6xz-Cz-OPi" id="Gy0-iY-8bL"/>

@@ -87,6 +87,7 @@ class HistoryViewController: UITableViewController {
         cell.yearLabel.text    = eventArray[indexPath.row].year  // Set label in custom cell
         cell.historyView.image = eventArray[indexPath.row].image // Set image in custom cell
         cell.titleLabel.text = eventArray[indexPath.row].title
+        cell.desLabel.text = eventArray[indexPath.row].des
         
         return cell
     }

@@ -13,6 +13,7 @@ class HistoryTableViewCell: UITableViewCell
     @IBOutlet weak var yearLabel: UILabel!   // Event Year
     @IBOutlet var historyView: UIImageView!  // Event Image
    
+    @IBOutlet weak var desLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!  // Event title
     
     class var expandedHeight: CGFloat { get { return 355 } }  //Height of custom view when expanded
