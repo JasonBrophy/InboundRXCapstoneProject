@@ -234,18 +234,22 @@ class WebCallController {
     // Returns an array of dictionaries, where each dictionary represents a beacon in the web server
     // Returns nil if the web server call does not correctly return data
     // NOTE: Returns data via closure
-    func getBeaconList(callback: @escaping (Array<Dictionary<String, AnyObject>>?) -> ()) {
+    func getBeaconList(callback: @escaping ((Bool, String, Array<Dictionary<String, AnyObject>>?)) -> ()) {
         // Log in
         webLogIn(loginCredentials: ["user": ["email": "test@test.com", "password": "password123"]])
 
         
-        // Call web server to return beacon list
+        // Call the web server to return the beacon list
         webCall(urlToCall: "http://paulsens-beacon.herokuapp.com/beacons.json") { (beaconJson) in
+            // If the beacon list was returned correctly, pass it to the closure
+            // Otherwise, retrieve the error message that was passed back from the web server and pass that to the closure
+            // If this error message cannot be retrieved, pass into the closure a generic erro message
             if let beaconList = beaconJson["beacons"] as? Array<Dictionary<String, AnyObject>>{
-                callback(beaconList)
-            }
-            else {
-                callback(nil)
+                callback((false, "No error detected.", beaconList))
+            } else if let error = beaconJson["error"] as? String {
+                callback((true, error, nil))
+            } else {
+                callback((true, "An unexpected error occured while attempting to get the beacon list.", nil))
             }
         }
     }
@@ -254,17 +258,21 @@ class WebCallController {
     // Returns an array of dictionaries, where each dictionary represents a historical event in the web server
     // Returns nil if the web server call does not correctly return data
     // NOTE: Returns data via closure
-    func getHistoricalEventList(callback: @escaping (Array<Dictionary<String, AnyObject>>?) -> ()) {
+    func getHistoricalEventList(callback: @escaping ((Bool, String, Array<Dictionary<String, AnyObject>>?)) -> ()) {
         // Log in
         webLogIn(loginCredentials: ["user": ["email": "test@test.com", "password": "password123"]])
         
-        // Call web server to return beacon list
+        // Call web server to return list of historical events
         webCall(urlToCall: "http://paulsens-beacon.herokuapp.com/historical_events.json") { (historicalEventsJson) in
+            // If the historical event list was returned correctly, pass it to the closure
+            // Otherwise, retrieve the error message that was passed back from the web server and pass that to the closure
+            // If this error message cannot be retrieved, pass into the closure a generic erro message
             if let historicalEventList = historicalEventsJson["historical_events"] as? Array<Dictionary<String, AnyObject>>{
-                callback(historicalEventList)
-            }
-            else {
-                callback(nil)
+                callback((false, "No error detected.", historicalEventList))
+            } else if let error = historicalEventsJson["error"] as? String {
+                callback((true, error, nil))
+            } else {
+                callback((true, "An unexpected error occured while attempting to get the list of historical events.", nil))
             }
         }
     }
@@ -273,12 +281,15 @@ class WebCallController {
     // Returns an array of dictionaries, where each dictionary represents a reward in the promotions table on the web server
     // Returns nil if the web server call does not correctly return data
     // NOTE: Returns data via closure
-    func getRewardsList(callback: @escaping (Array<Dictionary<String, AnyObject>>?) -> ()) {
+    func getRewardsList(callback: @escaping ((Bool, String, Array<Dictionary<String, AnyObject>>?)) -> ()) {
         // Log in
         webLogIn(loginCredentials: ["user": ["email": "test@test.com", "password": "password123"]])
 
-        // Call web server to return beacon list
+        // Call web server to return rewards list
         webCall(urlToCall: "http://paulsens-beacon.herokuapp.com/promotions.json") { (promotionsJson) in
+            // If the promotions list was returned correctly, extract all rewards and pass them to the closure
+            // Otherwise, retrieve the error message that was passed back from the web server and pass that to the closure
+            // If this error message cannot be retrieved, pass into the closure a generic erro message
             if let promotionsList = promotionsJson["promotions"] as? Array<Dictionary<String, AnyObject>> {
                 var rewardsList = [[String: AnyObject]]()
                 for promotion in promotionsList {
@@ -286,10 +297,11 @@ class WebCallController {
                         rewardsList.append(promotion)
                     }
                 }
-                callback(rewardsList)
-            }
-            else {
-                callback(nil)
+                callback((false, "No error detected.", rewardsList))
+            } else if let error = promotionsJson["error"] as? String {
+                callback((true, error, nil))
+            } else {
+                callback((true, "An unexpected error occured while attempting to get the list of historical events.", nil))
             }
         }
     }
@@ -298,12 +310,15 @@ class WebCallController {
     // Returns an array of dictionaries, where each dictionary represents a daily deal in the promotions table on the web server
     // Returns nil if the web server call does not correctly return data
     // NOTE: Returns data via closure
-    func getDailyDealList(callback: @escaping (Array<Dictionary<String, AnyObject>>?) -> ()) {
+    func getDailyDealList(callback: @escaping ((Bool, String, Array<Dictionary<String, AnyObject>>?)) -> ()) {
         // Log in
         webLogIn(loginCredentials: ["user": ["email": "test@test.com", "password": "password123"]])
         
-        // Call web server to return beacon list
+        // Call web server to return daily deals list
         webCall(urlToCall: "http://paulsens-beacon.herokuapp.com/promotions.json") { (promotionsJson) in
+            // If the promotions list was returned correctly, extract all daily deals and pass them to the closure
+            // Otherwise, retrieve the error message that was passed back from the web server and pass that to the closure
+            // If this error message cannot be retrieved, pass into the closure a generic erro message
             if let promotionsList = promotionsJson["promotions"] as? Array<Dictionary<String, AnyObject>> {
                 var dailyDealList = [[String: AnyObject]]()
                 for promotion in promotionsList {
@@ -311,10 +326,11 @@ class WebCallController {
                         dailyDealList.append(promotion)
                     }
                 }
-                callback(dailyDealList)
-            }
-            else {
-                callback(nil)
+                callback((false, "No error detected.", dailyDealList))
+            } else if let error = promotionsJson["error"] as? String {
+                callback((true, error, nil))
+            } else {
+                callback((true, "An unexpected error occured while attempting to get the list of historical events.", nil))
             }
         }
     }
@@ -356,25 +372,27 @@ class WebCallController {
     
     // Returns a string representing the point value of the currently logged in user
     // Returns nil if point value cannot be extracted from the web call
-    func getUserPoints(callback: @escaping (String?) -> ()) {
+    func getUserPoints(callback: @escaping ((Bool, String, String?)) -> ()) {
         // Call web server to return the user's points
         webCall(urlToCall: "http://paulsens-beacon.herokuapp.com/account/points.json") { (pointsJson) in
             if let points = pointsJson["value"] as? String {
-                callback(points)
+                callback((false, "No error.", points))
             }
-            else {
-                callback(nil)
+            else if let error = pointsJson["error"] as? String {
+                callback((true, error, nil))
+            } else {
+                callback((true, "An unexpected error occured while attempting to get the user's point value.", nil))
             }
         }
     }
-    
+
     
     // Edit an existing user's info
     // Expected dictionary formats:
-    // ["email": emailString, "password": edited_passwordString]
-    // ["email": emailString, "password": edited_passwordString, "address": edited_addressString]
-    // ["email": emailString, "password": edited_passwordString, "phone": edited_phoneString]
-    // ["email": emailString, "password": edited_passwordString, "address": edited_addressString, "phone": edited_phoneString]
+    // ["email": emailString, "password": edited_passwordString, "password_confirmation": edited_passwordString]
+    // ["email": emailString, "password": edited_passwordString, "password_confirmation": edited_passwordString, "address": edited_addressString]
+    // ["email": emailString, "password": edited_passwordString, "password_confirmation": edited_passwordString, "phone": edited_phoneString]
+    // ["email": emailString, "password": edited_passwordString, "password_confirmation": edited_passwordString, "address": edited_addressString, "phone": edited_phoneString]
     func editUser(userDict: Dictionary<String, String>) {
         // Create a new dictionary in the format which the web server expects
         // ["user": dictionaryWithUserInfo]
