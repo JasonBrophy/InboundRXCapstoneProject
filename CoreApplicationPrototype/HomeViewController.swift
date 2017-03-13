@@ -12,6 +12,8 @@ var rewardPoints = 0
 
 class HomeViewController: UIViewController {
 
+  
+    
     let webCallController = WebCallController()
     
     var userTotalRewardPoints: Int {
@@ -23,9 +25,9 @@ class HomeViewController: UIViewController {
     @IBAction func unwindtoHome(segue:UIStoryboardSegue) { }
 
    
-    @IBOutlet weak var rewardLabel: UILabel!
+ 
     
-    @IBOutlet weak var rewardPointsLabel: UILabel!
+    
     
     internal func updateHomeUI() {
         //fetch users total points

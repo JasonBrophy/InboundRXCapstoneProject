@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Zp1-tX-188">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Zp1-tX-188">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -384,7 +384,7 @@
                                                 <rect key="frame" x="38" y="50" width="300" height="108"/>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="i3O-Zm-hjG">
-                                                <rect key="frame" x="149" y="413" width="77" height="36"/>
+                                                <rect key="frame" x="149.5" y="413" width="77" height="36"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Abi-7a-34M">
                                                         <rect key="frame" x="0.0" y="0.0" width="77" height="36"/>
@@ -485,7 +485,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="310"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Zn-dx-0G0" id="xRB-xs-dKJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="309"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="310"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6xz-Cz-OPi">
@@ -1274,10 +1274,10 @@
             </objects>
             <point key="canvasLocation" x="1832.8" y="-321.58920539730138"/>
         </scene>
-        <!--View Controller-->
+        <!--Order View Controller-->
         <scene sceneID="VEo-gi-vVw">
             <objects>
-                <viewController id="zP3-y7-P6d" sceneMemberID="viewController">
+                <viewController id="zP3-y7-P6d" customClass="OrderViewController" customModule="CoreApplicationPrototype" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1ip-8Q-dqK"/>
                         <viewControllerLayoutGuide type="bottom" id="W7m-nv-Xby"/>
@@ -1294,6 +1294,9 @@
                                 <state key="normal" title="Online Prescription">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="OrderOnline" destination="zP3-y7-P6d" eventType="touchUpInside" id="5bf-tO-Dou"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
