@@ -28,7 +28,7 @@ class BeaconNotificationsManager: NSObject, ESTBeaconManagerDelegate {
         //Grabs all Notifications and Beacons from web server
         //print("Requesting beacons")
         
-      //  retrieveBeacons()
+        //retrieveBeacons()
         
         //print(beaconNotificationDictionary)
         

@@ -45,7 +45,10 @@ class DealsViewController: UIViewController {
     /*
         Right now updateDeals() updates rewards since there is no test data with daily_deal == true
     */
+    
+    
     func updateDeals() {
+        /*
         var temp: [Product] = []
         let webCallController = WebCallController()
         webCallController.getRewardsList/* getDailyDealList */ { (rewardsList/* dailyDealList */) in
@@ -60,7 +63,7 @@ class DealsViewController: UIViewController {
                 }
                 self.products = temp
             }
-        }
+        } */
     }
 
 }
