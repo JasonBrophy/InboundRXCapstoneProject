@@ -28,7 +28,7 @@ class BeaconNotificationsManager: NSObject, ESTBeaconManagerDelegate {
         //Grabs all Notifications and Beacons from web server
         //print("Requesting beacons")
         
-        retrieveBeacons()
+      //  retrieveBeacons()
         
         //print(beaconNotificationDictionary)
         
@@ -60,7 +60,7 @@ class BeaconNotificationsManager: NSObject, ESTBeaconManagerDelegate {
         }
     }
     
-    
+/*
     ////Make network call to web server for Beacons and fills local beaconList
     private func retrieveBeacons() {
         
@@ -112,7 +112,7 @@ class BeaconNotificationsManager: NSObject, ESTBeaconManagerDelegate {
         }
         
     }
-    
+    */
     
     //Creates dictionary entry for beacon/notification and begins monitoring for said beacon
     func enableNotifications(for beaconID: BeaconID, notification: Notification) {

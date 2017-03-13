@@ -10,15 +10,21 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
+    
+    /************ Class Varibles ********/
    
     var notificationsOn = true
+    
+    /************ View Outlets **********/
     
     @IBOutlet weak var NotificationLabel: UILabel!
     
     @IBOutlet weak var logButton: UIButton!
     
     @IBOutlet weak var acctMod: UIButton!
-    
+
+    /************ View Actions **********/
+
     @IBAction func toggleNotifications(_ sender: UISwitch) {
         if (sender.isOn)    {
             NotificationLabel.text = "Notifications: On"
@@ -30,30 +36,16 @@ class SettingsViewController: UIViewController {
         }
     }
     
-    // If the user has pushed the logout button, log the user out, if there is a failure, display it.
-    // This error is more app related than user related, so it is possible it should have different behavior.
-    func logOutPush(){
-        //Fetch the user from app delegate, then call the user logOut function.
+    
+    // This function operates differently depending on the user login status.
+    // If the user is logged in, it needs to perform the work in logOutPush, as the
+    // user is requesting a logout.  The button title is then set to login.
+    // Login actually requires the user login to guarantee the button title flip, so
+    // it is not done here.
+    @IBAction func handleLogTouch() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let user = appDelegate.user
-        let result = user.logOut()
-        //Present the error if the logOut function returned false, using the string portion of the tuple as the message.
-        if(!result.0){
-            let alertController = UIAlertController(title: "Error", message: result.1, preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alertController, animated:true, completion:nil)
-        }
-    }
-    
-    // This function operates differently depending on the status of the logButton
-    // If the message is logout, it needs to perform the work in logOutPush, as the
-    // User is requesting a logout.  The button title is then set to login.
-    // Login actually requires the user login to guarantee the button title flip, so 
-    // It is not done here.
-    @IBAction func handleLogTouch() {
-        // I would change this to be based on user login rather than button title
-        // Feels like bad form
-        if(logButton.currentTitle == "Log Out"){
+        if(user.loggedIn()){
             // No error return required, if this function fails, its
             // because there was no user to logout, so the text should be flipped
             // regardless.
@@ -61,6 +53,7 @@ class SettingsViewController: UIViewController {
             self.logButton.setTitle("Log In", for: UIControlState.normal)
         }
     }
+    
     
     // If the user hits the acctMod button, it has to do different behavior
     // based on whether a user is logged in or not.  It segues to the correct
@@ -80,11 +73,30 @@ class SettingsViewController: UIViewController {
         }
     }
     
-    // This function is overridden to update the view on appearance
+    /************ Additional Controller Functions ******/
+    
+    // If the user has pushed the logout button, log the user out, if there is a failure, display it.
+    // This error is more app related than user related, so it is possible it should have different behavior.
+    func logOutPush(){
+        //Fetch the user from app delegate, then call the user logOut function.
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let user = appDelegate.user
+        let result = user.logOut()
+        //Present the error if the logOut function returned false, using the string portion of the tuple as the message.
+        if(!result.0){
+            let alertController = UIAlertController(title: "Error", message: result.1, preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alertController, animated:true, completion:nil)
+        }
+    }
+    
+    /************ Default Controller Functions *********/
+    
+    // This function is overridden to update the view on pending appearance
     // This forces the login/logout and edit/create account buttons to take
     // the correct title depending on user login status.
-    override func viewDidAppear(_ animated: Bool){
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool){
+        super.viewWillAppear(animated)
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let user = appDelegate.user
         if user.loggedIn(){
@@ -94,24 +106,25 @@ class SettingsViewController: UIViewController {
         else{
             logButton.setTitle("Log In", for: UIControlState.normal)
             acctMod.setTitle("Create Account", for: UIControlState.normal)
-
         }
-        
-        
     }
     
-    //Update the Notifcation Label based on Notification setting,
-    // and logButton and acctMod button to the correct title depending on log status.
+    
+    // Update the Notifcation Label based on Notification setting,
+    // and logButton and acctMod button to the correct title depending on login status.
     override func viewDidLoad() {
         super.viewDidLoad()
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         if(notificationsOn){
             NotificationLabel.text = "Notifications: On"
         }
         else{
             NotificationLabel.text = "Notifications: Off"
         }
+        
+        // Fetch the user to check login status
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let user = appDelegate.user
+        
         if user.loggedIn(){
             logButton.setTitle("Log Out", for: UIControlState.normal)
             acctMod.setTitle("Edit Account", for: UIControlState.normal)
@@ -120,30 +133,18 @@ class SettingsViewController: UIViewController {
             logButton.setTitle("Log In", for: UIControlState.normal)
             acctMod.setTitle("Create Account", for: UIControlState.normal)
         }
-        
-
-        // Do any additional setup after loading the view.
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
+    
+    // If the segue being performed is the logSegue, perform the actions related to that button touch.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "logSegue"){
             self.handleLogTouch()
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

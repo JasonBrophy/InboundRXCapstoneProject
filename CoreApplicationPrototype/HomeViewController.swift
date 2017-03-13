@@ -41,11 +41,17 @@ class HomeViewController: UIViewController {
         
         updateHomeUI()
         
+//        let response = webCallController.createNewUser(userDict: ["email": "neveruse@test.com", "password": "123456"])
+//        print("Response: ")
+//        print(response)
+        //webCallController.userLogIn(userDict: ["email": "user@test.com", "password": "nopenope"])
+        //webCallController.editUser(userDict: ["email": "user@test.com", "password": "qwerty"])
+        //webCallController.userLogOut()
         
         /*
-        webCallController.printBeaconList()
-        webCallController.getBeaconList { (beaconList) in
-            if beaconList != nil {
+        webCallController.getBeaconList { (tuple: (Bool, String, Array<Dictionary<String, AnyObject>>?)) in
+            let (isError, error, beaconList) = tuple
+            if isError == false {
                 var i = 0
                 for dict in beaconList! {
                     print("Dictionary \(i):")
@@ -53,9 +59,10 @@ class HomeViewController: UIViewController {
                     print("\n---\n")
                     i = i+1
                 }
+            } else {
+                print("There was an error: "+error)
             }
         }
-        
         
         webCallController.getHistoricalEventList { (historicalEventsList) in
             if historicalEventsList != nil {
