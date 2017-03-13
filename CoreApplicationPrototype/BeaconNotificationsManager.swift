@@ -11,7 +11,10 @@ import UserNotifications
 
 class BeaconNotificationsManager: NSObject, ESTBeaconManagerDelegate {
     
+    //Create instance of beacon manager from the Estimote Framework
     private let beaconManager = ESTBeaconManager()
+    
+    // Create instance of web controller to interface with the Web Server
     private let webCallController = WebCallController()
     
     //lists to hold all notification and beacons
@@ -35,6 +38,7 @@ class BeaconNotificationsManager: NSObject, ESTBeaconManagerDelegate {
         self.beaconManager.delegate = self
         self.beaconManager.requestAlwaysAuthorization() // Launch Beacon in background
         
+        //Request to display notifications
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) {(accepted, error) in
             if !accepted {
                 print("Notification access denied.")
@@ -53,15 +57,17 @@ class BeaconNotificationsManager: NSObject, ESTBeaconManagerDelegate {
                 for beacon in BeaconsList {
                     if beacon.asString == beaconID {
                         
+                        //Start monitoring for this beacon with this notification
                         enableNotifications(for: beacon, notification: notification)
                     }
                 }
             }
         }
     }
+   
+    /*
     
-/*
-    ////Make network call to web server for Beacons and fills local beaconList
+    ////Make network call to web server for Beacons and fills local beaconList and notification list
     private func retrieveBeacons() {
         
         
@@ -75,13 +81,19 @@ class BeaconNotificationsManager: NSObject, ESTBeaconManagerDelegate {
                 for dict in beaconList! {
                     
                 
-                    //create beacon object
+                    //create beacon object, pulling from the dictionary recieved
                     let uuid = dict["uuid"] as! String
                     let uuid_string = dict["uuid"] as! String
                     let minor_string = dict["minor_uuid"] as! String
                     let major_string = dict["major_uuid"] as! String
                     
-                    let beacon = BeaconID(UUIDString: uuid, major: UInt16(major_string)!, minor: UInt16(minor_string)!)
+                    //create instance of this beacon
+                    let beacon = BeaconID(UUIDString: uuid, major: UInt16(major_string) ?? -1, minor: UInt16(minor_string) ?? -1)
+                    
+                    //if any of the values failed in this beacon, drop this beacon and move to the next
+                    if (beacon.minor == -1 || beacon.major == -1) {
+                        continue
+                    }
                     
                     
                     //grab array of notifications contained in the beacon. This should only contain one element
@@ -107,21 +119,26 @@ class BeaconNotificationsManager: NSObject, ESTBeaconManagerDelegate {
             //Go through our new lists and link up the notifications to the beacons
             self.linkBeacons()
             
-            //print("finished linking beacons")
-            //print(self.beaconNotificationDictionary)
         }
         
     }
-    */
+ */
+    
     
     //Creates dictionary entry for beacon/notification and begins monitoring for said beacon
     func enableNotifications(for beaconID: BeaconID, notification: Notification) {
         let beaconRegion = beaconID.asBeaconRegion
-        self.beaconNotificationDictionary[beaconID] = notification
-        self.beaconManager.startMonitoring(for: beaconRegion)
+        self.beaconNotificationDictionary[beaconID] = notification //create dictionary entry
+        self.beaconManager.startMonitoring(for: beaconRegion)   //begin monitoring for this beacon
     }
     
-    // Display beacon enter notification
+    
+    /* This function is called every time a beacon enters the range of the device.
+        The Range at which this is triggerd is dependent on the power that the Beacon is set to, 
+        which is set using the Estimote applicatoin. 
+ 
+        This will not be called if the beacon is already in range. It is only called when a beacon "enters"
+        Once entered, this function finds the beacon that entered and displays the corresponsing "entry_message" notification ***/
     func beaconManager(_ manager: Any, didEnter region: CLBeaconRegion) {
         
         //find the beacon that entered
@@ -150,7 +167,10 @@ class BeaconNotificationsManager: NSObject, ESTBeaconManagerDelegate {
         }
     }
     
-    // Display beacon exit notification
+    /* Display beacon exit notification
+        Similar to the didEnterRegion function, but triggers 30 seconds after the device is out of beacon range
+        Exit messages are optional, so for most beacons, this function is not display a notification
+    */
     func beaconManager(_ manager: Any, didExitRegion region: CLBeaconRegion) {
         
         //Find the beacon that exited
@@ -171,7 +191,7 @@ class BeaconNotificationsManager: NSObject, ESTBeaconManagerDelegate {
     }
     
     
-    // Setup notification message
+    // Setup iOS 10 notifications for the given string
     fileprivate func showNotificationWithMessage(_ message: String) {
         
         let content = UNMutableNotificationContent()  // Create notification content
@@ -186,9 +206,8 @@ class BeaconNotificationsManager: NSObject, ESTBeaconManagerDelegate {
         let notification = UNNotificationRequest(identifier: "Entered", content: content, trigger: trigger)
         
         
-        //Removes pending Notifications to prevent duplicates
-        //UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         
+        //add the newly created notification to the notification center to be displayed
         UNUserNotificationCenter.current().add(notification) {(error) in
             if let error = error {
                 print("Uh oh! We had an error: \(error)")
@@ -210,6 +229,7 @@ class BeaconNotificationsManager: NSObject, ESTBeaconManagerDelegate {
     
 }
 
+//extension that allows notifications to be displayed within out application
 extension BeaconNotificationsManager: UNUserNotificationCenterDelegate
 {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {

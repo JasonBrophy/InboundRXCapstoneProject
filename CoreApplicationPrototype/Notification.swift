@@ -6,6 +6,8 @@
 //  Copyright © 2017 InboundRXCapstone. All rights reserved.
 //
 
+/* Simple mondel for holding notificatoin information, along with the correcponding Beacon */
+
 import Foundation
 
 class Notification {
@@ -28,10 +30,5 @@ class Notification {
         self.BeaconID = BeaconID
         
     }
-    
-    public func attatchBeacon(BeaconID: String) {
-        self.BeaconID = BeaconID
-    }
-    
     
 }
