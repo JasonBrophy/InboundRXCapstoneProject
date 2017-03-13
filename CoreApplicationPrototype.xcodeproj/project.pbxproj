@@ -23,13 +23,11 @@
 		7E6F04061E25947800D0F41A /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F04051E25947800D0F41A /* LogInViewController.swift */; };
 		7E6F04081E25949A00D0F41A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F04071E25949A00D0F41A /* SettingsViewController.swift */; };
 		7E6F040A1E2594B900D0F41A /* AccountCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F04091E2594B900D0F41A /* AccountCreationViewController.swift */; };
-		7ECF68B81E31CA8F00AF3511 /* DealsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF68B51E31CA8F00AF3511 /* DealsTableViewCell.swift */; };
-		7ECF68B91E31CA8F00AF3511 /* DealsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ECF68B61E31CA8F00AF3511 /* DealsTableViewCell.xib */; };
-		7ECF68BA1E31CA8F00AF3511 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF68B71E31CA8F00AF3511 /* HomeTableViewController.swift */; };
-		7ECF68C11E32A4B800AF3511 /* DealsPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF68BF1E32A4B800AF3511 /* DealsPageVC.swift */; };
-		7ECF68CC1E32B04500AF3511 /* DealsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF68CB1E32B04500AF3511 /* DealsViewController.swift */; };
 		7ECF68D01E3AC24A00AF3511 /* EstimoteSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ECF68CF1E3AC24A00AF3511 /* EstimoteSDK.framework */; };
 		7F3A28401E53FE0300EFAE30 /* RewardsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3A283F1E53FE0300EFAE30 /* RewardsCollectionViewCell.swift */; };
+		7F70D6E11E76BA15004C207D /* DealsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F70D6E01E76BA15004C207D /* DealsViewController.swift */; };
+		7F70D6E31E76BAB1004C207D /* DealsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F70D6E21E76BAB1004C207D /* DealsCollectionViewCell.swift */; };
+		7F70D6E71E76CAB0004C207D /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F70D6E61E76CAB0004C207D /* DetailsViewController.swift */; };
 		A364DB541E469BAB00B38C11 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A364DB531E469BAB00B38C11 /* User.swift */; };
 		A3C2E9A31E63CF07001BC63B /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2E9A21E63CF07001BC63B /* PopUpViewController.swift */; };
 		DF2538A91E642B0C00360F8C /* WebCallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2538A81E642B0C00360F8C /* WebCallController.swift */; };
@@ -74,14 +72,12 @@
 		7E6F04051E25947800D0F41A /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		7E6F04071E25949A00D0F41A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7E6F04091E2594B900D0F41A /* AccountCreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCreationViewController.swift; sourceTree = "<group>"; };
-		7ECF68B51E31CA8F00AF3511 /* DealsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealsTableViewCell.swift; sourceTree = "<group>"; };
-		7ECF68B61E31CA8F00AF3511 /* DealsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DealsTableViewCell.xib; sourceTree = "<group>"; };
-		7ECF68B71E31CA8F00AF3511 /* HomeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
-		7ECF68BF1E32A4B800AF3511 /* DealsPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealsPageVC.swift; sourceTree = "<group>"; };
-		7ECF68CB1E32B04500AF3511 /* DealsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealsViewController.swift; sourceTree = "<group>"; };
 		7ECF68CF1E3AC24A00AF3511 /* EstimoteSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = EstimoteSDK.framework; sourceTree = "<group>"; };
 		7ECF68D11E3AC46600AF3511 /* ObjCBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjCBridge.h; sourceTree = "<group>"; };
 		7F3A283F1E53FE0300EFAE30 /* RewardsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RewardsCollectionViewCell.swift; path = ../RewardsCollectionViewCell.swift; sourceTree = "<group>"; };
+		7F70D6E01E76BA15004C207D /* DealsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DealsViewController.swift; path = ../DealsViewController.swift; sourceTree = "<group>"; };
+		7F70D6E21E76BAB1004C207D /* DealsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealsCollectionViewCell.swift; sourceTree = "<group>"; };
+		7F70D6E61E76CAB0004C207D /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		A364DB531E469BAB00B38C11 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
 		A3C2E9A21E63CF07001BC63B /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		DF2538A81E642B0C00360F8C /* WebCallController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebCallController.swift; sourceTree = "<group>"; };
@@ -184,19 +180,17 @@
 				DF2538A51E642A1A00360F8C /* WebCallFiles */,
 				7ECF68D11E3AC46600AF3511 /* ObjCBridge.h */,
 				7ECF68D21E3AC47E00AF3511 /* BeaconFiles */,
-				7ECF68CB1E32B04500AF3511 /* DealsViewController.swift */,
-				7ECF68B51E31CA8F00AF3511 /* DealsTableViewCell.swift */,
 				2F92EBCE1E66C35D00B8C699 /* ConfirmCredentialsViewController.swift */,
+				7F70D6E61E76CAB0004C207D /* DetailsViewController.swift */,
+				7F70D6E01E76BA15004C207D /* DealsViewController.swift */,
+				7F70D6E21E76BAB1004C207D /* DealsCollectionViewCell.swift */,
 				2F424BDB1E5A90C500143BA0 /* EditAccountViewController.swift */,
-				7ECF68B61E31CA8F00AF3511 /* DealsTableViewCell.xib */,
-				7ECF68B71E31CA8F00AF3511 /* HomeTableViewController.swift */,
 				DF2556F31DE422EC006B3CC5 /* HomeViewController.swift */,
 				7E6F04051E25947800D0F41A /* LogInViewController.swift */,
 				7E6F04071E25949A00D0F41A /* SettingsViewController.swift */,
 				2F83ACCB1E6298B000DDC9DD /* RootTabViewController.swift */,
 				7E6F04091E2594B900D0F41A /* AccountCreationViewController.swift */,
 				7E6F03FF1E2591DC00D0F41A /* AboutViewController.swift */,
-				7ECF68BF1E32A4B800AF3511 /* DealsPageVC.swift */,
 				7E6F04031E25922500D0F41A /* RewardsViewController.swift */,
 				7F3A283F1E53FE0300EFAE30 /* RewardsCollectionViewCell.swift */,
 				A3C2E9A21E63CF07001BC63B /* PopUpViewController.swift */,
@@ -339,7 +333,6 @@
 			files = (
 				2FEDDAD41E2C4DC50095013F /* .gitignore in Resources */,
 				DF2556FC1DE422EC006B3CC5 /* LaunchScreen.storyboard in Resources */,
-				7ECF68B91E31CA8F00AF3511 /* DealsTableViewCell.xib in Resources */,
 				DF2556F71DE422EC006B3CC5 /* Main.storyboard in Resources */,
 				48CD79171E6BCCE900694253 /* Assets.xcassets in Resources */,
 			);
@@ -367,24 +360,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				2325D4291E42EE3900996C33 /* BeaconNotificationsManager.swift in Sources */,
+				7F70D6E71E76CAB0004C207D /* DetailsViewController.swift in Sources */,
 				23E7282B1E29D6F800B25F3D /* HistoryTableViewCell.swift in Sources */,
 				7E577B341E4E7912009B8BEA /* Notification.swift in Sources */,
 				A3C2E9A31E63CF07001BC63B /* PopUpViewController.swift in Sources */,
-				7ECF68BA1E31CA8F00AF3511 /* HomeTableViewController.swift in Sources */,
-				7ECF68B81E31CA8F00AF3511 /* DealsTableViewCell.swift in Sources */,
-				7ECF68C11E32A4B800AF3511 /* DealsPageVC.swift in Sources */,
 				DF2538A91E642B0C00360F8C /* WebCallController.swift in Sources */,
 				7E6F04041E25922500D0F41A /* RewardsViewController.swift in Sources */,
 				7E6F04001E2591DC00D0F41A /* AboutViewController.swift in Sources */,
 				A364DB541E469BAB00B38C11 /* User.swift in Sources */,
+				7F70D6E31E76BAB1004C207D /* DealsCollectionViewCell.swift in Sources */,
 				2F83ACCC1E6298B000DDC9DD /* RootTabViewController.swift in Sources */,
 				2F92EBCF1E66C35D00B8C699 /* ConfirmCredentialsViewController.swift in Sources */,
 				2F424BDC1E5A90C500143BA0 /* EditAccountViewController.swift in Sources */,
+				7F70D6E11E76BA15004C207D /* DealsViewController.swift in Sources */,
 				7E6F04081E25949A00D0F41A /* SettingsViewController.swift in Sources */,
 				7F3A28401E53FE0300EFAE30 /* RewardsCollectionViewCell.swift in Sources */,
 				7E6F04061E25947800D0F41A /* LogInViewController.swift in Sources */,
 				DF2556F41DE422EC006B3CC5 /* HomeViewController.swift in Sources */,
-				7ECF68CC1E32B04500AF3511 /* DealsViewController.swift in Sources */,
 				DF2556F21DE422EC006B3CC5 /* AppDelegate.swift in Sources */,
 				7E6F04021E25920C00D0F41A /* HistoryViewController.swift in Sources */,
 				23A107A91E46CB33001FE7AF /* UserNotificationsManager.swift in Sources */,

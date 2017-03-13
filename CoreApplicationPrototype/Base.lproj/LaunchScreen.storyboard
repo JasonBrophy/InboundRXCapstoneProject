@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Paulsens_Logo_Gold3" translatesAutoresizingMaskIntoConstraints="NO" id="lJ4-cB-5IL">
-                                <rect key="frame" x="66.5" y="269" width="242" height="129"/>
+                                <rect key="frame" x="106" y="290" width="163" height="87"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="lJ4-cB-5IL" secondAttribute="height" multiplier="15:8" id="nlQ-JA-fad"/>
                                 </constraints>
@@ -33,7 +33,6 @@
                         <constraints>
                             <constraint firstItem="lJ4-cB-5IL" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="3v5-PH-bZi"/>
                             <constraint firstItem="lJ4-cB-5IL" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="RbT-I8-X2v"/>
-                            <constraint firstItem="lJ4-cB-5IL" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="249" id="j5C-nt-FIX"/>
                         </constraints>
                     </view>
                 </viewController>
