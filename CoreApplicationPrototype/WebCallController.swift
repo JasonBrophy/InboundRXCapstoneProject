@@ -2,9 +2,20 @@
 //  WebCallController.swift
 //  CoreApplicationPrototype
 //
-//  Created by Thaddeus Sundin on 2/27/17.
-//  Copyright © 2017 InboundRXCapstone. All rights reserved.
+//  InboundRX iOS RFID Beacon Detecting Application
+//  https://gitlab.com/InboundRX-Capstone/Paulsens-iOS-App
 //
+//  (c) 2017 Brett Chafin, Jason Brophy, Luke Kwak, Paul Huynh, Jason Custodio, Cher Moua, Thaddeus Sundin
+//
+//  You are free to use, copy, modify, and distribute this file, with attribution,
+//  under the terms of the MIT license. See "license.txt" for more info.
+
+
+/*
+ Makes webcalls to the server. Creates dictionary array based on the JSON data received.
+ Displays error if JSON data is invalid.
+ Type of webcalls: beacons, history, user info, deals, rewards
+*/
 
 /*
  Important note about making HTTP web calls:
@@ -12,7 +23,7 @@
  Add the key "App Transport Security Settings" of type Dictionary
  Under this key, add the subkey "Allow Arbitrary Loads" of type Boolean and set it to "YES"
  (If this still doesn't work, clean the project (Shift+Command+k))
- */
+*/
 
 class WebCallController {
     
