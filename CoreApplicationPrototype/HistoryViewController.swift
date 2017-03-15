@@ -38,6 +38,9 @@ struct event  {
 
 class HistoryViewController: UITableViewController {
     
+    @IBOutlet var historyTableView: UITableView!
+    
+    
     let cellID = "cell"                      // Cell identifier for dequeue
     var selectedIndexPath  = -1              // -1 means no rows exist in section
     private var eventArray = [event]()       // Array of events for cells
@@ -45,42 +48,41 @@ class HistoryViewController: UITableViewController {
     let webCallController = WebCallController()
     // Load data into table view cells
     
-    func loadHistory(){
-        var temp: [event] = []
+    func loadHistory() {
         //server call
-//        webCallController.getHistoricalEventList { (historicalEventsList) in
-//            if historicalEventsList != nil {
-//                var i = 0
-//                for dict in historicalEventsList! {
-//                    print("Event \(i):")
-//                    print(dict)
-//                    print("\n---\n")
-//                    temp.append(event(year: dict["date"] as! String, image: #imageLiteral(resourceName: "Image0")))
-//                    i = i+1
-//                }
-//              
-//                self.eventArray = temp
-//                
-//            }
-//        }
+        webCallController.getHistoricalEventList { (isError, errorMessage, historicalEventsList) in
+            if(isError){
+                return
+            }
+            if historicalEventsList != nil {
+                var i = 0
+                for dict in historicalEventsList! {
+                    print("Event \(i):")
+                    print(dict)
+                    print("\n---\n")
+                    self.eventArray.append(event(year: dict["date"] as! String, image: #imageLiteral(resourceName: "Image0"), title: dict["title"] as! String, des: dict["description"] as! String))
+                    i = i+1
+                }
+                // Make sure the UI update occurs on the MAIN thread
+                DispatchQueue.main.async(execute: { () -> Void in
+                    self.historyTableView.reloadData()
+                })
+                
+            }
+        }
     }
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        tableView.tableFooterView = UIView() // Create blank rows after filled in cells
-        //eventArray = [event(year:"1969", image: #imageLiteral(resourceName: "Image0")),
-        //              event(year:"1972", image: #imageLiteral(resourceName: "Image1")),
-        //              event(year:"1984", image: #imageLiteral(resourceName: "Image0")),
-        //              event(year:"1993", image: #imageLiteral(resourceName: "Image1"))
-        //             ]
         loadHistory()
+        tableView.tableFooterView = UIView() // Create blank rows after filled in cells
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadHistory()
+        self.historyTableView.reloadData()
     }
     
     // CONFIGURING A TABLE VIEW (REQUIRED)
@@ -105,6 +107,7 @@ class HistoryViewController: UITableViewController {
         return cell
     }
     
+    
     // MANAGING SELECTIONS
     // Tells the delegate that the specified row is now selected
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -118,6 +121,7 @@ class HistoryViewController: UITableViewController {
         
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }
+    
     
     // CONFIGURING ROWS FOR THE TABLE VIEW
     // Asks the delegate for the height to use for a row in a specified location.

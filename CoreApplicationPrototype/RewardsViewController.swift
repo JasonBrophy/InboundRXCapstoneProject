@@ -88,7 +88,7 @@ class RewardsViewController: UIViewController{
             if(isError){
                 return
             }
-            
+
             if rewardsList != nil {
                 for dict in rewardsList! {
                     if(dict["daily_deal"] as! Bool == false){
