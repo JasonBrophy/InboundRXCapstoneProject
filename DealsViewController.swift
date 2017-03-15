@@ -54,27 +54,25 @@ class DealsViewController: UIViewController {
     /*
         Right now updateDeals() updates rewards since there is no test data with daily_deal == true
     */
-    
-    
     func updateDeals() {
-        /*
         var temp: [Product] = []
         let webCallController = WebCallController()
-        webCallController.getRewardsList/* getDailyDealList */ { (rewardsList/* dailyDealList */) in
-            if rewardsList/* dailyDealList */ != nil {
-                for dict in rewardsList! /* dailyDealList! */ {
-                    if(dict["daily_deal"] as! Bool == false /*true*/ ){
-                        temp.append(Product(title: dict["title"] as! String,
-                                            description: dict["description"] as! String,
-                                            cost: dict["cost"] as! Int,
-                                            image: UIImage(named: "1reward")!))
-                    }
+        webCallController.getRewardsList { (tuple: (Bool, String, Array<Dictionary<String, AnyObject>>?)) in
+            let (isError, error, dailyDealsList) = tuple
+            if isError == false {
+                for dict in dailyDealsList! {
+                    temp.append(Product(title: dict["title"] as! String,
+                                        description: dict["description"] as! String,
+                                        cost: dict["cost"] as! Int,
+                                        image: UIImage(named: "1reward")!,
+                                        id: dict["id"] as! Int))
                 }
                 self.products = temp
+            } else {
+                print("There was an error: "+error)
             }
-        } */
+        }
     }
-
 }
 
 extension DealsViewController : UICollectionViewDataSource, UICollectionViewDelegate {
