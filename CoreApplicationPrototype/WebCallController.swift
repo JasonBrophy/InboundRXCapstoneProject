@@ -303,26 +303,27 @@ class WebCallController {
     func getBeaconList(callback: @escaping ((Bool, String, Array<Dictionary<String, AnyObject>>?)) -> ()) {
         // Log in
         // Catch an error if it occurs
-        webLogIn(loginCredentials: ["user": ["email": "test@test.com", "password": "password123"]]) {(dataJson) in
+        webLogIn(loginCredentials: ["user": ["email": "test@test.com", "password": "password123"]]) { (dataJson) in
             if let error = dataJson["error"] as? String {
                 callback((true, error, nil))
             }
-            
-            
-            // Call the web server to return the beacon list
-            self.webCall(urlToCall: "http://paulsens-beacon.herokuapp.com/beacons.json") { (beaconJson) in
-                // If the beacon list was returned correctly, pass it to the closure
-                // Otherwise, retrieve the error message that was passed back from the web server and pass that to the closure
-                // If this error message cannot be retrieved, pass into the closure a generic erro message
-                if let beaconList = beaconJson["beacons"] as? Array<Dictionary<String, AnyObject>>{
-                    callback((false, "No error detected.", beaconList))
-                } else if let error = beaconJson["error"] as? String {
-                    callback((true, error, nil))
-                } else {
-                    callback((true, "An unexpected error occured while attempting to get the beacon list.", nil))
-                }
+        }
+        
+        
+        // Call the web server to return the beacon list
+        self.webCall(urlToCall: "http://paulsens-beacon.herokuapp.com/beacons.json") { (beaconJson) in
+            // If the beacon list was returned correctly, pass it to the closure
+            // Otherwise, retrieve the error message that was passed back from the web server and pass that to the closure
+            // If this error message cannot be retrieved, pass into the closure a generic erro message
+            if let beaconList = beaconJson["beacons"] as? Array<Dictionary<String, AnyObject>>{
+                callback((false, "No error detected.", beaconList))
+            } else if let error = beaconJson["error"] as? String {
+                callback((true, error, nil))
+            } else {
+                callback((true, "An unexpected error occured while attempting to get the beacon list.", nil))
             }
         }
+        
     }
     
     
@@ -336,19 +337,18 @@ class WebCallController {
             if let error = dataJson["error"] as? String {
                 callback((true, error, nil))
             }
-            
-            // Call web server to return list of historical events
-            self.webCall(urlToCall: "http://paulsens-beacon.herokuapp.com/historical_events.json") { (historicalEventsJson) in
-                // If the historical event list was returned correctly, pass it to the closure
-                // Otherwise, retrieve the error message that was passed back from the web server and pass that to the closure
-                // If this error message cannot be retrieved, pass into the closure a generic erro message
-                if let historicalEventList = historicalEventsJson["historical_events"] as? Array<Dictionary<String, AnyObject>>{
-                    callback((false, "No error detected.", historicalEventList))
-                } else if let error = historicalEventsJson["error"] as? String {
-                    callback((true, error, nil))
-                } else {
-                    callback((true, "An unexpected error occured while attempting to get the list of historical events.", nil))
-                }
+        }
+        // Call web server to return list of historical events
+        self.webCall(urlToCall: "http://paulsens-beacon.herokuapp.com/historical_events.json") { (historicalEventsJson) in
+            // If the historical event list was returned correctly, pass it to the closure
+            // Otherwise, retrieve the error message that was passed back from the web server and pass that to the closure
+            // If this error message cannot be retrieved, pass into the closure a generic erro message
+            if let historicalEventList = historicalEventsJson["historical_events"] as? Array<Dictionary<String, AnyObject>>{
+                callback((false, "No error detected.", historicalEventList))
+            } else if let error = historicalEventsJson["error"] as? String {
+                callback((true, error, nil))
+            } else {
+                callback((true, "An unexpected error occured while attempting to get the list of historical events.", nil))
             }
         }
     }
@@ -364,25 +364,25 @@ class WebCallController {
             if let error = dataJson["error"] as? String {
                 callback((true, error, nil))
             }
-            
-            // Call web server to return rewards list
-            self.webCall(urlToCall: "http://paulsens-beacon.herokuapp.com/promotions.json") { (promotionsJson) in
-                // If the promotions list was returned correctly, extract all rewards and pass them to the closure
-                // Otherwise, retrieve the error message that was passed back from the web server and pass that to the closure
-                // If this error message cannot be retrieved, pass into the closure a generic erro message
-                if let promotionsList = promotionsJson["promotions"] as? Array<Dictionary<String, AnyObject>> {
-                    var rewardsList = [[String: AnyObject]]()
-                    for promotion in promotionsList {
-                        if(promotion["daily_deal"] as! Bool == false) {
-                            rewardsList.append(promotion)
-                        }
+        }
+        
+        // Call web server to return rewards list
+        self.webCall(urlToCall: "http://paulsens-beacon.herokuapp.com/promotions.json") { (promotionsJson) in
+            // If the promotions list was returned correctly, extract all rewards and pass them to the closure
+            // Otherwise, retrieve the error message that was passed back from the web server and pass that to the closure
+            // If this error message cannot be retrieved, pass into the closure a generic erro message
+            if let promotionsList = promotionsJson["promotions"] as? Array<Dictionary<String, AnyObject>> {
+                var rewardsList = [[String: AnyObject]]()
+                for promotion in promotionsList {
+                    if(promotion["daily_deal"] as! Bool == false) {
+                        rewardsList.append(promotion)
                     }
-                    callback((false, "No error detected.", rewardsList))
-                } else if let error = promotionsJson["error"] as? String {
-                    callback((true, error, nil))
-                } else {
-                    callback((true, "An unexpected error occured while attempting to get the list of historical events.", nil))
                 }
+                callback((false, "No error detected.", rewardsList))
+            } else if let error = promotionsJson["error"] as? String {
+                callback((true, error, nil))
+            } else {
+                callback((true, "An unexpected error occured while attempting to get the list of historical events.", nil))
             }
         }
     }
@@ -398,25 +398,25 @@ class WebCallController {
             if let error = dataJson["error"] as? String {
                 callback((true, error, nil))
             }
-            
-            // Call web server to return daily deals list
-            self.webCall(urlToCall: "http://paulsens-beacon.herokuapp.com/promotions.json") { (promotionsJson) in
-                // If the promotions list was returned correctly, extract all daily deals and pass them to the closure
-                // Otherwise, retrieve the error message that was passed back from the web server and pass that to the closure
-                // If this error message cannot be retrieved, pass into the closure a generic erro message
-                if let promotionsList = promotionsJson["promotions"] as? Array<Dictionary<String, AnyObject>> {
-                    var dailyDealList = [[String: AnyObject]]()
-                    for promotion in promotionsList {
-                        if(promotion["daily_deal"] as! Bool == true) {
-                            dailyDealList.append(promotion)
-                        }
+        }
+        
+        // Call web server to return daily deals list
+        self.webCall(urlToCall: "http://paulsens-beacon.herokuapp.com/promotions.json") { (promotionsJson) in
+            // If the promotions list was returned correctly, extract all daily deals and pass them to the closure
+            // Otherwise, retrieve the error message that was passed back from the web server and pass that to the closure
+            // If this error message cannot be retrieved, pass into the closure a generic erro message
+            if let promotionsList = promotionsJson["promotions"] as? Array<Dictionary<String, AnyObject>> {
+                var dailyDealList = [[String: AnyObject]]()
+                for promotion in promotionsList {
+                    if(promotion["daily_deal"] as! Bool == true) {
+                        dailyDealList.append(promotion)
                     }
-                    callback((false, "No error detected.", dailyDealList))
-                } else if let error = promotionsJson["error"] as? String {
-                    callback((true, error, nil))
-                } else {
-                    callback((true, "An unexpected error occured while attempting to get the list of historical events.", nil))
                 }
+                callback((false, "No error detected.", dailyDealList))
+            } else if let error = promotionsJson["error"] as? String {
+                callback((true, error, nil))
+            } else {
+                callback((true, "An unexpected error occured while attempting to get the list of historical events.", nil))
             }
         }
     }

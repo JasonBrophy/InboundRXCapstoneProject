@@ -42,7 +42,7 @@ class BeaconNotificationsManager: NSObject, ESTBeaconManagerDelegate {
         //Grabs all Notifications and Beacons from web server
         //print("Requesting beacons")
         
-        //retrieveBeacons()
+        retrieveBeacons()
         
         //print(beaconNotificationDictionary)
         
@@ -76,22 +76,21 @@ class BeaconNotificationsManager: NSObject, ESTBeaconManagerDelegate {
         }
     }
    
-    /*
+
     
     ////Make network call to web server for Beacons and fills local beaconList and notification list
     private func retrieveBeacons() {
-        
-        
         /*This closure happens async, so i've moved all work for retrieving and monitoring beacons/notification
           to happend here to prevent concurrency issues
         */
-        webCallController.getBeaconList { (beaconList) in
-            if beaconList != nil {
+        webCallController.getBeaconList { (tuple: (Bool, String, Array<Dictionary<String, AnyObject>>?)) in
+            let (isError, error, beaconList) = tuple
+            if isError == false {
                 
                 //loop through every beacon returned and create local beacon object and corresponding notification
                 for dict in beaconList! {
                     
-                
+                    
                     //create beacon object, pulling from the dictionary recieved
                     let uuid = dict["uuid"] as! String
                     let uuid_string = dict["uuid"] as! String
@@ -99,10 +98,10 @@ class BeaconNotificationsManager: NSObject, ESTBeaconManagerDelegate {
                     let major_string = dict["major_uuid"] as! String
                     
                     //create instance of this beacon
-                    let beacon = BeaconID(UUIDString: uuid, major: UInt16(major_string) ?? -1, minor: UInt16(minor_string) ?? -1)
+                    let beacon = BeaconID(UUIDString: uuid, major: UInt16(major_string) ?? 0, minor: UInt16(minor_string) ?? 0)
                     
                     //if any of the values failed in this beacon, drop this beacon and move to the next
-                    if (beacon.minor == -1 || beacon.major == -1) {
+                    if (beacon.minor == 0 || beacon.major == 0) {
                         continue
                     }
                     
@@ -124,16 +123,17 @@ class BeaconNotificationsManager: NSObject, ESTBeaconManagerDelegate {
                     self.notificationsList.append(notification1)
                     
                 }
-                
+            } else {
+                print("There was an error: "+error)
             }
-            
+
+        
             //Go through our new lists and link up the notifications to the beacons
             self.linkBeacons()
             
         }
         
     }
- */
     
     
     //Creates dictionary entry for beacon/notification and begins monitoring for said beacon
