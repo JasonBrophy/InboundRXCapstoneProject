@@ -38,10 +38,12 @@ class WebCallController: URLSession {
         let session = URLSession.shared
         session.dataTask(with: url!) { (data, response, error) in
             
-            // If there was an error, print it to the console and return from the function
+            // If there was an error, print it to the console 
+            // Then, call the closure with the error and return from the function
             if error != nil {
                 print("There was an error!:\n")
                 print(error!)
+                callback(["error":error as AnyObject])
                 return
             }
             
@@ -54,12 +56,12 @@ class WebCallController: URLSession {
             // Convert the data recieved into JSON
             do {
                 let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
-                // let dictionaryArray = json as! [[String: AnyObject]]
                 let dictionaryArray = json as! Dictionary<String, AnyObject>
                 callback(dictionaryArray)
             } catch let jsonError {
                 print("There was a json error!:\n")
                 print(jsonError)
+                callback(["error":jsonError as AnyObject])
             }
             
             }.resume()
@@ -90,10 +92,12 @@ class WebCallController: URLSession {
         
         // Execute the request
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            // If there was an error, print it to the console and return from the function
+            // If there was an error, print it to the console
+            // Then, call the closure with the error and signal the semaphore. Then return from the function
             if error != nil {
                 print("There was an error!:\n")
                 print(error!)
+                callback(["error":error as AnyObject])
                 semaphore.signal()
                 return
             }
@@ -106,12 +110,12 @@ class WebCallController: URLSession {
             // Convert the data recieved into JSON
             do {
                 let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
-                // let dictionaryArray = json as! [[String: AnyObject]]
                 let dictionaryArray = json as! Dictionary<String, AnyObject>
                 callback(dictionaryArray)
             } catch let jsonError {
                 print("There was a json error!:\n")
                 print(jsonError)
+                callback(["error":jsonError as AnyObject])
             }
             
             // Signal the semaphore
@@ -150,6 +154,7 @@ class WebCallController: URLSession {
             if error != nil {
                 print("There was an error!:\n")
                 print(error!)
+                callback(["error":error as AnyObject])
                 semaphore.signal()
                 return
             }
@@ -162,12 +167,12 @@ class WebCallController: URLSession {
             // Convert the data recieved into JSON
             do {
                 let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
-                // let dictionaryArray = json as! [[String: AnyObject]]
                 let dictionaryArray = json as! Dictionary<String, AnyObject>
                 callback(dictionaryArray)
             } catch let jsonError {
                 print("There was a json error!:\n")
                 print(jsonError)
+                callback(["error":jsonError as AnyObject])
             }
             // Signal the semaphore
             semaphore.signal()
@@ -195,7 +200,8 @@ class WebCallController: URLSession {
         
         // Execute the request
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            // If there was an error, print it to the console and return from the function
+            // If there was an error, print it to the console
+            // Then signal the semaphore and return from the function
             if error != nil {
                 print("There was an error!:\n")
                 print(error!)
@@ -240,10 +246,12 @@ class WebCallController: URLSession {
         
         // Execute the request
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            // If there was an error, print it to the console and return from the function
+            // If there was an error, print it to the console
+            // Then, call the closure with the error and signal the semaphore. Then return from the function
             if error != nil {
                 print("There was an error!:\n")
                 print(error!)
+                callback(["error":error as AnyObject])
                 semaphore.signal()
                 return
             }
@@ -256,12 +264,12 @@ class WebCallController: URLSession {
             // Convert the data recieved into JSON
             do {
                 let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
-                // let dictionaryArray = json as! [[String: AnyObject]]
                 let dictionaryArray = json as! Dictionary<String, AnyObject>
                 callback(dictionaryArray)
             } catch let jsonError {
                 print("There was a json error!:\n")
                 print(jsonError)
+                callback(["error":jsonError as AnyObject])
             }
             // Signal the semaphore
             semaphore.signal()
@@ -386,7 +394,7 @@ class WebCallController: URLSession {
             } else if let error = promotionsJson["error"] as? String {
                 callback((true, error, nil))
             } else {
-                callback((true, "An unexpected error occured while attempting to get the list of historical events.", nil))
+                callback((true, "An unexpected error occured while attempting to get the list of rewards.", nil))
             }
         }
     }
@@ -420,7 +428,7 @@ class WebCallController: URLSession {
             } else if let error = promotionsJson["error"] as? String {
                 callback((true, error, nil))
             } else {
-                callback((true, "An unexpected error occured while attempting to get the list of historical events.", nil))
+                callback((true, "An unexpected error occured while attempting to get the list of rewards.", nil))
             }
         }
     }
@@ -538,8 +546,6 @@ class WebCallController: URLSession {
         return toReturn
     }
 }
-
-
 
 
 
