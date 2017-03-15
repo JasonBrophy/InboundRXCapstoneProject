@@ -12,7 +12,7 @@
 
 
 /*
- Viewcontroller for deals popups, gets information through segue
+    Viewcontroller for deals popups, gets information through segue in DealsViewController.swift
 */
 
 import UIKit
@@ -27,15 +27,15 @@ class DetailsViewController: UIViewController {
     }
     var products : Product? = nil
     
-
+    /*\
+        takes the product and fills the text/images/labels
+    \*/
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.white.withAlphaComponent(0.95)
         if(products != nil){
             detailsTitle.text = products!.title
             detailsCost.text = String(products!.cost)
             detailsDescription.text = products!.description
-            
             detailsImage.image = products!.image
         }
     }

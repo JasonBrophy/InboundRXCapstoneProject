@@ -12,12 +12,13 @@
 
 
 /*
- Uses webcall to populate daily deals in a collective view cell
+    Uses webcall to populate daily deals using UICollectionView
 */
 
 import UIKit
 
 class DealsViewController: UIViewController {
+    
     @IBOutlet weak var dealsCollectionView: UICollectionView!
     var products : [Product]? = nil
 
@@ -32,18 +33,22 @@ class DealsViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    /*
+    /*\
         Dont really know why this makes things work.
-    */
+    \*/
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateDeals()
+        self.dealsCollectionView.reloadData()
     }
     
+    /*\
+        If the segue prepared for is going to the popup, and there is a product list
+        Get the cell the call came from and pass that cell's product on to the popup.
+        Used to segue to DetailsViewController.swift
+    \*/
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // If the segue prepared for is going to the popup, and there is a product list
-        // Get the cell the call came from and pass that cell's product on to the popup.
-        if(segue.identifier == "dealsPopUp" && sender != nil && products != nil){
+        if(segue.identifier == "dealsPopUp" && sender != nil && products != nil) {
             let cell = sender as! DealsCollectionViewCell
             let next = segue.destination as! DetailsViewController
             next.products = cell.product
@@ -51,31 +56,35 @@ class DealsViewController: UIViewController {
     }
     
     
-    /*
+    /*\
         Right now updateDeals() updates rewards since there is no test data with daily_deal == true
-    */
+    \*/
     func updateDeals() {
         var temp: [Product] = []
         let webCallController = WebCallController()
-        webCallController.getRewardsList { (tuple: (Bool, String, Array<Dictionary<String, AnyObject>>?)) in
+        webCallController.getRewardsList/*getDailyDealList*/ { (tuple: (Bool, String, Array<Dictionary<String, AnyObject>>?)) in
             let (isError, error, dailyDealsList) = tuple
             if isError == false {
                 for dict in dailyDealsList! {
                     temp.append(Product(title: dict["title"] as! String,
                                         description: dict["description"] as! String,
                                         cost: dict["cost"] as! Int,
-                                        image: UIImage(named: "1reward")!,
+                                        image: UIImage(named: "1reward")!, /* going to need to change this */
                                         id: dict["id"] as! Int))
                 }
                 self.products = temp
             } else {
-                print("There was an error: "+error)
+                print("There was an error: " + error)
             }
         }
     }
 }
 
 extension DealsViewController : UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    /*\
+        Gets the number of cells
+    \*/
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if products != nil {
             return products!.count
@@ -83,18 +92,24 @@ extension DealsViewController : UICollectionViewDataSource, UICollectionViewDele
         return 0
     }
     
+    
+    /*\
+        creates a DealsCollectionViewCell and populates it with data
+    \*/
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dealCell", for: indexPath) as! DealsCollectionViewCell
         cell.product = products![indexPath.row]
         cell.dealsTitle.text = products![indexPath.row].title
         cell.dealsImage.image = products![indexPath.row].image
-        //cell.dealsDescription.text = products![indexPath.row].description
-        //cell.dealsCost.text = String(describing: products![indexPath.row].cost)
         return cell
     }
     
+    /*\
+        Tests selecting a cell
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Cell \(indexPath.row) selected")
     }
-    
+
+    \*/
 }

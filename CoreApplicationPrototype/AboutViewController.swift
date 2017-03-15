@@ -114,7 +114,8 @@ class AboutViewController: UIViewController {
         // Allows multiple lines for a UILabel
         aboutLabel.numberOfLines = 0
         
-        aboutLabel.text = "Paulsen's Pharmacy\n\n"+"Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\n"+"Monday - Friday 9:00am - 6:30pm\nSaturday 10:00am - 2:00pm"
+        aboutLabel.text =
+            "Paulsen's Pharmacy\n\n" + "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\n" + "Monday - Friday 9:00am - 6:30pm\nSaturday 10:00am - 2:00pm"
     }
 
     override func didReceiveMemoryWarning() {

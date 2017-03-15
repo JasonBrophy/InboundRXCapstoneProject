@@ -12,14 +12,16 @@
 
 
 /*
- A class to hold deals information.
+    A class to hold deals information.
 */
 
 import UIKit
 
 class DealsCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var dealsDescription: UITextView!
-    @IBOutlet weak var dealsCost: UILabel!
+    /*\
+        data that is used in the collection view on the home page
+        description and cost are not shown in the home view.
+    \*/
     @IBOutlet weak var dealsImage: UIImageView!
     @IBOutlet weak var dealsTitle: UILabel!
     
