@@ -43,7 +43,7 @@ class WebCallController: URLSession {
             if error != nil {
                 print("There was an error!:\n")
                 print(error!)
-                callback(["error":error as Any])
+                callback(["error":error as! String])
                 return
             }
             
@@ -61,7 +61,7 @@ class WebCallController: URLSession {
             } catch let jsonError {
                 print("There was a json error!:\n")
                 print(jsonError)
-                callback(["error":jsonError as Any])
+                callback(["error":jsonError as! String])
             }
             
             }.resume()
@@ -97,7 +97,7 @@ class WebCallController: URLSession {
             if error != nil {
                 print("There was an error!:\n")
                 print(error!)
-                callback(["error":error as Any])
+                callback(["error":error as! String])
                 semaphore.signal()
                 return
             }
@@ -115,7 +115,7 @@ class WebCallController: URLSession {
             } catch let jsonError {
                 print("There was a json error!:\n")
                 print(jsonError)
-                callback(["error":jsonError as Any])
+                callback(["error":jsonError as! String])
             }
             
             // Signal the semaphore
@@ -154,7 +154,7 @@ class WebCallController: URLSession {
             if error != nil {
                 print("There was an error!:\n")
                 print(error!)
-                callback(["error":error as Any])
+                callback(["error":error as! String])
                 semaphore.signal()
                 return
             }
@@ -172,7 +172,7 @@ class WebCallController: URLSession {
             } catch let jsonError {
                 print("There was a json error!:\n")
                 print(jsonError)
-                callback(["error":jsonError as Any])
+                callback(["error":jsonError as! String])
             }
             // Signal the semaphore
             semaphore.signal()
@@ -251,7 +251,7 @@ class WebCallController: URLSession {
             if error != nil {
                 print("There was an error!:\n")
                 print(error!)
-                callback(["error":error as Any])
+                callback(["error":error as! String])
                 semaphore.signal()
                 return
             }
@@ -269,7 +269,7 @@ class WebCallController: URLSession {
             } catch let jsonError {
                 print("There was a json error!:\n")
                 print(jsonError)
-                callback(["error":jsonError as Any])
+                callback(["error":jsonError as! String])
             }
             // Signal the semaphore
             semaphore.signal()

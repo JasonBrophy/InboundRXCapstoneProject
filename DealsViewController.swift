@@ -57,7 +57,7 @@ class DealsViewController: UIViewController {
     func updateDeals() {
         var temp: [Product] = []
         let webCallController = WebCallController()
-        webCallController.getRewardsList { (tuple: (Bool, String, Array<Dictionary<String, AnyObject>>?)) in
+        webCallController.getRewardsList { (tuple: (Bool, String, Array<Dictionary<String, Any>>?)) in
             let (isError, error, dailyDealsList) = tuple
             if isError == false {
                 for dict in dailyDealsList! {
