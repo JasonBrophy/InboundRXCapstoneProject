@@ -2,9 +2,20 @@
 //  BeaconNotificationsManager.swift
 //  CoreApplicationPrototype
 //
-//  Created by Jason Custodio on 2/1/17.
-//  Copyright © 2017 InboundRXCapstone. All rights reserved.
+//  InboundRX iOS RFID Beacon Detecting Application
+//  https://gitlab.com/InboundRX-Capstone/Paulsens-iOS-App
 //
+//  (c) 2017 Brett Chafin, Jason Brophy, Luke Kwak, Paul Huynh, Jason Custodio, Cher Moua, Thaddeus Sundin
+//
+//  You are free to use, copy, modify, and distribute this file, with attribution,
+//  under the terms of the MIT license. See "license.txt" for more info.
+
+
+/*
+  Uses data from webcall to create list of notifications and beacons.
+  Beacons and notificaitons are then combined into a dictionary
+  according to their assigned id.
+*/
 
 import UIKit
 import UserNotifications

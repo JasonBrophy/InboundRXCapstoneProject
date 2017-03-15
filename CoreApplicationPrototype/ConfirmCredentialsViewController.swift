@@ -2,7 +2,6 @@
 //  ConfirmCredentialsViewController.swift
 //  CoreApplicationPrototype
 //
-//  Created by Jason Brophy on 3/1/17.
 //  Copyright © 2017 InboundRXCapstone. All rights reserved.
 //
 

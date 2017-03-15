@@ -2,9 +2,20 @@
 //  RewardsViewController.swift
 //  CoreApplicationPrototype
 //
-//  Created by Brett Chafin on 1/10/17.
-//  Copyright © 2017 InboundRXCapstone. All rights reserved.
+//  InboundRX iOS RFID Beacon Detecting Application
+//  https://gitlab.com/InboundRX-Capstone/Paulsens-iOS-App
 //
+//  (c) 2017 Brett Chafin, Jason Brophy, Luke Kwak, Paul Huynh, Jason Custodio, Cher Moua, Thaddeus Sundin
+//
+//  You are free to use, copy, modify, and distribute this file, with attribution,
+//  under the terms of the MIT license. See "license.txt" for more info.
+
+
+/*
+ Rewards screen that shows the users current points and a collection
+ of rewards that a user may redeem. A web call is made to populate the 
+ collection view from the server by storing them in a Product struct.
+*/
 
 import UIKit
 

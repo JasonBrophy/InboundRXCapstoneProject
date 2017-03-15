@@ -136,6 +136,7 @@
 		7ECF68D21E3AC47E00AF3511 /* BeaconFiles */ = {
 			isa = PBXGroup;
 			children = (
+				7ECF68D11E3AC46600AF3511 /* ObjCBridge.h */,
 				2325D4261E42ED8F00996C33 /* BeaconID.swift */,
 				7E577B331E4E7912009B8BEA /* Notification.swift */,
 				2325D4281E42EE3900996C33 /* BeaconNotificationsManager.swift */,
@@ -143,6 +144,72 @@
 				7ECF68CF1E3AC24A00AF3511 /* EstimoteSDK.framework */,
 			);
 			name = BeaconFiles;
+			sourceTree = "<group>";
+		};
+		A3A19B8E1E7894BC00F7FDFC /* Deals */ = {
+			isa = PBXGroup;
+			children = (
+				7F70D6E21E76BAB1004C207D /* DealsCollectionViewCell.swift */,
+				7F70D6E01E76BA15004C207D /* DealsViewController.swift */,
+				7F70D6E61E76CAB0004C207D /* DetailsViewController.swift */,
+			);
+			name = Deals;
+			sourceTree = "<group>";
+		};
+		A3A19B8F1E7894DF00F7FDFC /* Rewards */ = {
+			isa = PBXGroup;
+			children = (
+				A3C2E9A21E63CF07001BC63B /* PopUpViewController.swift */,
+				7F3A283F1E53FE0300EFAE30 /* RewardsCollectionViewCell.swift */,
+				7E6F04031E25922500D0F41A /* RewardsViewController.swift */,
+			);
+			name = Rewards;
+			sourceTree = "<group>";
+		};
+		A3A19B901E7894F000F7FDFC /* About */ = {
+			isa = PBXGroup;
+			children = (
+				7E6F03FF1E2591DC00D0F41A /* AboutViewController.swift */,
+			);
+			name = About;
+			sourceTree = "<group>";
+		};
+		A3A19B911E7894FA00F7FDFC /* History */ = {
+			isa = PBXGroup;
+			children = (
+				7E6F04011E25920C00D0F41A /* HistoryViewController.swift */,
+				23E7282A1E29D6F800B25F3D /* HistoryTableViewCell.swift */,
+			);
+			name = History;
+			sourceTree = "<group>";
+		};
+		A3A19B921E78952700F7FDFC /* User */ = {
+			isa = PBXGroup;
+			children = (
+				A364DB531E469BAB00B38C11 /* User.swift */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
+		A3A19B931E78953900F7FDFC /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				2F92EBCE1E66C35D00B8C699 /* ConfirmCredentialsViewController.swift */,
+				7E6F04051E25947800D0F41A /* LogInViewController.swift */,
+				2F424BDB1E5A90C500143BA0 /* EditAccountViewController.swift */,
+				7E6F04091E2594B900D0F41A /* AccountCreationViewController.swift */,
+				7E6F04071E25949A00D0F41A /* SettingsViewController.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		A3A19B941E7895AE00F7FDFC /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				2F83ACCB1E6298B000DDC9DD /* RootTabViewController.swift */,
+				DF2556F31DE422EC006B3CC5 /* HomeViewController.swift */,
+			);
+			name = Home;
 			sourceTree = "<group>";
 		};
 		DF2538A51E642A1A00360F8C /* WebCallFiles */ = {
@@ -177,27 +244,16 @@
 		DF2556F01DE422EC006B3CC5 /* CoreApplicationPrototype */ = {
 			isa = PBXGroup;
 			children = (
-				DF2538A51E642A1A00360F8C /* WebCallFiles */,
-				7ECF68D11E3AC46600AF3511 /* ObjCBridge.h */,
-				7ECF68D21E3AC47E00AF3511 /* BeaconFiles */,
-				2F92EBCE1E66C35D00B8C699 /* ConfirmCredentialsViewController.swift */,
-				7F70D6E61E76CAB0004C207D /* DetailsViewController.swift */,
-				7F70D6E01E76BA15004C207D /* DealsViewController.swift */,
-				7F70D6E21E76BAB1004C207D /* DealsCollectionViewCell.swift */,
-				2F424BDB1E5A90C500143BA0 /* EditAccountViewController.swift */,
-				DF2556F31DE422EC006B3CC5 /* HomeViewController.swift */,
-				7E6F04051E25947800D0F41A /* LogInViewController.swift */,
-				7E6F04071E25949A00D0F41A /* SettingsViewController.swift */,
-				2F83ACCB1E6298B000DDC9DD /* RootTabViewController.swift */,
-				7E6F04091E2594B900D0F41A /* AccountCreationViewController.swift */,
-				7E6F03FF1E2591DC00D0F41A /* AboutViewController.swift */,
-				7E6F04031E25922500D0F41A /* RewardsViewController.swift */,
-				7F3A283F1E53FE0300EFAE30 /* RewardsCollectionViewCell.swift */,
-				A3C2E9A21E63CF07001BC63B /* PopUpViewController.swift */,
 				DF2556F51DE422EC006B3CC5 /* Main.storyboard */,
-				7E6F04011E25920C00D0F41A /* HistoryViewController.swift */,
-				23E7282A1E29D6F800B25F3D /* HistoryTableViewCell.swift */,
-				A364DB531E469BAB00B38C11 /* User.swift */,
+				DF2538A51E642A1A00360F8C /* WebCallFiles */,
+				7ECF68D21E3AC47E00AF3511 /* BeaconFiles */,
+				A3A19B8E1E7894BC00F7FDFC /* Deals */,
+				A3A19B931E78953900F7FDFC /* Settings */,
+				A3A19B941E7895AE00F7FDFC /* Home */,
+				A3A19B921E78952700F7FDFC /* User */,
+				A3A19B911E7894FA00F7FDFC /* History */,
+				A3A19B901E7894F000F7FDFC /* About */,
+				A3A19B8F1E7894DF00F7FDFC /* Rewards */,
 				23F67DF81E25AEA000B0070E /* Supporting Files */,
 			);
 			path = CoreApplicationPrototype;

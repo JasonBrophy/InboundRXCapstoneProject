@@ -2,9 +2,20 @@
 //  AboutViewController.swift
 //  CoreApplicationPrototype
 //
-//  Created by Cher Moua on 1/10/17.
-//  Copyright © 2017 InboundRXCapstone. All rights reserved.
+//  InboundRX iOS RFID Beacon Detecting Application
+//  https://gitlab.com/InboundRX-Capstone/Paulsens-iOS-App
 //
+//  (c) 2017 Brett Chafin, Jason Brophy, Luke Kwak, Paul Huynh, Jason Custodio, Cher Moua, Thaddeus Sundin
+//
+//  You are free to use, copy, modify, and distribute this file, with attribution,
+//  under the terms of the MIT license. See "license.txt" for more info.
+
+
+/*
+ Displays desctiption about Paulsens. Has external links that takes User to
+ Paulsen's website, shows directions, and calls Paulsen's contact number.
+ Uses alerts to confirm transferring to safari, phone, and maps.
+*/
 
 import UIKit
 import MapKit

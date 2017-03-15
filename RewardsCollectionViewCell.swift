@@ -2,9 +2,19 @@
 //  RewardsCollectionViewCell.swift
 //  CoreApplicationPrototype
 //
-//  Created by Luke Kwak on 2/14/17.
-//  Copyright © 2017 InboundRXCapstone. All rights reserved.
+//  InboundRX iOS RFID Beacon Detecting Application
+//  https://gitlab.com/InboundRX-Capstone/Paulsens-iOS-App
 //
+//  (c) 2017 Brett Chafin, Jason Brophy, Luke Kwak, Paul Huynh, Jason Custodio, Cher Moua, Thaddeus Sundin
+//
+//  You are free to use, copy, modify, and distribute this file, with attribution, 
+//  under the terms of the MIT license. See "license.txt" for more info.
+
+
+/*
+ A layout for one rewards cell in a collection view.
+ A cell shows an image, a point cost, and title of product
+*/
 
 import UIKit
 
