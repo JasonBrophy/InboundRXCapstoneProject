@@ -43,7 +43,7 @@ class WebCallController: URLSession {
             if error != nil {
                 print("There was an error!:\n")
                 print(error!)
-                callback(["error":error as! String])
+                callback(["error":error!.localizedDescription])
                 return
             }
             
@@ -97,7 +97,7 @@ class WebCallController: URLSession {
             if error != nil {
                 print("There was an error!:\n")
                 print(error!)
-                callback(["error":error as! String])
+                callback(["error":error!.localizedDescription])
                 semaphore.signal()
                 return
             }
@@ -154,7 +154,7 @@ class WebCallController: URLSession {
             if error != nil {
                 print("There was an error!:\n")
                 print(error!)
-                callback(["error":error as! String])
+                callback(["error":error!.localizedDescription])
                 semaphore.signal()
                 return
             }
@@ -251,7 +251,7 @@ class WebCallController: URLSession {
             if error != nil {
                 print("There was an error!:\n")
                 print(error!)
-                callback(["error":error as! String])
+                callback(["error":error!.localizedDescription])
                 semaphore.signal()
                 return
             }
