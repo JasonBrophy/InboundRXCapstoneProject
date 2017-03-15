@@ -52,6 +52,12 @@ class HistoryViewController: UITableViewController {
         //server call
         webCallController.getHistoricalEventList { (isError, errorMessage, historicalEventsList) in
             if(isError){
+                // Make sure the UI update occurs on the MAIN thread
+                DispatchQueue.main.async(execute: { () -> Void in
+                    let alertController = UIAlertController(title: "Error", message: errorMessage, preferredStyle:UIAlertControllerStyle.alert)
+                    alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alertController, animated:true, completion:nil)
+                })
                 return
             }
             if historicalEventsList != nil {
