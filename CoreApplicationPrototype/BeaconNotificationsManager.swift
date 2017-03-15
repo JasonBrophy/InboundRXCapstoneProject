@@ -83,7 +83,7 @@ class BeaconNotificationsManager: NSObject, ESTBeaconManagerDelegate {
         /*This closure happens async, so i've moved all work for retrieving and monitoring beacons/notification
           to happend here to prevent concurrency issues
         */
-        webCallController.getBeaconList { (tuple: (Bool, String, Array<Dictionary<String, AnyObject>>?)) in
+        webCallController.getBeaconList { (tuple: (Bool, String, Array<Dictionary<String, Any>>?)) in
             let (isError, error, beaconList) = tuple
             if isError == false {
                 

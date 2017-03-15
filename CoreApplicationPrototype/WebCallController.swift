@@ -33,7 +33,7 @@ class WebCallController: URLSession {
     
     // Make a call to a web address to retrieve some data
     // Returns an array of dictionaries via a completion handler
-    func webCall(urlToCall: String, callback: @escaping (Dictionary<String, AnyObject>) -> ()) {
+    func webCall(urlToCall: String, callback: @escaping (Dictionary<String, Any>) -> ()) {
         let url = URL(string: urlToCall)
         let session = URLSession.shared
         session.dataTask(with: url!) { (data, response, error) in
@@ -43,7 +43,7 @@ class WebCallController: URLSession {
             if error != nil {
                 print("There was an error!:\n")
                 print(error!)
-                callback(["error":error as AnyObject])
+                callback(["error":error as Any])
                 return
             }
             
@@ -56,12 +56,12 @@ class WebCallController: URLSession {
             // Convert the data recieved into JSON
             do {
                 let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
-                let dictionaryArray = json as! Dictionary<String, AnyObject>
+                let dictionaryArray = json as! Dictionary<String, Any>
                 callback(dictionaryArray)
             } catch let jsonError {
                 print("There was a json error!:\n")
                 print(jsonError)
-                callback(["error":jsonError as AnyObject])
+                callback(["error":jsonError as Any])
             }
             
             }.resume()
@@ -70,7 +70,7 @@ class WebCallController: URLSession {
     
     // Make a call to the web server to sign in
     // Callback function is run synchronously after this function
-    func webLogIn(loginCredentials: Dictionary<String, Any>, callback: @escaping (Dictionary<String, AnyObject>) -> ()) {
+    func webLogIn(loginCredentials: Dictionary<String, Any>, callback: @escaping (Dictionary<String, Any>) -> ()) {
         // Prepare json data
         let json = loginCredentials
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
@@ -97,7 +97,7 @@ class WebCallController: URLSession {
             if error != nil {
                 print("There was an error!:\n")
                 print(error!)
-                callback(["error":error as AnyObject])
+                callback(["error":error as Any])
                 semaphore.signal()
                 return
             }
@@ -110,12 +110,12 @@ class WebCallController: URLSession {
             // Convert the data recieved into JSON
             do {
                 let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
-                let dictionaryArray = json as! Dictionary<String, AnyObject>
+                let dictionaryArray = json as! Dictionary<String, Any>
                 callback(dictionaryArray)
             } catch let jsonError {
                 print("There was a json error!:\n")
                 print(jsonError)
-                callback(["error":jsonError as AnyObject])
+                callback(["error":jsonError as Any])
             }
             
             // Signal the semaphore
@@ -130,7 +130,7 @@ class WebCallController: URLSession {
     
     // Make a POST request to the web server
     // Callback function is run synchronously after this function
-    func postRequest(urlToCall: String, data: Dictionary<String, Any>, callback: @escaping (Dictionary<String, AnyObject>) -> ()) {
+    func postRequest(urlToCall: String, data: Dictionary<String, Any>, callback: @escaping (Dictionary<String, Any>) -> ()) {
         // Convert data into JSON format
         let jsonData = try? JSONSerialization.data(withJSONObject: data)
         
@@ -154,7 +154,7 @@ class WebCallController: URLSession {
             if error != nil {
                 print("There was an error!:\n")
                 print(error!)
-                callback(["error":error as AnyObject])
+                callback(["error":error as Any])
                 semaphore.signal()
                 return
             }
@@ -167,12 +167,12 @@ class WebCallController: URLSession {
             // Convert the data recieved into JSON
             do {
                 let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
-                let dictionaryArray = json as! Dictionary<String, AnyObject>
+                let dictionaryArray = json as! Dictionary<String, Any>
                 callback(dictionaryArray)
             } catch let jsonError {
                 print("There was a json error!:\n")
                 print(jsonError)
-                callback(["error":jsonError as AnyObject])
+                callback(["error":jsonError as Any])
             }
             // Signal the semaphore
             semaphore.signal()
@@ -226,7 +226,7 @@ class WebCallController: URLSession {
     
     // Make a PATCH request to the web server
     // Callback function is run synchronously after this function
-    func patchRequest(urlToCall: String, data: Dictionary<String, Any>, callback: @escaping (Dictionary<String, AnyObject>) -> ()) {
+    func patchRequest(urlToCall: String, data: Dictionary<String, Any>, callback: @escaping (Dictionary<String, Any>) -> ()) {
         // Convert data into JSON format
         let jsonData = try? JSONSerialization.data(withJSONObject: data)
         
@@ -251,7 +251,7 @@ class WebCallController: URLSession {
             if error != nil {
                 print("There was an error!:\n")
                 print(error!)
-                callback(["error":error as AnyObject])
+                callback(["error":error as Any])
                 semaphore.signal()
                 return
             }
@@ -264,12 +264,12 @@ class WebCallController: URLSession {
             // Convert the data recieved into JSON
             do {
                 let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
-                let dictionaryArray = json as! Dictionary<String, AnyObject>
+                let dictionaryArray = json as! Dictionary<String, Any>
                 callback(dictionaryArray)
             } catch let jsonError {
                 print("There was a json error!:\n")
                 print(jsonError)
-                callback(["error":jsonError as AnyObject])
+                callback(["error":jsonError as Any])
             }
             // Signal the semaphore
             semaphore.signal()
@@ -297,7 +297,7 @@ class WebCallController: URLSession {
             
             self.webCall(urlToCall: "http://paulsens-beacon.herokuapp.com/beacons.json") { (dictionaryArray) in
                 var i = 1
-                let beaconsList = dictionaryArray["beacons"] as? Array<Dictionary<String, AnyObject>>
+                let beaconsList = dictionaryArray["beacons"] as? Array<Dictionary<String, Any>>
                 for dictionary in beaconsList! {
                     print("Dictionary \(i):\n")
                     print(dictionary)
@@ -312,7 +312,7 @@ class WebCallController: URLSession {
     // Returns an array of dictionaries, where each dictionary represents a beacon in the web server
     // Returns nil if the web server call does not correctly return data
     // NOTE: Returns data via closure
-    func getBeaconList(callback: @escaping ((Bool, String, Array<Dictionary<String, AnyObject>>?)) -> ()) {
+    func getBeaconList(callback: @escaping ((Bool, String, Array<Dictionary<String, Any>>?)) -> ()) {
         // Log in
         // Catch an error if it occurs
         webLogIn(loginCredentials: ["user": ["email": "test@test.com", "password": "password123"]]) { (dataJson) in
@@ -327,7 +327,7 @@ class WebCallController: URLSession {
             // If the beacon list was returned correctly, pass it to the closure
             // Otherwise, retrieve the error message that was passed back from the web server and pass that to the closure
             // If this error message cannot be retrieved, pass into the closure a generic erro message
-            if let beaconList = beaconJson["beacons"] as? Array<Dictionary<String, AnyObject>>{
+            if let beaconList = beaconJson["beacons"] as? Array<Dictionary<String, Any>>{
                 callback((false, "No error detected.", beaconList))
             } else if let error = beaconJson["error"] as? String {
                 callback((true, error, nil))
@@ -342,7 +342,7 @@ class WebCallController: URLSession {
     // Returns an array of dictionaries, where each dictionary represents a historical event in the web server
     // Returns nil if the web server call does not correctly return data
     // NOTE: Returns data via closure
-    func getHistoricalEventList(callback: @escaping ((Bool, String, Array<Dictionary<String, AnyObject>>?)) -> ()) {
+    func getHistoricalEventList(callback: @escaping ((Bool, String, Array<Dictionary<String, Any>>?)) -> ()) {
         // Log in
         // Catch an error if it occurs
         webLogIn(loginCredentials: ["user": ["email": "test@test.com", "password": "password123"]]) {(dataJson) in
@@ -355,7 +355,7 @@ class WebCallController: URLSession {
             // If the historical event list was returned correctly, pass it to the closure
             // Otherwise, retrieve the error message that was passed back from the web server and pass that to the closure
             // If this error message cannot be retrieved, pass into the closure a generic erro message
-            if let historicalEventList = historicalEventsJson["historical_events"] as? Array<Dictionary<String, AnyObject>>{
+            if let historicalEventList = historicalEventsJson["historical_events"] as? Array<Dictionary<String, Any>>{
                 callback((false, "No error detected.", historicalEventList))
             } else if let error = historicalEventsJson["error"] as? String {
                 callback((true, error, nil))
@@ -369,7 +369,7 @@ class WebCallController: URLSession {
     // Returns an array of dictionaries, where each dictionary represents a reward in the promotions table on the web server
     // Returns nil if the web server call does not correctly return data
     // NOTE: Returns data via closure
-    func getRewardsList(callback: @escaping ((Bool, String, Array<Dictionary<String, AnyObject>>?)) -> ()) {
+    func getRewardsList(callback: @escaping ((Bool, String, Array<Dictionary<String, Any>>?)) -> ()) {
         // Log in
         // Catch an error if it occurs
         webLogIn(loginCredentials: ["user": ["email": "test@test.com", "password": "password123"]]) {(dataJson) in
@@ -383,8 +383,8 @@ class WebCallController: URLSession {
             // If the promotions list was returned correctly, extract all rewards and pass them to the closure
             // Otherwise, retrieve the error message that was passed back from the web server and pass that to the closure
             // If this error message cannot be retrieved, pass into the closure a generic erro message
-            if let promotionsList = promotionsJson["promotions"] as? Array<Dictionary<String, AnyObject>> {
-                var rewardsList = [[String: AnyObject]]()
+            if let promotionsList = promotionsJson["promotions"] as? Array<Dictionary<String, Any>> {
+                var rewardsList = [[String: Any]]()
                 for promotion in promotionsList {
                     if(promotion["daily_deal"] as! Bool == false) {
                         rewardsList.append(promotion)
@@ -403,7 +403,7 @@ class WebCallController: URLSession {
     // Returns an array of dictionaries, where each dictionary represents a daily deal in the promotions table on the web server
     // Returns nil if the web server call does not correctly return data
     // NOTE: Returns data via closure
-    func getDailyDealList(callback: @escaping ((Bool, String, Array<Dictionary<String, AnyObject>>?)) -> ()) {
+    func getDailyDealList(callback: @escaping ((Bool, String, Array<Dictionary<String, Any>>?)) -> ()) {
         // Log in
         // Catch an error if it occurs
         webLogIn(loginCredentials: ["user": ["email": "test@test.com", "password": "password123"]]) {(dataJson) in
@@ -417,8 +417,8 @@ class WebCallController: URLSession {
             // If the promotions list was returned correctly, extract all daily deals and pass them to the closure
             // Otherwise, retrieve the error message that was passed back from the web server and pass that to the closure
             // If this error message cannot be retrieved, pass into the closure a generic erro message
-            if let promotionsList = promotionsJson["promotions"] as? Array<Dictionary<String, AnyObject>> {
-                var dailyDealList = [[String: AnyObject]]()
+            if let promotionsList = promotionsJson["promotions"] as? Array<Dictionary<String, Any>> {
+                var dailyDealList = [[String: Any]]()
                 for promotion in promotionsList {
                     if(promotion["daily_deal"] as! Bool == true) {
                         dailyDealList.append(promotion)
@@ -428,7 +428,7 @@ class WebCallController: URLSession {
             } else if let error = promotionsJson["error"] as? String {
                 callback((true, error, nil))
             } else {
-                callback((true, "An unexpected error occured while attempting to get the list of rewards.", nil))
+                callback((true, "An unexpected error occured while attempting to get the list of daily deals.", nil))
             }
         }
     }
