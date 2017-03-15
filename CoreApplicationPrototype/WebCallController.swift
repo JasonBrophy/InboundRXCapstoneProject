@@ -25,7 +25,7 @@
  (If this still doesn't work, clean the project (Shift+Command+k))
 */
 
-class WebCallController {
+class WebCallController: URLSession {
     
     // --------------------------
     // ----- Core functions -----
@@ -94,6 +94,7 @@ class WebCallController {
             if error != nil {
                 print("There was an error!:\n")
                 print(error!)
+                semaphore.signal()
                 return
             }
             // Otherwise, print the data to the console
@@ -149,6 +150,7 @@ class WebCallController {
             if error != nil {
                 print("There was an error!:\n")
                 print(error!)
+                semaphore.signal()
                 return
             }
             // Otherwise, print the data to the console
@@ -197,6 +199,7 @@ class WebCallController {
             if error != nil {
                 print("There was an error!:\n")
                 print(error!)
+                semaphore.signal()
                 return
             }
             // Otherwise, print the data to the console
@@ -241,6 +244,7 @@ class WebCallController {
             if error != nil {
                 print("There was an error!:\n")
                 print(error!)
+                semaphore.signal()
                 return
             }
             // Otherwise, print the data to the console
