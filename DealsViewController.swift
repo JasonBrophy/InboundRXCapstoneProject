@@ -19,10 +19,16 @@ import UIKit
 
 class DealsViewController: UIViewController {
     @IBOutlet weak var dealsCollectionView: UICollectionView!
-    var products : [Product]? = nil
+    
+    var products = [Product]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.dealsCollectionView.backgroundView = UILabel()
+        let backgroundView = self.dealsCollectionView.backgroundView as! UILabel
+        backgroundView.backgroundColor = UIColor.clear
+        backgroundView.textAlignment = NSTextAlignment.center
+        backgroundView.text = "There appears to be nothing here"
         updateDeals()
         dealsCollectionView.delegate = self
         dealsCollectionView.dataSource = self
@@ -37,13 +43,14 @@ class DealsViewController: UIViewController {
     */
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        updateDeals()
+        self.dealsCollectionView.reloadData()
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // If the segue prepared for is going to the popup, and there is a product list
         // Get the cell the call came from and pass that cell's product on to the popup.
-        if(segue.identifier == "dealsPopUp" && sender != nil && products != nil){
+        if(segue.identifier == "dealsPopUp" && sender != nil){
             let cell = sender as! DealsCollectionViewCell
             let next = segue.destination as! DetailsViewController
             next.products = cell.product
@@ -55,39 +62,45 @@ class DealsViewController: UIViewController {
         Right now updateDeals() updates rewards since there is no test data with daily_deal == true
     */
     func updateDeals() {
-        var temp: [Product] = []
         let webCallController = WebCallController()
-        webCallController.getRewardsList { (tuple: (Bool, String, Array<Dictionary<String, Any>>?)) in
-            let (isError, error, dailyDealsList) = tuple
-            if isError == false {
+        webCallController.getDailyDealList { (isError, errorMessage, dailyDealsList) in
+            if !isError {
                 for dict in dailyDealsList! {
-                    temp.append(Product(title: dict["title"] as! String,
+                    self.products.append(Product(title: dict["title"] as! String,
                                         description: dict["description"] as! String,
                                         cost: dict["cost"] as! Int,
-                                        image: UIImage(named: "1reward")!,
+                                        image: UIImage(named: "2reward")!,
                                         id: dict["id"] as! Int))
                 }
-                self.products = temp
             } else {
-                print("There was an error: "+error)
+                DispatchQueue.main.async(execute: { () -> Void in
+                    let alertController = UIAlertController(title: "Error", message: errorMessage, preferredStyle:UIAlertControllerStyle.alert)
+                    alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alertController, animated:true, completion:nil)
+                })
+                return
             }
+            // Make sure the UI update occurs on the MAIN thread
+            DispatchQueue.main.async(execute: { () -> Void in
+                self.dealsCollectionView.reloadData()
+                if(self.products.count > 0){
+                    self.dealsCollectionView.backgroundView!.isHidden = true
+                }
+            })
         }
     }
 }
 
 extension DealsViewController : UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if products != nil {
-            return products!.count
-        }
-        return 0
+        return self.products.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dealCell", for: indexPath) as! DealsCollectionViewCell
-        cell.product = products![indexPath.row]
-        cell.dealsTitle.text = products![indexPath.row].title
-        cell.dealsImage.image = products![indexPath.row].image
+        cell.product = products[indexPath.row]
+        cell.dealsTitle.text = products[indexPath.row].title
+        cell.dealsImage.image = products[indexPath.row].image
         //cell.dealsDescription.text = products![indexPath.row].description
         //cell.dealsCost.text = String(describing: products![indexPath.row].cost)
         return cell

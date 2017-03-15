@@ -72,6 +72,9 @@ class HistoryViewController: UITableViewController {
                 // Make sure the UI update occurs on the MAIN thread
                 DispatchQueue.main.async(execute: { () -> Void in
                     self.historyTableView.reloadData()
+                    if self.eventArray.count > 0 {
+                        self.historyTableView.backgroundView!.isHidden = true
+                    }
                 })
                 
             }
@@ -81,6 +84,12 @@ class HistoryViewController: UITableViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        self.historyTableView.backgroundView = UILabel()
+        let bgView = self.historyTableView.backgroundView as! UILabel
+        bgView.backgroundColor = UIColor.clear
+        bgView.textColor = UIColor.white
+        bgView.textAlignment = NSTextAlignment.center
+        bgView.text = "It appears nothing is loaded"
         loadHistory()
         tableView.tableFooterView = UIView() // Create blank rows after filled in cells
         

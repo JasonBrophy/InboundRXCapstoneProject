@@ -86,19 +86,27 @@ class RewardsViewController: UIViewController{
             // If the rewardsList retrieved is not empty, run through each dictionary in the list
             // If its not a daily deal, its a reward, so grab its relevant info to create the product.
             if(isError){
+                DispatchQueue.main.async(execute: { () -> Void in
+                    let alertController = UIAlertController(title: "Error", message: errorMessage, preferredStyle:UIAlertControllerStyle.alert)
+                    alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alertController, animated:true, completion:nil)
+                })
                 return
             }
-
             if rewardsList != nil {
                 for dict in rewardsList! {
-                    if(dict["daily_deal"] as! Bool == false){
-                        self.products.append(Product(title: dict["title"] as! String, description: dict["description"] as! String, cost: dict["cost"] as! Int, image: UIImage(named: "1reward")!, id: dict["id"] as! Int))
-                    }
+                    self.products.append(Product(title: dict["title"] as! String, description: dict["description"] as! String, cost: dict["cost"] as! Int, image: UIImage(named: "Paulsens_Logo_Gold3")!, id: dict["id"] as! Int))
                 }
             }
             // Make sure the UI update occurs on the MAIN thread
             DispatchQueue.main.async(execute: { () -> Void in
                 self.rewardsCollectionView.reloadData()
+                if(self.products.count > 0){
+                    self.rewardsCollectionView.backgroundView!.isHidden = true
+                }
+                else {
+                    self.rewardsCollectionView.backgroundView!.isHidden = false
+                }
             })
         }
     }
@@ -129,6 +137,11 @@ class RewardsViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollView()
+        self.rewardsCollectionView.backgroundView = UILabel()
+        let backgroundView = self.rewardsCollectionView.backgroundView as! UILabel
+        backgroundView.backgroundColor = UIColor.clear
+        backgroundView.textAlignment = NSTextAlignment.center
+        backgroundView.text = "There appears to be nothing here"
         self.rewardsCollectionView.delegate = self
         self.rewardsCollectionView.dataSource = self
         updateRewards()
@@ -181,7 +194,9 @@ extension RewardsViewController: UICollectionViewDelegate, UICollectionViewDataS
         cell.productLabel.text = products[indexPath.row].title
         cell.productButton.setImage(products[indexPath.row].image, for: UIControlState.normal)
         cell.productCost.text = String(describing: products[indexPath.row].cost)
-        
+        cell.layer.borderColor = UIColor.black.cgColor
+        cell.layer.borderWidth = 2
+        cell.layer.cornerRadius = 5
         return cell
     }
     
