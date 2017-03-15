@@ -61,7 +61,7 @@ class WebCallController: URLSession {
             } catch let jsonError {
                 print("There was a json error!:\n")
                 print(jsonError)
-                callback(["error":jsonError as! String])
+                callback(["error":jsonError.localizedDescription])
             }
             
             }.resume()
@@ -115,7 +115,7 @@ class WebCallController: URLSession {
             } catch let jsonError {
                 print("There was a json error!:\n")
                 print(jsonError)
-                callback(["error":jsonError as! String])
+                callback(["error":jsonError.localizedDescription])
             }
             
             // Signal the semaphore
@@ -172,7 +172,7 @@ class WebCallController: URLSession {
             } catch let jsonError {
                 print("There was a json error!:\n")
                 print(jsonError)
-                callback(["error":jsonError as! String])
+                callback(["error":jsonError.localizedDescription])
             }
             // Signal the semaphore
             semaphore.signal()
@@ -269,7 +269,7 @@ class WebCallController: URLSession {
             } catch let jsonError {
                 print("There was a json error!:\n")
                 print(jsonError)
-                callback(["error":jsonError as! String])
+                callback(["error":jsonError.localizedDescription])
             }
             // Signal the semaphore
             semaphore.signal()
