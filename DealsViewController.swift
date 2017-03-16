@@ -80,7 +80,7 @@ class DealsViewController: UIViewController {
                     newProducts.append(Product(title: dict["title"] as! String,
                                         description: dict["description"] as! String,
                                         cost: dict["cost"] as! Int,
-                                        image: UIImage(named: "Paulsens_Logo_Gold3")!,
+                                        image: UIImage(named: "640x360_advil")!,
                                         id: dict["id"] as! Int))
                 }
                 self.products = newProducts
@@ -133,6 +133,16 @@ extension DealsViewController : UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Cell \(indexPath.row) selected")
+    }
+    
+    //sets the size of the cell to the size of the collection view
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        layout.invalidateLayout()
+        return CGSize(width: self.view.frame.width, height:(self.view.frame.height)) // Set your item size here
     }
     
 }
