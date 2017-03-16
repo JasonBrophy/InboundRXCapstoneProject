@@ -350,13 +350,13 @@
 					};
 					DF2557011DE422EC006B3CC5 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 9PUG3ZA4ME;
+						DevelopmentTeam = ZN787LK3P5;
 						ProvisioningStyle = Automatic;
 						TestTargetID = DF2556ED1DE422EC006B3CC5;
 					};
 					DF25570C1DE422EC006B3CC5 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 9PUG3ZA4ME;
+						DevelopmentTeam = ZN787LK3P5;
 						ProvisioningStyle = Automatic;
 						TestTargetID = DF2556ED1DE422EC006B3CC5;
 					};
@@ -628,6 +628,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = ZN787LK3P5;
 				INFOPLIST_FILE = CoreApplicationPrototypeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.InboundRXCapstone.CoreApplicationPrototypeTests;
@@ -642,6 +643,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = ZN787LK3P5;
 				INFOPLIST_FILE = CoreApplicationPrototypeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.InboundRXCapstone.CoreApplicationPrototypeTests;
@@ -655,9 +657,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = ZN787LK3P5;
 				INFOPLIST_FILE = CoreApplicationPrototypeUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.InboundRXCapstone.CoreApplicationPrototypeUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = InboundRXCapstone.CoreApplicationPrototypeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = CoreApplicationPrototype;
@@ -668,9 +671,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = ZN787LK3P5;
 				INFOPLIST_FILE = CoreApplicationPrototypeUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.InboundRXCapstone.CoreApplicationPrototypeUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = InboundRXCapstone.CoreApplicationPrototypeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = CoreApplicationPrototype;
