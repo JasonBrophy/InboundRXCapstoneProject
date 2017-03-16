@@ -82,21 +82,24 @@ class RewardsViewController: UIViewController{
     func updateRewards() {
         let webCallController = WebCallController() // Create a web call controller object to make the call.
         webCallController.getRewardsList { (isError, errorMessage, rewardsList) in
-            
+            var newProducts = [Product]()
             // If the rewardsList retrieved is not empty, run through each dictionary in the list
             // If its not a daily deal, its a reward, so grab its relevant info to create the product.
             if(isError){
                 DispatchQueue.main.async(execute: { () -> Void in
-                    let alertController = UIAlertController(title: "Error", message: errorMessage, preferredStyle:UIAlertControllerStyle.alert)
-                    alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-                    self.present(alertController, animated:true, completion:nil)
+                    let bgView = self.rewardsCollectionView.backgroundView as! UILabel
+                    bgView.text = errorMessage
+                    // let alertController = UIAlertController(title: "Error", message: errorMessage, preferredStyle:UIAlertControllerStyle.alert)
+                    // alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                    // self.present(alertController, animated:true, completion:nil)
                 })
                 return
             }
             if rewardsList != nil {
                 for dict in rewardsList! {
-                    self.products.append(Product(title: dict["title"] as! String, description: dict["description"] as! String, cost: dict["cost"] as! Int, image: UIImage(named: "Paulsens_Logo_Gold3")!, id: dict["id"] as! Int))
+                    newProducts.append(Product(title: dict["title"] as! String, description: dict["description"] as! String, cost: dict["cost"] as! Int, image: UIImage(named: "Paulsens_Logo_Gold3")!, id: dict["id"] as! Int))
                 }
+                self.products = newProducts
             }
             // Make sure the UI update occurs on the MAIN thread
             DispatchQueue.main.async(execute: { () -> Void in
@@ -137,11 +140,15 @@ class RewardsViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollView()
+        
         self.rewardsCollectionView.backgroundView = UILabel()
         let backgroundView = self.rewardsCollectionView.backgroundView as! UILabel
+        backgroundView.adjustsFontSizeToFitWidth = true
+        backgroundView.numberOfLines = 0
         backgroundView.backgroundColor = UIColor.clear
         backgroundView.textAlignment = NSTextAlignment.center
         backgroundView.text = "There appears to be nothing here"
+        
         self.rewardsCollectionView.delegate = self
         self.rewardsCollectionView.dataSource = self
         updateRewards()
@@ -187,14 +194,14 @@ extension RewardsViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     
     // This function sets the cell's respective elements to the correct information by pulling it from the 
-    // corresponding spot in the products list.
+    // corresponding spot in the products list, and applies a colored border to the cell.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "rewardsCollectionCell", for: indexPath) as! RewardsCollectionViewCell
         cell.product = products[indexPath.row]
         cell.productLabel.text = products[indexPath.row].title
         cell.productButton.setImage(products[indexPath.row].image, for: UIControlState.normal)
         cell.productCost.text = String(describing: products[indexPath.row].cost)
-        cell.layer.borderColor = UIColor.black.cgColor
+        cell.layer.borderColor = UIColor(red: 0.24, green: 0.34, blue: 0.45, alpha: 1.0).cgColor
         cell.layer.borderWidth = 2
         cell.layer.cornerRadius = 5
         return cell

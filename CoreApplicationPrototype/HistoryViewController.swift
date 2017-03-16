@@ -22,7 +22,7 @@
 import UIKit
 
 // Global Struct Event Custom Cell
-struct event  {
+struct Event  {
     let year  : String!  // Year the event occurred
     let image : UIImage! // Image depicting event
     let title : String!
@@ -43,7 +43,7 @@ class HistoryViewController: UITableViewController {
     
     let cellID = "cell"                      // Cell identifier for dequeue
     var selectedIndexPath  = -1              // -1 means no rows exist in section
-    private var eventArray = [event]()       // Array of events for cells
+    private var eventArray = [Event]()       // Array of events for cells
     
     let webCallController = WebCallController()
     // Load data into table view cells
@@ -54,26 +54,33 @@ class HistoryViewController: UITableViewController {
             if(isError){
                 // Make sure the UI update occurs on the MAIN thread
                 DispatchQueue.main.async(execute: { () -> Void in
-                    let alertController = UIAlertController(title: "Error", message: errorMessage, preferredStyle:UIAlertControllerStyle.alert)
-                    alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-                    self.present(alertController, animated:true, completion:nil)
+                    let bgView = self.historyTableView.backgroundView as! UILabel
+                    bgView.text = errorMessage
+                    //let alertController = UIAlertController(title: "Error", message: errorMessage, preferredStyle:UIAlertControllerStyle.alert)
+                    //alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                    //self.present(alertController, animated:true, completion:nil)
                 })
                 return
-            }
-            if historicalEventsList != nil {
+            } else {
+                var newEvents = [Event]()
                 var i = 0
                 for dict in historicalEventsList! {
                     print("Event \(i):")
                     print(dict)
                     print("\n---\n")
-                    self.eventArray.append(event(year: dict["date"] as! String, image: #imageLiteral(resourceName: "Image0"), title: dict["title"] as! String, des: dict["description"] as! String))
+                    newEvents.append(Event(year: dict["date"] as! String, image: #imageLiteral(resourceName: "Image0"), title: dict["title"] as! String, des: dict["description"] as! String))
                     i = i+1
                 }
+
+                self.eventArray = newEvents
                 // Make sure the UI update occurs on the MAIN thread
                 DispatchQueue.main.async(execute: { () -> Void in
-                    self.historyTableView.reloadData()
                     if self.eventArray.count > 0 {
+                        self.historyTableView.reloadData()
                         self.historyTableView.backgroundView!.isHidden = true
+                    }
+                    else {
+                        self.historyTableView.backgroundView!.isHidden = false
                     }
                 })
                 
@@ -81,18 +88,32 @@ class HistoryViewController: UITableViewController {
         }
     }
     
+    func loadData() {
+        loadHistory()
+        self.refreshControl!.endRefreshing()
+    }
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         self.historyTableView.backgroundView = UILabel()
         let bgView = self.historyTableView.backgroundView as! UILabel
+        
         bgView.backgroundColor = UIColor.clear
         bgView.textColor = UIColor.white
         bgView.textAlignment = NSTextAlignment.center
+        bgView.numberOfLines = 0
+        bgView.adjustsFontSizeToFitWidth = true
         bgView.text = "It appears nothing is loaded"
-        loadHistory()
-        tableView.tableFooterView = UIView() // Create blank rows after filled in cells
         
+        self.historyTableView!.alwaysBounceVertical = true
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl!.addTarget(self, action: #selector(loadData), for: UIControlEvents.valueChanged)
+        self.historyTableView.addSubview(self.refreshControl!)
+        
+        loadHistory()
+        
+        tableView.tableFooterView = UIView() // Create blank rows after filled in cells
     }
     
     override func viewWillAppear(_ animated: Bool) {
