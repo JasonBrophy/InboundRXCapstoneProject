@@ -29,12 +29,8 @@ class CoreApplicationPrototypeUITests: XCTestCase {
     
     
     
-    
-    
-    
-    
-    
-    //Tests out the app(general): clicking all the tab bars, clicking histoy tabs, and clicking on deals
+
+    //Tests out the app(general): clicking all the tab bars, clicking history tabs, and clicking on deals
     //This is recorded code.
     func testExample() {
         let app = XCUIApplication()

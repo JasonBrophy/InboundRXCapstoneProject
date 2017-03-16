@@ -335,7 +335,6 @@ class WebCallController: URLSession {
                 callback((true, "An unexpected error occured while attempting to get the beacon list.", nil))
             }
         }
-        
     }
     
     
@@ -411,7 +410,6 @@ class WebCallController: URLSession {
                 callback((true, error, nil))
             }
         }
-        
         // Call web server to return daily deals list
         self.webCall(urlToCall: "http://paulsens-beacon.herokuapp.com/promotions.json") { (promotionsJson) in
             // If the promotions list was returned correctly, extract all daily deals and pass them to the closure

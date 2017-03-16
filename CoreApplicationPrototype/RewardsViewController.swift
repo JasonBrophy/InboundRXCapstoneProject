@@ -87,11 +87,15 @@ class RewardsViewController: UIViewController{
             // If its not a daily deal, its a reward, so grab its relevant info to create the product.
             if(isError){
                 DispatchQueue.main.async(execute: { () -> Void in
-                    let bgView = self.rewardsCollectionView.backgroundView as! UILabel
-                    bgView.text = errorMessage
-                    // let alertController = UIAlertController(title: "Error", message: errorMessage, preferredStyle:UIAlertControllerStyle.alert)
-                    // alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-                    // self.present(alertController, animated:true, completion:nil)
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    let dispAlert = appDelegate.isDisplayingPopup
+                    if(!dispAlert){
+                        appDelegate.isDisplayingPopup = true
+                        let alertController = UIAlertController(title: "Error", message: errorMessage, preferredStyle:UIAlertControllerStyle.alert)
+                        alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                        self.present(alertController, animated:true, completion: { () in
+                            appDelegate.isDisplayingPopup = false })
+                    }
                 })
                 return
             }

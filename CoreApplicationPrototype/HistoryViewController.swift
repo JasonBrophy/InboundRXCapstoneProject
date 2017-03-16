@@ -54,11 +54,18 @@ class HistoryViewController: UITableViewController {
             if(isError){
                 // Make sure the UI update occurs on the MAIN thread
                 DispatchQueue.main.async(execute: { () -> Void in
-                    let bgView = self.historyTableView.backgroundView as! UILabel
-                    bgView.text = errorMessage
-                    //let alertController = UIAlertController(title: "Error", message: errorMessage, preferredStyle:UIAlertControllerStyle.alert)
-                    //alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-                    //self.present(alertController, animated:true, completion:nil)
+                    // Check the appdelegate to see if we are already displaying a warning, if so, don't display this one
+                    // This is to avoid one error such as internet connection failed from causing multiple errors
+                    // When the tabbarController attempts to load.
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    let dispAlert = appDelegate.isDisplayingPopup
+                    if(!dispAlert){
+                        appDelegate.isDisplayingPopup = true
+                        let alertController = UIAlertController(title: "Error", message: errorMessage, preferredStyle:UIAlertControllerStyle.alert)
+                        alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                        self.present(alertController, animated:true, completion: { () in
+                            appDelegate.isDisplayingPopup = false })
+                    }
                 })
                 return
             } else {

@@ -86,18 +86,23 @@ class DealsViewController: UIViewController {
                 self.products = newProducts
             } else {
                 DispatchQueue.main.async(execute: { () -> Void in
-                    let bgView = self.dealsCollectionView.backgroundView as! UIButton
-                    bgView.setTitle(errorMessage, for: UIControlState.normal)
-                    //let alertController = UIAlertController(title: "Error", message: errorMessage, preferredStyle:UIAlertControllerStyle.alert)
-                    //alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-                    //self.present(alertController, animated:true, completion:nil)
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    let dispAlert = appDelegate.isDisplayingPopup
+                    if(!dispAlert){
+                        appDelegate.isDisplayingPopup = true
+                        let alertController = UIAlertController(title: "Error", message: errorMessage, preferredStyle:UIAlertControllerStyle.alert)
+                        alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                        self.present(alertController, animated:true, completion: { () in
+                            appDelegate.isDisplayingPopup = false })
+                    //})
+                    }
                 })
                 return
             }
             // Make sure the UI update occurs on the MAIN thread
             DispatchQueue.main.async(execute: { () -> Void in
-                self.dealsCollectionView.reloadData()
                 if(self.products.count > 0){
+                    self.dealsCollectionView.reloadData()
                     let bgView = self.dealsCollectionView.backgroundView as! UIButton
                     bgView.isEnabled = false
                     bgView.isHidden = true
