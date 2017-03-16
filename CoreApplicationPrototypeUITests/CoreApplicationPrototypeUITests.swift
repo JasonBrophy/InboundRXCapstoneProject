@@ -54,27 +54,40 @@ class CoreApplicationPrototypeUITests: XCTestCase {
         
         tabBarsQuery.buttons["History"].tap()
         tabBarsQuery.buttons["Home"].tap()
+        
+        // Assert the UI stuff on the settings page is set correctly
         XCTAssert(app.buttons["Log In"].exists)
         XCTAssert(app.buttons["Create Account"].exists)
+        
+        // tab the login button on settings
         app.buttons["Log In"].tap()
+        
+        // This was recorded, enter a working account info
         let emailTextField = app.textFields["email address"]
         let passwordTextField = app.secureTextFields["password"]
         emailTextField.tap()
         emailTextField.typeText("example@example.com")
         passwordTextField.tap()
         passwordTextField.typeText("example")
+        
+        // Test the password visibility switch
         app.switches["0"].tap()
         XCTAssert(passwordTextField.exists == false)
         app.switches["1"].tap()
         XCTAssert(passwordTextField.exists)
+        
+        // Login to the app, then check rewards access for success
         app.buttons["Log In"].tap()
-        XCTAssert(tabBarsQuery.buttons["Home"].exists)
         tabBarsQuery.buttons["Rewards"].tap()
         XCTAssert(app.staticTexts["Rewards"].exists)
+        
+        // Go back to settings, then make sure the buttons read correctly
         tabBarsQuery.buttons["Home"].tap()
         app.navigationBars["Home"].buttons["Settings"].tap()
         XCTAssert(app.buttons["Log Out"].exists)
         XCTAssert(app.buttons["Edit Account"].exists)
+        
+        // Logout and make sure the login screen is displayed, and rewards is inaccessible.
         app.buttons["Log Out"].tap()
         XCTAssert(app.buttons["Log In"].exists)
         tabBarsQuery.buttons["Rewards"].tap()
