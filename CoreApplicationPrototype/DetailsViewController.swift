@@ -33,7 +33,7 @@ class DetailsViewController: UIViewController {
         self.view.backgroundColor = UIColor.white.withAlphaComponent(0.95)
         if(products != nil){
             detailsTitle.text = products!.title
-            detailsCost.text = String(products!.cost)
+            detailsCost.text = "Price: $" + String(products!.cost)
             detailsDescription.text = products!.description
             
             detailsImage.image = products!.image
