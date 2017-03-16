@@ -21,9 +21,18 @@ import UIKit
 import MapKit
 
 class AboutViewController: UIViewController {
+    @IBOutlet weak var aboutTextView: UITextView!
+    var newLine = "\n\n"
+    
+    /*\
+        You change change these Strings here as needed.
+    \*/
+    var paulsensPhone = "(503)287-1163"
+    var paulsensWebsite = "https://www.paulsenspharmacy.com"
+    var paulsensAddress = "4246 NE Sandy Blvd\nPortland, OR 97213"
+    var paulsensHours = "Monday - Friday 9:00am - 6:30pm\nSaturday 10:00am - 2:00pm"
+    var paulsensAboutMessage = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 
-    // Shows texts for About
-    @IBOutlet weak var aboutLabel: UILabel!
     
     // Display map directions
     func map() {
@@ -104,22 +113,47 @@ class AboutViewController: UIViewController {
         createAlert(title: inputTitle, message: inputMessage, action: yesButton)
     }
     
+    //loads the Strings to the textView
+    func loadTextViewData() {
+        //detects phone, links, addresses
+        aboutTextView.dataDetectorTypes = [UIDataDetectorTypes.phoneNumber,UIDataDetectorTypes.link,UIDataDetectorTypes.address]
+        aboutTextView.text = "Paulsen's Pharmacy" + newLine
+                            + paulsensAboutMessage + newLine
+                            + paulsensHours + newLine
+                            + paulsensWebsite + newLine
+                            + paulsensAddress + newLine
+                            + paulsensPhone
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
-
         self.automaticallyAdjustsScrollViewInsets = false
-        
-        // Allows multiple lines for a UILabel
-        aboutLabel.numberOfLines = 0
-        
-        aboutLabel.text =
-            "Paulsen's Pharmacy\n\n" + "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\n" + "Monday - Friday 9:00am - 6:30pm\nSaturday 10:00am - 2:00pm"
+        self.aboutTextView.delegate = self
+        loadTextViewData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+}
+
+
+extension AboutViewController : UITextViewDelegate {
+    
+    //this is when a user clicks on a URL.
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        
+        if URL.absoluteString == paulsensWebsite {
+            url()
+        }
+        else if URL.absoluteString == "tel:" + paulsensPhone {
+            phone()
+        }
+        else {
+            address()
+        }
+        return false
     }
 }
