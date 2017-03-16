@@ -65,7 +65,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        updateHomeUI()
+//        updateHomeUI()
         
 //        let response = webCallController.createNewUser(userDict: ["email": "neveruse@test.com", "password": "123456"])
 //        print("Response: ")

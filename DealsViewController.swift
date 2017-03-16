@@ -19,10 +19,22 @@ import UIKit
 
 class DealsViewController: UIViewController {
     @IBOutlet weak var dealsCollectionView: UICollectionView!
-    var products : [Product]? = nil
+    
+    private let refreshControl = UIRefreshControl()
+    
+    var products = [Product]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // This sets a background default view that displays if there are no products.
+        self.dealsCollectionView.backgroundView = UIButton()
+        let backgroundView = self.dealsCollectionView.backgroundView as! UIButton
+        backgroundView.titleLabel?.numberOfLines = 0
+        backgroundView.titleLabel?.adjustsFontSizeToFitWidth = true
+        backgroundView.backgroundColor = UIColor(red: 0.24, green: 0.34, blue: 0.45, alpha: 1.0)
+        backgroundView.setTitle("Reload?", for: UIControlState.normal)
+        backgroundView.addTarget(self, action: #selector(refreshDeals), for: .touchUpInside)
+        
         updateDeals()
         dealsCollectionView.delegate = self
         dealsCollectionView.dataSource = self
@@ -32,18 +44,23 @@ class DealsViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    /*
-        Dont really know why this makes things work.
-    */
+    // If the view is going to appear, reload the data, given the data source is implemented
+    // This uses the products to update the cells on the page
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.dealsCollectionView.reloadData()
+    }
+    
+    @IBAction func refreshDeals() {
         updateDeals()
     }
     
+    // If the segue prepared for is going to the popup, and there is a product list
+    // Get the cell the call came from and pass that cell's product on to the popup.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // If the segue prepared for is going to the popup, and there is a product list
         // Get the cell the call came from and pass that cell's product on to the popup.
-        if(segue.identifier == "dealsPopUp" && sender != nil && products != nil){
+        if(segue.identifier == "dealsPopUp" && sender != nil){
             let cell = sender as! DealsCollectionViewCell
             let next = segue.destination as! DetailsViewController
             next.products = cell.product
@@ -55,39 +72,60 @@ class DealsViewController: UIViewController {
         Right now updateDeals() updates rewards since there is no test data with daily_deal == true
     */
     func updateDeals() {
-        var temp: [Product] = []
         let webCallController = WebCallController()
-        webCallController.getRewardsList { (tuple: (Bool, String, Array<Dictionary<String, AnyObject>>?)) in
-            let (isError, error, dailyDealsList) = tuple
-            if isError == false {
+        webCallController.getRewardsList { (isError, errorMessage, dailyDealsList) in
+            if !isError {
+                var newProducts = [Product]()
                 for dict in dailyDealsList! {
-                    temp.append(Product(title: dict["title"] as! String,
+                    newProducts.append(Product(title: dict["title"] as! String,
                                         description: dict["description"] as! String,
                                         cost: dict["cost"] as! Int,
-                                        image: UIImage(named: "1reward")!,
+                                        image: UIImage(named: "Paulsens_Logo_Gold3")!,
                                         id: dict["id"] as! Int))
                 }
-                self.products = temp
+                self.products = newProducts
             } else {
-                print("There was an error: "+error)
+                DispatchQueue.main.async(execute: { () -> Void in
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    let dispAlert = appDelegate.isDisplayingPopup
+                    if(!dispAlert){
+                        appDelegate.isDisplayingPopup = true
+                        let alertController = UIAlertController(title: "Error", message: errorMessage, preferredStyle:UIAlertControllerStyle.alert)
+                        alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                        self.present(alertController, animated:true, completion: { () in
+                            appDelegate.isDisplayingPopup = false })
+                    //})
+                    }
+                })
+                return
             }
+            // Make sure the UI update occurs on the MAIN thread
+            DispatchQueue.main.async(execute: { () -> Void in
+                if(self.products.count > 0){
+                    self.dealsCollectionView.reloadData()
+                    let bgView = self.dealsCollectionView.backgroundView as! UIButton
+                    bgView.isEnabled = false
+                    bgView.isHidden = true
+                } else {
+                    let bgView = self.dealsCollectionView.backgroundView as! UIButton
+                    bgView.isEnabled = true
+                    bgView.isHidden = false
+                }
+            })
         }
     }
 }
 
 extension DealsViewController : UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if products != nil {
-            return products!.count
-        }
-        return 0
+        return self.products.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dealCell", for: indexPath) as! DealsCollectionViewCell
-        cell.product = products![indexPath.row]
-        cell.dealsTitle.text = products![indexPath.row].title
-        cell.dealsImage.image = products![indexPath.row].image
+        cell.product = products[indexPath.row]
+        cell.dealsTitle.text = products[indexPath.row].title
+        cell.dealsImage.image = products[indexPath.row].image
         //cell.dealsDescription.text = products![indexPath.row].description
         //cell.dealsCost.text = String(describing: products![indexPath.row].cost)
         return cell
