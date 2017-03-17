@@ -95,16 +95,11 @@ class User: NSObject {
             //Error for empty field
             return (false, "A field was left empty", 0)
         }
-        // If we are trying to check credentials of a logged in user
-        // Make sure the email of the user logged in matches that of the person supplied
-        // So the password check is for the correct user.
-        if(self.email != "noUser" && emailField?.lowercased() != self.email.lowercased()){
-            return (false, "Invalid credentials", 0)
-        }
+        
         //Get the dictionary for this email, lowercased, if it exists
         let userInfo = UserDefaults.standard.dictionary(forKey: emailField!.lowercased())
         // Comment in the next line to add webserver dictionary creation
-        let webServerDict: [String: String] = ["email": emailField!, "password": passwordField!]
+        let webServerDict: [String: String] = ["email": emailField!.lowercased(), "password": passwordField!]
         let webCallController = WebCallController()
         let result = webCallController.userLogIn(userDict: webServerDict)
         if(result.0){
@@ -189,6 +184,7 @@ class User: NSObject {
         if(email == "" || currentPassword == ""){
             return (false, "Email and current password are required")
         }
+        
         toServer["current_password"] = currentPassword
         // If the user did not leave the password field blank.
         if(password != nil){
