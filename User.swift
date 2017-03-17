@@ -95,16 +95,11 @@ class User: NSObject {
             //Error for empty field
             return (false, "A field was left empty", 0)
         }
-        // If we are trying to check credentials of a logged in user
-        // Make sure the email of the user logged in matches that of the person supplied
-        // So the password check is for the correct user.
-        if(self.email != "noUser" && emailField?.lowercased() != self.email.lowercased()){
-            return (false, "Invalid credentials", 0)
-        }
+        
         //Get the dictionary for this email, lowercased, if it exists
         let userInfo = UserDefaults.standard.dictionary(forKey: emailField!.lowercased())
         // Comment in the next line to add webserver dictionary creation
-        let webServerDict: [String: String] = ["email": emailField!, "password": passwordField!]
+        let webServerDict: [String: String] = ["email": emailField!.lowercased(), "password": passwordField!]
         let webCallController = WebCallController()
         let result = webCallController.userLogIn(userDict: webServerDict)
         if(result.0){
@@ -181,11 +176,16 @@ class User: NSObject {
     // This function retrieves the dictionary for the currently logged in user, then updates the stored password (if changed)
     // The password storage will be removed upon server, as such, the server code exists, to create the dictionary to send
     // However at this time it is not used.
-    func editAccount(email: String?, password: String?, repeatPassword: String?, phone: String?, address: String?) -> (Bool, String){
+    func editAccount(email: String?, currentPassword: String?, password: String?, repeatPassword: String?, phone: String?, address: String?) -> (Bool, String){
         
         //Read in the dictionary for the current user from storage in UserDefaults.
         var toServer = [String: String]()
         
+        if(email == "" || currentPassword == ""){
+            return (false, "Email and current password are required")
+        }
+        
+        toServer["current_password"] = currentPassword
         // If the user did not leave the password field blank.
         if(password != nil){
             //If their password does not match the password repetition, return an error

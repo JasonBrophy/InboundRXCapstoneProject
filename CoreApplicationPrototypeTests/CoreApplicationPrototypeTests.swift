@@ -103,4 +103,24 @@ class CoreApplicationPrototypeTests: XCTestCase {
         result = webCallController.createNewUser(userDict: ["email": "whargarbl@whargarbl.com", "password": "pass"])
         XCTAssert(result.0)
     }
+    
+    func testEditAccount () {
+        let webCallController = WebCallController()
+        let user = User(userEmail: "noUser")
+        var result = user.loginUser(emailField: "bob@bob.com", passwordField: "bobbob")
+        XCTAssertFalse(result.0)
+        XCTAssert(user.loggedIn())
+        result = webCallController.editUser(userDict: ["email": "bob@bob.com", "current_password": "bobbob", "password": "bobbobbob", "password_confirmation": "bobbobbob"])
+        XCTAssertFalse(result.0)
+        result = user.loginUser(emailField: "bob@bob.com", passwordField: "bobbob")
+        XCTAssert(result.0)
+        XCTAssertFalse(user.loggedIn())
+        result = user.loginUser(emailField: "bob@bob.com", passwordField: "bobbobbob")
+        XCTAssertFalse(result.0)
+        XCTAssert(user.loggedIn())
+        result = user.logOut()
+        XCTAssertFalse(user.loggedIn())
+        
+
+    }
 }
