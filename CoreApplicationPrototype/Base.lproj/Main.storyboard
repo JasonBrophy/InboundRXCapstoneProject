@@ -488,7 +488,7 @@ https://www.paulsenspharmacy.com
                                 <rect key="frame" x="0.0" y="28" width="414" height="355"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Zn-dx-0G0" id="xRB-xs-dKJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="354.66666666666669"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="355"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6xz-Cz-OPi">
@@ -586,7 +586,7 @@ https://www.paulsenspharmacy.com
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kj7-9w-LpF">
-                                                    <rect key="frame" x="44" y="144" width="232" height="25"/>
+                                                    <rect key="frame" x="44" y="145" width="232" height="24"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" red="0.36479109465168214" green="0.36479109465168214" blue="0.36479109465168214" alpha="0.6933058647260274" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1244,6 +1244,6 @@ https://www.paulsenspharmacy.com
         <image name="XcodeGear" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jBq-qM-mZ9"/>
+        <segue reference="2sE-bo-Aic"/>
     </inferredMetricsTieBreakers>
 </document>
