@@ -48,16 +48,11 @@ class User: NSObject {
     // Return false if there is no currently logged in user, as well as a string message stating such
     // Also set the current user points to 0.
     func logOut() -> (Bool, String){
-        if(self.email == "noUser"){
-            return (false, "No user to log out!")
-        }
-        else{
-            self.email = "noUser"
-            self.points = 0
-            let webCallController = WebCallController()
-            webCallController.userLogOut()
-            return (true, "")
-        }
+        self.email = "noUser"
+        self.points = 0
+        let webCallController = WebCallController()
+        webCallController.userLogOut()
+        return (true, "")
     }
     
     
@@ -67,6 +62,7 @@ class User: NSObject {
     // utilized in event of an error.
     func loginUser(emailField: String?, passwordField: String?)  -> (Bool, String){
         
+        let _ = self.logOut()
         let result = self.securityTest(emailField: emailField, passwordField: passwordField)
         if(!result.0){
             return (result.0, result.1)
