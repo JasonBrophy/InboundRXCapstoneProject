@@ -269,7 +269,12 @@ class WebCallController: URLSession {
             } catch let jsonError {
                 print("There was a json error!:\n")
                 print(jsonError)
+//                let err = jsonError as NSError
+//                if(err.code == 3840){
+//                    callback(["no":"problems"])
+//                } else {
                 callback(["error":jsonError.localizedDescription])
+//                }
             }
             // Signal the semaphore
             semaphore.signal()
@@ -290,7 +295,7 @@ class WebCallController: URLSession {
     func printBeaconList() {
         // Test logging in
         // Catch an error if it occurs
-        webLogIn(loginCredentials: ["user": ["email": "test@test.com", "password": "password123"]]) {(dataJson) in
+/*        webLogIn(loginCredentials: ["user": ["email": "test@test.com", "password": "password123"]]) {(dataJson) in
             if let error = dataJson["error"] as? String {
                 print("There was an error: " + error)
             }
@@ -305,7 +310,7 @@ class WebCallController: URLSession {
                     i = i+1
                 }
             }
-        }
+        }*/
     }
     
     

@@ -150,35 +150,6 @@ class CoreApplicationPrototypeUITests: XCTestCase {
 
     }
     
-    //Casually going throught the app
-    func testCasual(){
-        
-        let app = XCUIApplication()
-        app.alerts["“CoreApplicationPrototype” Would Like to Send You Notifications"].buttons["Allow"].tap()
-        app.alerts["Allow “CoreApplicationPrototype” to access your location even when you are not using the app?"].buttons["Allow"].tap()
-        
-        let tabBarsQuery = app.tabBars
-        tabBarsQuery.buttons["History"].tap()
-        
-        let staticText = app.tables.staticTexts["2017-03-11"]
-        staticText.tap()
-        staticText.tap()
-        staticText.tap()
-        staticText.tap()
-        staticText.tap()
-        
-        let textView = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textView).element
-        textView.tap()
-        textView.tap()
-        tabBarsQuery.buttons["About"].tap()
-        tabBarsQuery.buttons["Rewards"].tap()
-        app.alerts["Error"].buttons["Cancel"].tap()
-        tabBarsQuery.buttons["Home"].tap()
-        app.navigationBars["Home"].buttons["Settings"].tap()
-        
-    }
-    
-    
     //THis test goes to history and back to home, and then back to history again
     func testHistory() {
         
