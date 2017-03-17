@@ -150,6 +150,146 @@ class CoreApplicationPrototypeUITests: XCTestCase {
 
     }
     
+    //Casually going throught the app
+    func testCasual(){
+        
+        let app = XCUIApplication()
+        app.alerts["“CoreApplicationPrototype” Would Like to Send You Notifications"].buttons["Allow"].tap()
+        app.alerts["Allow “CoreApplicationPrototype” to access your location even when you are not using the app?"].buttons["Allow"].tap()
+        
+        let tabBarsQuery = app.tabBars
+        tabBarsQuery.buttons["History"].tap()
+        
+        let staticText = app.tables.staticTexts["2017-03-11"]
+        staticText.tap()
+        staticText.tap()
+        staticText.tap()
+        staticText.tap()
+        staticText.tap()
+        
+        let textView = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textView).element
+        textView.tap()
+        textView.tap()
+        tabBarsQuery.buttons["About"].tap()
+        tabBarsQuery.buttons["Rewards"].tap()
+        app.alerts["Error"].buttons["Cancel"].tap()
+        tabBarsQuery.buttons["Home"].tap()
+        app.navigationBars["Home"].buttons["Settings"].tap()
+        
+    }
     
+    
+    //THis test goes to history and back to home, and then back to history again
+    func testHistory() {
+        
+        let app = XCUIApplication()
+        let tabBarsQuery = app.tabBars
+        let historyButton = tabBarsQuery.buttons["History"]
+        historyButton.tap()
+        tabBarsQuery.buttons["Home"].tap()
+        historyButton.tap()
+        
+    }
+    
+    
+    //This test is just scrolling back and forth with the daily deals
+    func testDailyDeals(){
+        
+        let image = XCUIApplication().collectionViews.images["640x360_advil"]
+        image.swipeLeft()
+        image.swipeLeft()
+        image.swipeLeft()
+        image.swipeRight()
+        image.swipeLeft()
+        image.swipeRight()
+        
+    }
+    
+    
+    //THis test is the user trying to go to the online order page
+    func testOnlinePrescription(){
+        
+        let app = XCUIApplication()
+        XCTAssert(app.buttons["Online Prescription"].exists)
+        app.buttons["Online Prescription"].tap()
+        app.alerts["WEBSITE TRANSFER"].buttons["YES"].tap()
+        XCUIDevice.shared().orientation = .portrait
+        XCUIDevice.shared().orientation = .portrait
+        app.statusBars.buttons["Return to CoreApplicationPrototype"].tap()
+        XCUIDevice.shared().orientation = .portrait
+        XCUIDevice.shared().orientation = .portrait
+        app.collectionViews.images["640x360_advil"].swipeLeft()
+        
+    }
+    
+    
+    //This test is the user going paulsen's website through the about page
+    func testAboutWeb(){
+        
+        let app = XCUIApplication()
+        app.tabBars.buttons["About"].tap()
+        
+        let httpsWwwPaulsenspharmacyComTextView = app.textViews.containing(.link, identifier:"https://www.paulsenspharmacy.com").element
+        httpsWwwPaulsenspharmacyComTextView.tap()
+        
+        let websiteTransferAlert = app.alerts["WEBSITE TRANSFER"]
+        XCTAssert(app.alerts["WEBSITE TRANSFER"].exists)
+        websiteTransferAlert.buttons["NO"].tap()
+        httpsWwwPaulsenspharmacyComTextView.tap()
+        websiteTransferAlert.buttons["YES"].tap()
+        XCUIDevice.shared().orientation = .portrait
+        XCUIDevice.shared().orientation = .portrait
+        app.statusBars.buttons["Return to CoreApplicationPrototype"].tap()
+        XCUIDevice.shared().orientation = .portrait
+        XCUIDevice.shared().orientation = .portrait
+        
+
+    }
+    
+    
+    //This is the user clicking on the address in the about page
+    func testAboutMap(){
+        
+        let app = XCUIApplication()
+        let tabBarsQuery = app.tabBars
+        tabBarsQuery.buttons["About"].tap()
+        
+        let httpsWwwPaulsenspharmacyComTextView = app.textViews.containing(.link, identifier:"https://www.paulsenspharmacy.com").element
+        httpsWwwPaulsenspharmacyComTextView.tap()
+        
+        let mapTransferAlert = app.alerts["MAP TRANSFER"]
+        XCTAssert(app.alerts["MAP TRANSFER"].exists)
+        mapTransferAlert.buttons["NO"].tap()
+        httpsWwwPaulsenspharmacyComTextView.tap()
+        XCTAssert(app.alerts["MAP TRANSFER"].exists)
+        mapTransferAlert.buttons["YES"].tap()
+        XCUIDevice.shared().orientation = .portrait
+        XCUIDevice.shared().orientation = .portrait
+        app.alerts["Allow “Maps” to access your location while you use the app?"].buttons["Allow"].tap()
+        app.statusBars.buttons["Return to CoreApplicationPrototype"].tap()
+        XCUIDevice.shared().orientation = .portrait
+        XCUIDevice.shared().orientation = .portrait
+        tabBarsQuery.buttons["Home"].tap()
+        
+    }
+    
+    
+    //This test is for when the user clicks and close a daily deal
+    func DailyDealClick(){
+        
+        let app = XCUIApplication()
+        let image = app.collectionViews.images["640x360_advil"]
+        image.swipeLeft()
+        image.tap()
+        app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element(boundBy: 1).children(matching: .other).element.children(matching: .textView).element.tap()
+        app.staticTexts["Price: $57"].tap()
+        
+        let xButton = app.buttons["[X]"]
+        xButton.tap()
+        image.swipeLeft()
+        image.tap()
+        xButton.tap()
+        
+    }
     
 }
