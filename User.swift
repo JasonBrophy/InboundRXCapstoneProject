@@ -146,12 +146,6 @@ class User: NSObject {
             return (false, "Passwords do not match")
         }
         
-        if(defaults.object(forKey: email!.lowercased()) != nil){
-            //If there is already an object for this email (so a user with that email exists)
-            //return false and a message stating the error (string)
-            return (false, "Email already used")
-        }
-        
         // Populate the locally stored information, and a start to the server information for account creation.
         let storedInfo: [String: String] = ["email": email!.lowercased(), "points": "0"]
         var toServer: [String: String] = ["email": email!.lowercased(), "password": password!]
@@ -216,7 +210,6 @@ class User: NSObject {
         // Create the Web call controller then make the edit web call
         let webCallController = WebCallController()
         let result = webCallController.editUser(userDict: toServer)
-        print(result.1)
         // If there was an error returned from the call, return the failure and message
         if(result.0){
             return (!result.0, result.1)

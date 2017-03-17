@@ -93,6 +93,14 @@ class CoreApplicationPrototypeTests: XCTestCase {
         })
         waitForExpectations(timeout: 15, handler: nil)
     }
-
     
+    func testCreateAccount () {
+        let webCallController = WebCallController()
+        var result = webCallController.createNewUser(userDict: ["email": "example@example.com", "password": "example2"])
+        XCTAssert(result.0)
+        result = webCallController.createNewUser(userDict: ["email": "example", "password": "password"])
+        XCTAssert(result.0)
+        result = webCallController.createNewUser(userDict: ["email": "whargarbl@whargarbl.com", "password": "pass"])
+        XCTAssert(result.0)
+    }
 }
