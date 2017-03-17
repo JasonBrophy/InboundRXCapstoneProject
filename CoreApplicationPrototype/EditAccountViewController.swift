@@ -22,6 +22,8 @@ class EditAccountViewController: UIViewController {
     
     @IBOutlet weak var email: UITextField!
     
+    @IBOutlet weak var currentPassword: UITextField!
+    
     @IBOutlet weak var password: UITextField!
     
     @IBOutlet weak var repeatPassword: UITextField!
@@ -40,7 +42,7 @@ class EditAccountViewController: UIViewController {
         let editUser = appDelegate.user
         
         //send the data in the fields to the user for the app to edit the current user
-        let result = editUser.editAccount(email: email.text ?? "", password: password.text ?? "", repeatPassword: repeatPassword.text ?? "", phone: phone.text ?? "", address: address.text ?? "")
+        let result = editUser.editAccount(email: email.text, currentPassword: currentPassword.text, password: password.text, repeatPassword: repeatPassword.text, phone: phone.text, address: address.text)
         
         //show the type of error that the user is missing in their creat account application
         if(!result.0){
