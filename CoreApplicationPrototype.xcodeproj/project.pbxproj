@@ -30,6 +30,7 @@
 		7F70D6E71E76CAB0004C207D /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F70D6E61E76CAB0004C207D /* DetailsViewController.swift */; };
 		A364DB541E469BAB00B38C11 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A364DB531E469BAB00B38C11 /* User.swift */; };
 		A3C2E9A31E63CF07001BC63B /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2E9A21E63CF07001BC63B /* PopUpViewController.swift */; };
+		DF0DA5C71E7FB713003762D4 /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = DF0DA5C61E7FB713003762D4 /* license.txt */; };
 		DF2538A91E642B0C00360F8C /* WebCallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2538A81E642B0C00360F8C /* WebCallController.swift */; };
 		DF2556F21DE422EC006B3CC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2556F11DE422EC006B3CC5 /* AppDelegate.swift */; };
 		DF2556F41DE422EC006B3CC5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2556F31DE422EC006B3CC5 /* HomeViewController.swift */; };
@@ -80,6 +81,7 @@
 		7F70D6E61E76CAB0004C207D /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		A364DB531E469BAB00B38C11 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
 		A3C2E9A21E63CF07001BC63B /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		DF0DA5C61E7FB713003762D4 /* license.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.txt; sourceTree = "<group>"; };
 		DF2538A81E642B0C00360F8C /* WebCallController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebCallController.swift; sourceTree = "<group>"; };
 		DF2556EE1DE422EC006B3CC5 /* CoreApplicationPrototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreApplicationPrototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF2556F11DE422EC006B3CC5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				DF2556F81DE422EC006B3CC5 /* Assets.xcassets */,
 				DF2556F11DE422EC006B3CC5 /* AppDelegate.swift */,
 				DF2556FD1DE422EC006B3CC5 /* Info.plist */,
+				DF0DA5C61E7FB713003762D4 /* license.txt */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FEDDAD41E2C4DC50095013F /* .gitignore in Resources */,
+				DF0DA5C71E7FB713003762D4 /* license.txt in Resources */,
 				DF2556FC1DE422EC006B3CC5 /* LaunchScreen.storyboard in Resources */,
 				DF2556F71DE422EC006B3CC5 /* Main.storyboard in Resources */,
 				48CD79171E6BCCE900694253 /* Assets.xcassets in Resources */,
